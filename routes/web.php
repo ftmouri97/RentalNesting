@@ -19,6 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('admin.dashboard');
-    });
+        return view('admin.apartments');
+    })->name('apartments');
+    Route::get('/booking-requests', function () {
+        return view('admin.apartments');
+    })->name('bookingRequests');
+    Route::get('/renters', function () {
+        return view('admin.apartments');
+    })->name('renters');
+    Route::get('/rents', function () {
+        return view('admin.apartments');
+    })->name('rents');
+    Route::get('/service-charges', function () {
+        return view('admin.apartments');
+    })->name('serviceCharges');
 });
