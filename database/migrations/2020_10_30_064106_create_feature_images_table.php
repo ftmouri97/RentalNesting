@@ -13,7 +13,7 @@ class CreateFetaureImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fetaure_images', function (Blueprint $table) {
+        Schema::create('feature_images', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('apartment_id')->unsigned();
             $table->string('image');

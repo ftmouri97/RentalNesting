@@ -23,8 +23,10 @@ Route::prefix('owner')->group(function () {
     Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
 
     /*
-    *  apartment-details
+    *  apartment-details operations
     */
     Route::get('/read-apartment-details','OwnerController@readApartmentDetails')->name('readApartmentDetails');
+    Route::post('/create-apartment-details','OwnerController@createApartmentDetails')->name('createApartmentDetails');
+    Route::get('/delete-apartment-details/{id}','OwnerController@deleteApartmentDetails')->name('deleteApartmentDetails');
 
 });

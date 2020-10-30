@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fetaure_image extends Model
+class feature_image extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
 }
