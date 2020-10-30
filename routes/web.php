@@ -29,14 +29,19 @@ Route::prefix('owner')->group(function () {
 
 });
 
-Route::prefix('user')->group(function () {
-    Route::view('/','user.dashboard')->name('dashboard');
-    Route::view('apartments','admin.apartments')->name('apartments');
-    Route::view('/booking-requests','admin.booking-requests')->name('bookingRequests');
-    Route::view('/renters','admin.renters')->name('renters');
-    Route::view('/rents','admin.rents')->name('rents');
-    Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
-    Route::view('/service-chargess','admin.service-charges')->name('serviceCharges');
-
+Route::prefix('renter')->group(function () {
+    Route::view('/','renter.dashboard')->name('dashboard');
+    Route::view('notification','renter.notification');
+    Route::view('booking-list','renter.booking-list')->name('booking-list');
+    Route::view('rent-details','renter.renters');
+    Route::view('service-charge-details','admin.rents');
+    Route::view('gas-bill-details','admin.service-charges');
+    Route::view('complain','admin.service-charges');
+    Route::get('get_all_booking','RenterController@get_all_booking');
+    Route::post('show_apartment_details','RenterController@show_apartment_details');
+    Route::post('cancel_booking','RenterController@cancel_booking');
+    
   
 });
+
+

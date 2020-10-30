@@ -6,6 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{csrf_token()}}">
   <title>Melody Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/vendors/iconfonts/font-awesome/css/all.min.css">
@@ -401,33 +402,39 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('apartments')}}">
+            <a class="nav-link" href="{{url('notification')}}">
               <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Appartment Informations</span>
+              <span class="menu-title">Notification</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('bookingRequests')}}">
+            <a class="nav-link" href="{{route('booking-list')}}">
               <i class="fa fa-puzzle-piece menu-icon"></i>
-              <span class="menu-title">Booking Requests</span>
+              <span class="menu-title">Booking List</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('renters')}}">
+            <a class="nav-link" href="{{url('rent-details')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Renters</span>
+              <span class="menu-title">Rent Details</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('rents')}}">
+            <a class="nav-link" href="{{url('service-charge-details')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Rents</span>
+              <span class="menu-title">Service Charge Details</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('serviceCharges')}}">
+            <a class="nav-link" href="{{url('gas-bill-details')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Service charges</span>
+              <span class="menu-title">Gas Bill Details</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('complain')}}">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">Complain</span>
             </a>
           </li>
         </ul>

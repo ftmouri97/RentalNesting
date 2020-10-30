@@ -15,7 +15,7 @@ class CreateApartmentDetailsTable extends Migration
     {
         Schema::create('apartment_details', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('owner_id')->unsigned();
             $table->string('district', 50);
             $table->string('zone', 50);
             $table->string('address', 150);
@@ -30,7 +30,7 @@ class CreateApartmentDetailsTable extends Migration
             $table->boolean('commision_status');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
