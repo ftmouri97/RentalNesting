@@ -29,6 +29,8 @@ class CreateApartmentDetailsTable extends Migration
             $table->boolean('active_status');
             $table->boolean('commision_status');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
