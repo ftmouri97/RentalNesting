@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,24 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('admin.dashboard');
-// });
-
-Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.apartments');
-    })->name('apartments');
-    Route::get('/booking-requests', function () {
-        return view('admin.apartments');
-    })->name('bookingRequests');
-    Route::get('/renters', function () {
-        return view('admin.apartments');
-    })->name('renters');
-    Route::get('/rents', function () {
-        return view('admin.apartments');
-    })->name('rents');
-    Route::get('/service-charges', function () {
-        return view('admin.apartments');
-    })->name('serviceCharges');
+Route::prefix('owner')->group(function () {
+    Route::view('','admin.dashboard')->name('dashboard');
+    Route::view('apartments','admin.apartments')->name('apartments');
+    Route::view('/booking-requests','admin.booking-requests')->name('bookingRequests');
+    Route::view('/renters','admin.renters')->name('renters');
+    Route::view('/rents','admin.rents')->name('rents');
+    Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
 });
