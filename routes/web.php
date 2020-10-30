@@ -25,3 +25,15 @@ Route::prefix('owner')->group(function () {
 
   
 });
+
+Route::prefix('user')->group(function () {
+    Route::view('/','user.dashboard')->name('dashboard');
+    Route::view('apartments','admin.apartments')->name('apartments');
+    Route::view('/booking-requests','admin.booking-requests')->name('bookingRequests');
+    Route::view('/renters','admin.renters')->name('renters');
+    Route::view('/rents','admin.rents')->name('rents');
+    Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
+    Route::view('/service-chargess','admin.service-charges')->name('serviceCharges');
+
+  
+});
