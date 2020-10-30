@@ -26,4 +26,5 @@ Route::prefix('owner')->group(function () {
     *  apartment-details
     */
     Route::get('/read-apartment-details','OwnerController@readApartmentDetails')->name('readApartmentDetails');
+
 });
