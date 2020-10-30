@@ -21,13 +21,7 @@ Route::prefix('owner')->group(function () {
     Route::view('/renters','admin.renters')->name('renters');
     Route::view('/rents','admin.rents')->name('rents');
     Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
-<<<<<<< HEAD
     Route::view('/service-chargess','admin.service-charges')->name('serviceCharges');
-=======
 
-    /*
-    *  apartment-details
-    */
-    // Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
->>>>>>> 9722e3d7c446d8b63aaceb23277ca9b6eca531a4
+  
 });

@@ -24,6 +24,7 @@
                     <th>Appartment rent</th>
                     <th>Commision status</th>
                     <th>Active tatus</th>
+                    <th>Active tatus2</th>
                     <th></th>
                     <th></th>
                 </tr>
