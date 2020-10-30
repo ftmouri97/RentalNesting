@@ -68,7 +68,7 @@
             processData:false,
             contentType:false,
             type:'GET',
-            url:'{{url("read-apartment-details")}}',
+            url:'{{route("readApartmentDetails")}}',
             success:function(data){
                 console.log(data);
             }

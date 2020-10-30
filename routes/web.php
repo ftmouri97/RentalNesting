@@ -25,5 +25,5 @@ Route::prefix('owner')->group(function () {
     /*
     *  apartment-details
     */
-    // Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
+    Route::get('/read-apartment-details','OwnerController@readApartmentDetails')->name('readApartmentDetails');
 });
