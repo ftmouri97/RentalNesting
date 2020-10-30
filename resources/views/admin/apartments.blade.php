@@ -23,8 +23,7 @@
                     <th>Description</th>
                     <th>Appartment rent</th>
                     <th>Commision status</th>
-                    <th>Active tatus</th>
-                    <th>Active tatus2</th>
+                    <th>Active status</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -42,7 +41,7 @@
                     <td>Description</td>
                     <td>Appartment rent</td>
                     <td>Commision status</td>
-                    <td>Active tatus</td>
+                    <td>Active status</td>
                     <td>
                       <label class="badge badge-info">On hold</label>
                     </td>
