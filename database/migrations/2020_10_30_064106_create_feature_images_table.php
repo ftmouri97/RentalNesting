@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFetaureImagesTable extends Migration
+class CreateFeatureImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -30,6 +30,6 @@ class CreateFetaureImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fetaure_images');
+        Schema::dropIfExists('feature_images');
     }
 }
