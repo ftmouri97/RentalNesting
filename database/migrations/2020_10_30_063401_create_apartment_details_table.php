@@ -22,12 +22,12 @@ class CreateApartmentDetailsTable extends Migration
             $table->integer('total_bed');
             $table->integer('total_bath');
             $table->string('apartment_size',100);
-            $table->string('appartment_description',100);
+            $table->text('apartment_description');
             $table->string('flat_name',100);
-            $table->string('flor_no',100);
-            $table->string('appartment_rent',100);
-            $table->boolean('active_status');
-            $table->boolean('commision_status');
+            $table->string('floor_no',100);
+            $table->string('apartment_rent',100);
+            $table->integer('active_status');
+            $table->integer('commission_status');
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');

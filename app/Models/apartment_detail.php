@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class apartment_detail extends Model
 {
-    // use HasFactory;
+    use HasFactory;
     protected $guarded = [];
 }
