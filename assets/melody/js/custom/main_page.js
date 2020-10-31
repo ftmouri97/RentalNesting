@@ -10,7 +10,7 @@ $(function(){
     });
 
    check_notification();
-   rent_details_insertion();
+  rent_details_insertion();
    
     
   
@@ -34,17 +34,17 @@ function rent_details_insertion()
 
 function check_notification()
 {
-    alert('hello');
-    // $.ajax({
-    //     processData:false,
-    //     contentType:false,
-    //     type:'GET',
-    //     url:"check_notification",
-    //     success:function(data){
+    //alert('hello');
+    $.ajax({
+        processData:false,
+        contentType:false,
+        type:'GET',
+        url:"check_notification",
+        success:function(data){
             
-    //       $("#notification_count").html(data);
+          $("#notification_count").html(data);
          
-    //     }
-    // })
+        }
+    })
 }
 

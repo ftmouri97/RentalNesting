@@ -63,21 +63,34 @@ class RenterController extends Controller
     }
     public function get_rent_details()
     { 
-        // $renter_id = 1;
+        $renter_id = 3;
+        $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
         
-        // $data = "";
-        // for($i=0;$i<sizeof($notification);$i++)
-        // {
-        //     $sl_no = $i+1;
-        //     $data.='<tr>
-        //     <td>'.$sl_no.'</td>
-        //     <td>'.$notification[$i]->message.'</td>
-        //     <td>'.$notification[$i]->status.'</td>
-        // </tr>';
+        
+        $data = "";
+        for($i=0;$i<sizeof($rent_details);$i++)
+        {
+            $sl_no = $i+1;
+            $data.='<tr>
+            <td>'.$sl_no.'</td>
+            <td>'.$rent_details[$i]->month.'</td>
+            ';
+            if($rent_details[$i]->rent_status == 0)
+            {
+                $data.=' <td style="color:red">Due</td>';
+            }
+            else
+            {
+                $data.=' <td style="color:green">Paid</td>';
+            }
 
-        // }
+  
+           
+        $data.='</tr>';
+
+        }
         // notification::where('user_id',$user_id)->update(['status'=>"read"]);
-        // echo $data;
+         echo $data;
 
     }
     

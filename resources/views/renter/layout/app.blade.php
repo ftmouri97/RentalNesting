@@ -420,7 +420,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('service-charge-details')}}">
+            <a class="nav-link" href="{{route('service-charge-details')}}">
               <i class="fab fa-trello menu-icon"></i>
               <span class="menu-title">Service Charge Details</span>
             </a>
@@ -454,7 +454,7 @@
   <!-- plugins:js -->
   <script src="{{ asset('assets/melody') }}/vendors/js/vendor.bundle.base.js"></script>
   <script src="{{ asset('assets/melody') }}/vendors/js/vendor.bundle.addons.js"></script>
-  <script src="{{asset('assets/melody')}}/js/custom/main_page.js"></script>
+  <script src="{{asset('assets/melody')}}/js/custom/main_page.js?{{time()}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
