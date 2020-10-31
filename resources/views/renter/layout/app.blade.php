@@ -414,7 +414,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('rent-details')}}">
+            <a class="nav-link" href="{{route('rent-details')}}">
               <i class="fab fa-trello menu-icon"></i>
               <span class="menu-title">Rent Details</span>
             </a>

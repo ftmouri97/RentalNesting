@@ -85,5 +85,11 @@ class DatabaseSeeder extends Seeder
             'active_status' => 0,
             'commission_status' => 0
         ]);
+
+        DB::table('rent_confirmations')->insert([
+            'renter_id' => 1,
+            'apartment_id' => 1,
+            'status' => 0
+        ]);
     }
 }

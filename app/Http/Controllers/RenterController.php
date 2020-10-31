@@ -5,10 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\apartment_detail;
 use App\Models\notification;
+use App\Models\rent_confirmation;
+use App\Models\rent_details;
 
 class RenterController extends Controller
 {
     //
+    public function rent_details_insertion()
+    {   
+    $date = date('Y-m');
+    $month = date("F");
+ 
+     $renter_id = 3;
+     $total_apartment = rent_confirmation::where('renter_id',$renter_id)->get();
+    for($i=0;$i<sizeof($total_apartment);$i++)
+    {
+        $apartment_id = $total_apartment[$i]->apartment_id;
+        if(!rent_details::where('renter_id',$renter_id)->where('created_at','LIKE',"%".$date."%")->first())
+        {
+            rent_details::create([
+                "renter_id"=>$renter_id,
+                "apartment_id"=>$apartment_id,
+                "month"=>$month,
+                "rent_status"=>0,
+                "service_charge_status"=>0,
+                "gas_bill_status"=>0,
+                "water_bill_status"=>0
+            ]);
+        }
+
+        
+    }
+
+      
+    }
     public function check_notification()
     { 
         $user_id = 1;
@@ -31,6 +61,26 @@ class RenterController extends Controller
         echo $total_notification;
 
     }
+    public function get_rent_details()
+    { 
+        // $renter_id = 1;
+        
+        // $data = "";
+        // for($i=0;$i<sizeof($notification);$i++)
+        // {
+        //     $sl_no = $i+1;
+        //     $data.='<tr>
+        //     <td>'.$sl_no.'</td>
+        //     <td>'.$notification[$i]->message.'</td>
+        //     <td>'.$notification[$i]->status.'</td>
+        // </tr>';
+
+        // }
+        // notification::where('user_id',$user_id)->update(['status'=>"read"]);
+        // echo $data;
+
+    }
+    
     public function get_notification()
     {
         $user_id = 1;

@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class rent_details extends Model
 {
-    use HasFactory;
+    protected $table = 'rent_details';
+    protected $guarded = [];
+    
+
 }

@@ -11,10 +11,26 @@ $(function(){
 
     readData();
     view_notification();
+    rent_details();
     
   
 
 });
+function rent_details()
+{
+    $.ajax({
+        processData:false,
+        contentType:false,
+        type:'GET',
+        url:"get_rent_details",
+        success:function(data){
+            
+          $("#rent_details").html(data);
+         
+        }
+    })
+
+}
 function readData() {
     
     $.ajax({
