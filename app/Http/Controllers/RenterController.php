@@ -4,10 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\apartment_detail;
+use App\Models\notification;
 
 class RenterController extends Controller
 {
     //
+    public function check_notification()
+    { 
+        $user_id = 1;
+        $date = date('Y-m');
+        $check_avail = notification::where('user_id',$user_id)->where('created_at','LIKE',"%".$date."%")->first();
+        if($check_avail)
+        {
+           
+        }
+        else
+        {
+            notification::create(['message'=>"You have due Rent",'user_id'=>$user_id]);
+        }
+
+        //echo $date;
+        
+        
+        $notification = notification::where('user_id',$user_id)->where('status','Unread')->get();
+        $total_notification = sizeof($notification);
+        echo $total_notification;
+
+    }
+    public function get_notification()
+    {
+        $user_id = 1;
+        $notification = notification::where('user_id',$user_id)->orderBy('id', 'DESC')->get();
+        $data = "";
+        for($i=0;$i<sizeof($notification);$i++)
+        {
+            $sl_no = $i+1;
+            $data.='<tr>
+            <td>'.$sl_no.'</td>
+            <td>'.$notification[$i]->message.'</td>
+            <td>'.$notification[$i]->status.'</td>
+        </tr>';
+
+        }
+        notification::where('user_id',$user_id)->update(['status'=>"read"]);
+        echo $data;
+
+    }
     public function show_apartment_details(Request $request)
     {
         $apartment_id = $request->id;
@@ -33,8 +75,8 @@ class RenterController extends Controller
 
     public function get_all_booking()
     {
-    
-         $apartment = apartment_detail::get();
+       $user_id = 2;
+         $apartment = apartment_detail::where('owner_id',$user_id)->get();
         $data = "";
         for($i=0;$i<sizeof($apartment);$i++)
         {

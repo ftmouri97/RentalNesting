@@ -402,9 +402,9 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('notification')}}">
+            <a class="nav-link" href="{{route('notification')}}">
               <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Notification</span>
+              <span class="menu-title">Notification</span><sup id="notification_count" style="color:red;font-size:15px"></sup>
             </a>
           </li>
           <li class="nav-item">
@@ -454,6 +454,7 @@
   <!-- plugins:js -->
   <script src="{{ asset('assets/melody') }}/vendors/js/vendor.bundle.base.js"></script>
   <script src="{{ asset('assets/melody') }}/vendors/js/vendor.bundle.addons.js"></script>
+  <script src="{{asset('assets/melody')}}/js/custom/main_page.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
@@ -469,6 +470,7 @@
   <!-- End custom js for this page-->
   <!-- Custom js for this page-->
   @yield('page-js')
+
   <!-- End custom js for this page-->
 </body>
 

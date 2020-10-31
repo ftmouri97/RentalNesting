@@ -10,7 +10,8 @@ $(function(){
     });
 
     readData();
-
+    view_notification();
+    
   
 
 });
@@ -47,6 +48,20 @@ function show_apartment_details(id)
     }
 })
 
+}
+function view_notification()
+{
+    $.ajax({
+        processData:false,
+        contentType:false,
+        type:'GET',
+        url:"get_notification",
+        success:function(data){
+            
+          $("#notification_list").html(data);
+         
+        }
+    })
 }
 
 function cancel_booking(id)
