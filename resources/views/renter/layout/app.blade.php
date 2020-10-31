@@ -426,13 +426,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('gas-bill-details')}}">
+            <a class="nav-link" href="{{route('gas-bill-details')}}">
               <i class="fab fa-trello menu-icon"></i>
               <span class="menu-title">Gas Bill Details</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('complain')}}">
+            <a class="nav-link" href="{{route('complain')}}">
               <i class="fab fa-trello menu-icon"></i>
               <span class="menu-title">Complain</span>
             </a>

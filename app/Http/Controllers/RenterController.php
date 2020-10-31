@@ -7,6 +7,7 @@ use App\Models\apartment_detail;
 use App\Models\notification;
 use App\Models\rent_confirmation;
 use App\Models\rent_details;
+use App\Models\complain;
 
 class RenterController extends Controller
 {
@@ -59,6 +60,83 @@ class RenterController extends Controller
         $notification = notification::where('user_id',$user_id)->where('status','Unread')->get();
         $total_notification = sizeof($notification);
         echo $total_notification;
+
+    }
+    public function get_service_charge_details()
+    {
+        $renter_id = 3;
+        $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
+        
+        
+        $data = "";
+        for($i=0;$i<sizeof($rent_details);$i++)
+        {
+            $sl_no = $i+1;
+            $data.='<tr>
+            <td>'.$sl_no.'</td>
+            <td>'.$rent_details[$i]->month.'</td>
+            ';
+            if($rent_details[$i]->service_charge_status == 0)
+            {
+                $data.=' <td style="color:red">Due</td>';
+            }
+            else
+            {
+                $data.=' <td style="color:green">Paid</td>';
+            }
+
+  
+           
+        $data.='</tr>';
+
+        }
+        // notification::where('user_id',$user_id)->update(['status'=>"read"]);
+         echo $data;
+
+    }
+    public function submit_complain(Request $request)
+    {
+        $renter_id = 3;
+        $appartment_id = rent_confirmation::where('renter_id',$renter_id)->first()->apartment_id;
+        $message = $request->message;
+        complain::create([
+            'renter_id'=>$renter_id,
+            'apartment_id'=>$appartment_id,
+            'message'=>$message
+        ]);
+        
+
+    }
+    public function get_gas_bill_details()
+    {
+        $renter_id = 3;
+        $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
+        
+        
+        $data = "";
+        for($i=0;$i<sizeof($rent_details);$i++)
+        {
+            $sl_no = $i+1;
+            $data.='<tr>
+            <td>'.$sl_no.'</td>
+            <td>'.$rent_details[$i]->month.'</td>
+            ';
+            if($rent_details[$i]->gas_bill_status == 0)
+            {
+                $data.=' <td style="color:red">Due</td>';
+            }
+            else
+            {
+                $data.=' <td style="color:green">Paid</td>';
+            }
+
+  
+           
+        $data.='</tr>';
+
+        }
+        // notification::where('user_id',$user_id)->update(['status'=>"read"]);
+         echo $data;
 
     }
     public function get_rent_details()

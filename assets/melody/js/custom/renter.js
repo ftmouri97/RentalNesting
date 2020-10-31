@@ -12,6 +12,8 @@ $(function(){
     readData();
     view_notification();
     rent_details();
+    service_charge_details();
+    gas_bill_details();
     
   
 
@@ -23,6 +25,57 @@ function rent_details()
         contentType:false,
         type:'GET',
         url:"get_rent_details",
+        success:function(data){
+            
+          $("#rent_details").html(data);
+         
+        }
+    })
+
+}
+
+function service_charge_details()
+{
+    $.ajax({
+        processData:false,
+        contentType:false,
+        type:'GET',
+        url:"get_service_charge_details",
+        success:function(data){
+            
+          $("#rent_details").html(data);
+         
+        }
+    })
+
+}
+function complain_box()
+{
+    var message = document.getElementById("complain_text").value.trim();
+    var formdata = new FormData();
+    formdata.append('message',message);
+    $.ajax({
+        processData:false,
+        contentType:false,
+        data:formdata,
+        type:'post',
+        url:"submit_complain",
+        success:function(data){
+            
+          alert('Complain submit successfully');
+          location.reload();
+    
+        }
+    })
+
+}
+function gas_bill_details()
+{
+    $.ajax({
+        processData:false,
+        contentType:false,
+        type:'GET',
+        url:"get_gas_bill_details",
         success:function(data){
             
           $("#rent_details").html(data);

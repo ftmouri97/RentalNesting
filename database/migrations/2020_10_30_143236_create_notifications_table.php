@@ -19,6 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->string("message");
             $table->string("status")->default('Unread');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
