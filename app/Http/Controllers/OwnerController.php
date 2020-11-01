@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\apartment_detail;
 use App\Models\detailes_image;
 use App\Models\feature_image;
+use App\Models\rent_request;
 
 class OwnerController extends Controller
 {
+    public function readBookingsRequests()
+    {
+        return "reading requests";
+    }
+
     public function readApartmentDetails()
     {
         $apartments = apartment_detail::orderBy('id','desc')->get();

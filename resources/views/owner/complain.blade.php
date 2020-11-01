@@ -3,7 +3,7 @@
 @section('main-panel')
 <div class="page-header">
     <h3 class="page-title">
-        Booking requests
+        Complains
     </h3>
 </div>
 <div class="card">
@@ -12,16 +12,18 @@
             <table id="order-listing" class="table">
               <thead>
                 <tr>
-                    <th>SL No#</th>
-                    <th>Renter Name</th>
-                    <th>Renter Phone</th>
-                    <th>Apertment detail</th>
-                    <th>Accept</th>
-                    <th>Delete</th>
+                    <th>Order #</th>
+                    <th>Purchased On</th>
+                    <th>Customer</th>
+                    <th>Ship to</th>
+                    <th>Base Price</th>
+                    <th>Purchased Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {{-- <tr>
+                <tr>
                     <td>1</td>
                     <td>2012/08/03</td>
                     <td>Edinburgh</td>
@@ -34,7 +36,7 @@
                     <td>
                       <button class="btn btn-outline-primary">View</button>
                     </td>
-                </tr> --}}
+                </tr>
               </tbody>
             </table>
         </div>
@@ -44,5 +46,4 @@
 
 @section('page-js')
 <script src="{{asset('assets/melody')}}/js/data-table.js"></script>
-<script src="{{asset('assets/owner/booking-requests.js')}}"></script>
 @endsection
