@@ -7,6 +7,74 @@ $(function () {
     readData();
 })
 
+function editApertment(id) {
+    $.ajax({
+        processData: false,
+        contentType: false,
+        url: "edit-apartment-details/" + id,
+        type: "get",
+        success: function (data) {
+            // $("#detailImages").html(data);
+            alert(data)
+        }
+    })
+}
+
+function manageDetailImages(id) {
+    $("#apartment-hidden-id").val(id);
+    $("#detailImagesModal").modal('show');
+    images_modal()
+}
+
+function images_modal() {
+    $.ajax({
+        processData: false,
+        contentType: false,
+        url: "manage-apartment-details-images/" + $("#apartment-hidden-id").val(),
+        type: "get",
+        success: function (data) {
+            $("#detailImages").html(data);
+        }
+    })
+}
+
+function delete_single_image(id, image) {
+    $.ajax({
+        processData: false,
+        contentType: false,
+        url: "delete-apartment-details-single-image/" + id + "/" + image,
+        type: "get",
+        success: function (data) {
+            images_modal();
+        }
+    })
+}
+
+$("#UpdateApartmentImage").click(function () {
+    if ($("#new-apartment-image").val().length !== 0) {
+        formData = new FormData()
+        formData.append("apartment_id", $("#apartment-hidden-id").val());
+        for (var i = 0; i < $("#new-apartment-image").get(0).files.length; i++) {
+            formData.append("detail_images[]", document.getElementById('new-apartment-image').files[i]);
+        }
+        $.ajax({
+            processData: false,
+            contentType: false,
+            data: formData,
+            type: 'POST',
+            url: 'create-apartment-details-images',
+            success: function (data) {
+                images_modal();
+                $("#new-apartment-image").val('');
+            }
+        })
+    }
+    else{
+        alert("Select a file");
+    }
+})
+
+
 function addApertmentDetails() {
     if (
         $("#floor_no").val().length !== 0 &&
@@ -19,7 +87,7 @@ function addApertmentDetails() {
         $("#apartment_size").val().length !== 0 &&
         $("#apartment_description").val().length !== 0 &&
         $("#apartment_rent").val().length !== 0 &&
-        // $("#feature_image").val().length !== 0
+        $("#feature_image").val().length !== 0 &&
         $("#detail_image").val().length !== 0
     ) {
         formData = new FormData()
@@ -53,7 +121,7 @@ function addApertmentDetails() {
                 }
             }
         })
-    }else{
+    } else {
         alert('Fill up all inputs with valid informations')
     }
 }

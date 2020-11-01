@@ -15,18 +15,22 @@ use App\Http\Controllers\OwnerController;
 */
 
 Route::prefix('owner')->group(function () {
-    Route::view('','admin.dashboard')->name('dashboard');
-    Route::view('apartments','admin.apartments')->name('apartments');
-    Route::view('/booking-requests','admin.booking-requests')->name('bookingRequests');
-    Route::view('/renters','admin.renters')->name('renters');
-    Route::view('/rents','admin.rents')->name('rents');
-    Route::view('/service-charges','admin.service-charges')->name('serviceCharges');
+    Route::view('','owner.dashboard')->name('dashboard');
+    Route::view('apartments','owner.apartments')->name('apartments');
+    Route::view('/booking-requests','owner.booking-requests')->name('bookingRequests');
+    Route::view('/renters','owner.renters')->name('renters');
+    Route::view('/rents','owner.rents')->name('rents');
+    Route::view('/service-charges','owner.service-charges')->name('serviceCharges');
 
     /*
     *  apartment-details operations
     */
     Route::get('/read-apartment-details','OwnerController@readApartmentDetails')->name('readApartmentDetails');
     Route::post('/create-apartment-details','OwnerController@createApartmentDetails')->name('createApartmentDetails');
+    Route::get('/edit-apartment-details/{id}','OwnerController@editApartmentDetails')->name('editApartmentDetails');
+    Route::get('/manage-apartment-details-images/{id}','OwnerController@manageApartmentDetailsImages')->name('manageApartmentDetailsImages');
+    Route::post('/create-apartment-details-images','OwnerController@createApartmentDetailsImages')->name('createApartmentDetailsImages');
+    Route::get('/delete-apartment-details-single-image/{id}/{image}','OwnerController@deleteApartmentDetailsSingleImage')->name('deleteApartmentDetailsSingleImage');
     Route::get('/delete-apartment-details/{id}','OwnerController@deleteApartmentDetails')->name('deleteApartmentDetails');
 
 });
@@ -49,8 +53,8 @@ Route::prefix('renter')->group(function () {
     Route::post('show_apartment_details','RenterController@show_apartment_details');
     Route::post('cancel_booking','RenterController@cancel_booking');
     Route::post('submit_complain','RenterController@submit_complain');
-    
-  
+
+
 });
 
 

@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('owner.layout.app')
 
 @section('main-panel')
 <div class="page-header">
@@ -107,6 +107,28 @@
       </div>
     </div>
   </div>
+
+
+  <div class="modal fade" id="detailImagesModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="UpdateExampleModalScrollableTitle">Managing images</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="anticon anticon-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="apartment-hidden-id">
+                <div class="row" id="detailImages"></div>
+            </div>
+            <div class="modal-footer">
+                <input type="file" class="form-control" id="new-apartment-image" multiple>
+                <button type="button" class="btn btn-primary" id="UpdateApartmentImage">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('page-js')

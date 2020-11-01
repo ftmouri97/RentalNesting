@@ -1,9 +1,9 @@
-@extends('admin.layout.app')
+@extends('owner.layout.app')
 
 @section('main-panel')
 <div class="page-header">
     <h3 class="page-title">
-        Renters
+        Rents
     </h3>
 </div>
 <div class="table-responsive">

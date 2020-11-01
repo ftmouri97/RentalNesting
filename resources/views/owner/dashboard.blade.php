@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('owner.layout.app')
 
 @section('main-panel')
 <div class="page-header">

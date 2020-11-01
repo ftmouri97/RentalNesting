@@ -35,9 +35,9 @@ class OwnerController extends Controller
             <td>'.$apartment->active_status.'</td>
             <td>'.$active_status.'</td>
             <td>
-            <button class="btn btn-outline-primary" onclick="deleteApertment('.$apartment->id.')">Manage detail images</button>
-            <button class="btn btn-outline-warning" onclick="deleteApertment('.$apartment->id.')">Edit</button>
-            <button class="btn btn-outline-danger" onclick="editApertment('.$apartment->id.')">Delete</button>
+            <button class="btn btn-outline-primary" onclick="manageDetailImages('.$apartment->id.')">Manage detail images</button>
+            <button class="btn btn-outline-warning" onclick="editApertment('.$apartment->id.')">Edit</button>
+            <button class="btn btn-outline-danger" onclick="deleteApertment('.$apartment->id.')">Delete</button>
             </td>
         </tr>';
         }
@@ -66,10 +66,52 @@ class OwnerController extends Controller
         }
     }
 
-    public function deleteApartmentDetails($id)
+    public function editApartmentDetails(Request $Request)
     {
-        if (apartment_detail::where('id',$id)->delete()) {
-            return "Succesfully deleted";
+        return apartment_detail::where('id',$Request->id)->first();
+    }
+
+    public function manageApartmentDetailsImages(Request $Request)
+    {
+        $images = detailes_image::where('apartment_id',$Request->id)->get();
+        if (count($images)>0) {
+        foreach ($images as $image) {
+
+            ?>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="<?php echo asset('Apartment photoes/'.$image->image) ?>" alt="" class="img-fluid" id="edit-category-image" >
+                    </div>
+                    <div class="card-footer">
+                        <button onclick="delete_single_image('<?php echo $image->id ?>','<?php echo $image->image ?>')" class="btn btn-light">Delete <i class="anticon anticon-delete"></i></button>
+                    </div>
+                </div>
+            </div>
+            <?php
+            }
+            }else{
+                ?>
+                <h3 class="mx-auto">No image available</h3>
+                <?php
+            }
+    }
+
+    public function createApartmentDetailsImages(Request $Request)
+    {
+        $increment = 1;
+        foreach ($Request->file('detail_images') as $detail_image) {
+            $filesName = time().$increment.'.'.$detail_image->extension();
+            $detail_image->move(public_path('../Apartment photoes'), $filesName);
+            detailes_image::create(['apartment_id'=>$Request->apartment_id,'image'=>$filesName]);
+            $increment++;
+        }
+    }
+
+    public function deleteApartmentDetailsSingleImage(Request $Request)
+    {
+        if (detailes_image::where('id',$Request->id)->delete()) {
+            unlink('Apartment photoes/'.$Request->image);
         }
     }
 }
