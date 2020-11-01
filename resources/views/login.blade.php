@@ -20,7 +20,16 @@
 <div class="card">
     <div class="row align-items-center card-body mx-0" style="height: 80vh">
         <div class="col-md-6 offset-md-3">
+        
             <div class="mt-10">
+            @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+         @endif
+
+            <form  method="post" action="{{ route('login') }}">
+            @csrf
                 <input type="number" name="phone" placeholder="Phone number"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" required
                     class="single-input">
@@ -31,8 +40,9 @@
                     class="single-input">
             </div>
             <div class="row mt-10 mx-0">
-                    <button class="col-12 btn btn-primary">Login</button>
+                    <button type = "submit" class="col-12 btn btn-primary">Login</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

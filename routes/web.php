@@ -25,13 +25,22 @@ Route::get('/','FrontController@index')->name('home');
 Route::view('/registration','registration')->name('registration');
 Route::view('/login','login')->name('login');
 
+Route::namespace('Auth')->group(function () {
+   // Route::get('/login','LoginController@show_login_form')->name('login');
+    Route::post('/login','AuthController@process_login')->name('login');
+    Route::get('/register','LoginController@show_signup_form')->name('register');
+    Route::post('/register','LoginController@process_signup');
+    Route::post('/logout','LoginController@logout')->name('logout');
+  });
 
 
 /**
  *  Owner routes
  */
-Route::prefix('owner')->group(function () {
-    Route::view('/','owner.dashboard')->name('dashboard');
+Route::group(['prefix' => 'owner',  'middleware' => 'owner'], function()
+
+{
+    Route::view('/','owner.dashboard')->name('owner-dashboard');
     Route::view('apartments','owner.apartments')->name('apartments');
     Route::view('/booking-requests','owner.booking-requests')->name('bookingRequests');
     Route::view('/renters','owner.renters')->name('renters');
@@ -56,9 +65,9 @@ Route::prefix('owner')->group(function () {
      */
     Route::get('read-bookings-requests','OwnerController@readBookingsRequests')->name('readBookingsRequests');
 });
-
-Route::prefix('renter')->group(function () {
-    Route::view('/','renter.dashboard')->name('dashboard');
+Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
+ {
+    Route::view('/','renter.dashboard')->name('renter-dashboard');
     Route::view('notification','renter.notification')->name('notification');
     Route::view('booking-list','renter.booking-list')->name('booking-list');
     Route::view('rent-details','renter.rent-details')->name('rent-details');

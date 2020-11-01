@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
+class Renter
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        
-        if(auth()->user()->user_role == 'admin'){
+        if(auth()->user()->user_role == 'renter'){
             return $next($request);
         }
-        return redirect("/login")->with('error',"You don't have admin access.");
-
+        return redirect("/login")->with('error',"You don't have renter access.");
     }
 }
