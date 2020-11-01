@@ -86,21 +86,9 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
-                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                        <li><a href="about.html">about</a></li>
-                                                        <li><a href="property_details.html">property details</a></li>
-                                                        <li><a href="elements.html">elements</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="Property.html">Property</a></li>
-                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a class="@yield('home-status')" href="{{ route('home') }}">home</a></li>
+                                            <li><a class="@yield('registration-status')" href="{{ route('registration') }}">Registration</a></li>
+                                            <li><a class="@yield('login-status')" href="{{ route('login') }}">Login</a></li>
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
@@ -113,9 +101,9 @@
                                             <i class="ti-search"></i>
                                         </a>
                                     </div>
-                                    <div class="book_btn d-none d-lg-block">
+                                    {{-- <div class="book_btn d-none d-lg-block">
                                         <a  href="#">Add Property</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-12">
@@ -130,74 +118,6 @@
     </header>
     <!-- header-end -->
 
-    <!-- slider_area_start -->
-    <div class="slider_area">
-            <div class="single_slider  d-flex align-items-center slider_bg_1">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-xl-10 offset-xl-1">
-                                <div class="slider_text text-center justify-content-center">
-                                    <h3>Find your best Property</h3>
-                                    <p>Esteem spirit temper too say adieus who direct esteem.</p>
-                                </div>
-                                <div class="property_form">
-                                    <form action="#">
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="form_wrap d-flex">
-                                                        <div class="single-field max_width ">
-                                                                <label for="#">Location</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="NewYork">NewYork</option>
-                                                                        <option value="1">Bangladesh</option>
-                                                                        <option value="2">India</option>
-                                                                </select>
-                                                            </div>
-                                                        <div class="single-field max_width ">
-                                                                <label for="#">Property type</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="Apartment">Apartment</option>
-                                                                        <option value="1">Apartment</option>
-                                                                        <option value="2">Apartment</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="single_field range_slider">
-                                                                    <label for="#">Price ($)</label>
-                                                                <div id="slider"></div>
-                                                            </div>
-                                                        <div class="single-field min_width ">
-                                                                <label for="#">Bed Room</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="01">01</option>
-                                                                        <option value="1">02</option>
-                                                                        <option value="2">03</option>
-                                                                </select>
-                                                            </div>
-                                                        <div class="single-field min_width ">
-                                                                <label for="#">Bath Room</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="01">01</option>
-                                                                        <option value="1">02</option>
-                                                                        <option value="2">03</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="serach_icon">
-                                                                    <a href="#">
-                                                                            <i class="ti-search"></i>
-                                                                    </a>
-                                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </div>
-    <!-- slider_area_end -->
-
     @yield('body')
 
     <!-- link that opens popup -->
@@ -208,7 +128,7 @@
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
     <!-- JS here -->
     <script src="{{asset('assets/realstate')}}/js/vendor/modernizr-3.5.0.min.js"></script>
-    <!-- <script src="{{asset('assets/realstate')}}/js/vendor/jquery-1.12.4.min.js"></script> -->
+    {{-- <script src="{{asset('assets/realstate')}}/js/vendor/jquery-1.12.4.min.js"></script> --}}
     <script src="{{asset('assets/realstate')}}/js/popper.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/owl.carousel.min.js"></script>
@@ -224,7 +144,7 @@
     <script src="{{asset('assets/realstate')}}/js/jquery.slicknav.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/jquery.magnific-popup.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/plugins.js"></script>
-    <!-- <script src="{{asset('assets/realstate')}}/js/gijgo.min.js"></script> -->
+    <script src="{{asset('assets/realstate')}}/js/gijgo.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/slick.min.js"></script>
 
 
@@ -305,6 +225,8 @@
         $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1) +
             'k</span>');
     </script>
+
+    @yield('page-js')
 </body>
 
 </html>

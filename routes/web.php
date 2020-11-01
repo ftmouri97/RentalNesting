@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,11 @@ use App\Http\Controllers\OwnerController;
  *  Frontend routes
  */
 
-Route::view('/','index')->name('home');
+Route::get('/','FrontController@index')->name('home');
+
+
+Route::view('/registration','registration')->name('registration');
+Route::view('/login','login')->name('login');
 
 
 
@@ -32,6 +37,7 @@ Route::prefix('owner')->group(function () {
     Route::view('/renters','owner.renters')->name('renters');
     Route::view('/rents','owner.rents')->name('rents');
     Route::view('/service-charges','owner.service-charges')->name('serviceCharges');
+    Route::view('/complains', 'owner.complain')->name('complains');;
 
     /*
     *  apartment-details operations
@@ -45,6 +51,10 @@ Route::prefix('owner')->group(function () {
     Route::get('/delete-apartment-details-single-image/{id}/{image}','OwnerController@deleteApartmentDetailsSingleImage')->name('deleteApartmentDetailsSingleImage');
     Route::get('/delete-apartment-details/{id}','OwnerController@deleteApartmentDetails')->name('deleteApartmentDetails');
 
+    /***
+     *  Booking request routes
+     */
+    Route::get('read-bookings-requests','OwnerController@readBookingsRequests')->name('readBookingsRequests');
 });
 
 Route::prefix('renter')->group(function () {

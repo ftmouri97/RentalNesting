@@ -431,6 +431,12 @@
               <span class="menu-title">Service charges</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('complains')}}">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">Complains</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->

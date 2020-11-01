@@ -10,11 +10,11 @@
     <table id="order-listing" class="table">
       <thead>
         <tr>
-            <th>Order #</th>
-            <th>Purchased On</th>
-            <th>Customer</th>
-            <th>Ship to</th>
-            <th>Base Price</th>
+            <th>Sl No #</th>
+            <th>Month</th>
+            <th>Renter</th>
+            <th>Apertment</th>
+            <th>Rent staus</th>
             <th>Purchased Price</th>
             <th>Status</th>
             <th>Actions</th>
