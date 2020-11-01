@@ -19,7 +19,7 @@ function addApertmentDetails() {
         $("#apartment_size").val().length !== 0 &&
         $("#apartment_description").val().length !== 0 &&
         $("#apartment_rent").val().length !== 0 &&
-        $("#feature_image").val().length !== 0 &&
+        // $("#feature_image").val().length !== 0
         $("#detail_image").val().length !== 0
     ) {
         formData = new FormData()
@@ -34,7 +34,10 @@ function addApertmentDetails() {
         formData.append('apartment_description', $("#apartment_description").val())
         formData.append('apartment_rent', $("#apartment_rent").val())
         formData.append('feature_image', $("#feature_image")[0].files[0])
-        formData.append('detail_image', $("#detail_image")[0].files[0])
+        // var totalfiles = document.getElementById('new-room-image').files.length;
+        for (var i = 0; i < $("#detail_image").get(0).files.length; i++) {
+            formData.append("detail_image[]", document.getElementById('detail_image').files[i]);
+        }
         $.ajax({
             processData: false,
             contentType: false,
