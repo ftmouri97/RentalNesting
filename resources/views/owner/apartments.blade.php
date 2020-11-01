@@ -108,6 +108,71 @@
     </div>
   </div>
 
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-apertment-detail-modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Apertment details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="edit_apartment_id">
+            <div class="form-group">
+                <label for="edit_floor_no">Floor no</label>
+                <input type="text" class="form-control" id="edit_floor_no" placeholder="Floor no" value="asd">
+            </div>
+            <div class="form-group">
+                <label for="edit_flat_name">Flat name</label>
+                <input type="text" class="form-control" id="edit_flat_name" placeholder="Flat name" value="asd">
+            </div>
+            <div class="form-group">
+                <label for="edit_district">District</label>
+                <input type="text" class="form-control" id="edit_district" placeholder="District" value="asd">
+            </div>
+            <div class="form-group">
+                <label for="edit_zone">Zone</label>
+                <input type="text" class="form-control" id="edit_zone" placeholder="Zone" value="asd">
+            </div>
+            <div class="form-group">
+                <label for="edit_address">Address</label>
+                <input type="text" class="form-control" id="edit_address" placeholder="Address" value="asd">
+            </div>
+            <div class="form-group">
+                <label for="edit_total_bed">Total bed</label>
+                <input type="number" class="form-control" id="edit_total_bed" placeholder="Total bed" value="123">
+            </div>
+            <div class="form-group">
+                <label for="edit_total_bath">Total bath</label>
+                <input type="number" class="form-control" id="edit_total_bath" placeholder="Total bath" value="123">
+            </div>
+            <div class="form-group">
+                <label for="edit_apartment_size">Apartment size</label>
+                <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" value="asd">
+            </div>
+            <div class="form-group">
+                <label for="edit_feature_image">Apartment feature image</label>
+                <input type="file" id="edit_feature_image">
+                <input type="hidden" id="edit_feature_image_value">
+            </div>
+            <div class="form-group">
+                <label for="edit_apartment_rent">Apartment rent</label>
+                <input type="text" class="form-control" id="edit_apartment_rent" placeholder="apartment rent" value="123">
+            </div>
+            <div class="form-group">
+                <label for="edit_apartment_description">Apartment description</label>
+                <textarea  type="text" class="form-control" id="edit_apartment_description" placeholder="apartment description">asd</textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="updateApertmentDetails()">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="modal fade" id="detailImagesModal">
     <div class="modal-dialog modal-dialog-scrollable">

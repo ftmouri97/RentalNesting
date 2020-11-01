@@ -7,19 +7,6 @@ $(function () {
     readData();
 })
 
-function editApertment(id) {
-    $.ajax({
-        processData: false,
-        contentType: false,
-        url: "edit-apartment-details/" + id,
-        type: "get",
-        success: function (data) {
-            // $("#detailImages").html(data);
-            alert(data)
-        }
-    })
-}
-
 function manageDetailImages(id) {
     $("#apartment-hidden-id").val(id);
     $("#detailImagesModal").modal('show');
@@ -69,11 +56,69 @@ $("#UpdateApartmentImage").click(function () {
             }
         })
     }
-    else{
+    else {
         alert("Select a file");
     }
 })
 
+function editApertment(id) {
+    $.ajax({
+        processData: false,
+        contentType: false,
+        url: "edit-apartment-details/" + id,
+        type: "get",
+        success: function (data) {
+            $("#edit_apartment_id").val(data.id)
+            $("#edit_floor_no").val(data.floor_no)
+            $("#edit_flat_name").val(data.flat_name)
+            $("#edit_district").val(data.district)
+            $("#edit_zone").val(data.zone)
+            $("#edit_address").val(data.address)
+            $("#edit_total_bed").val(data.total_bed)
+            $("#edit_total_bath").val(data.total_bath)
+            $("#edit_apartment_size").val(data.apartment_size)
+            $("#edit_apartment_description").val(data.apartment_description)
+            $("#edit_apartment_rent").val(data.apartment_rent)
+            if (data.feature_image) {
+                $("#edit_feature_image_value").val(data.feature_image.image)
+            }
+            $("#edit-apertment-detail-modal").modal('show')
+
+        }
+    })
+}
+
+function updateApertmentDetails() {
+    var formdata = new FormData();
+    formdata.append('id',$("#edit_apartment_id").val())
+    formdata.append('floor_no',$("#edit_floor_no").val())
+    formdata.append('flat_name',$("#edit_flat_name").val())
+    formdata.append('district',$("#edit_district").val())
+    formdata.append('zone',$("#edit_zone").val())
+    formdata.append('address',$("#edit_address").val())
+    formdata.append('total_bed',$("#edit_total_bed").val())
+    formdata.append('total_bath',$("#edit_total_bath").val())
+    formdata.append('apartment_size',$("#edit_apartment_size").val())
+    formdata.append('apartment_description',$("#edit_apartment_description").val())
+    formdata.append('apartment_rent',$("#edit_apartment_rent").val())
+    formdata.append('feature_image',$("#edit_feature_image")[0].files[0])
+    formdata.append('feature_image_value',$("#edit_feature_image_value").val())
+    $.ajax({
+        processData: false,
+        contentType: false,
+        data: formdata,
+        type: 'POST',
+        url: 'update-apartment-details',
+        success: function (data) {
+            if (data) {
+                readData()
+                $("#edit_feature_image_value").val('');
+                $("#edit-apertment-detail-modal").modal('hide')
+                alert(data)
+            }
+        }
+    })
+}
 
 function addApertmentDetails() {
     if (
@@ -117,7 +162,6 @@ function addApertmentDetails() {
                     readData()
                     $("#add-apertment-detail-modal").modal('hide')
                     alert(data)
-                    console.log(data);
                 }
             }
         })

@@ -28,6 +28,7 @@ Route::prefix('owner')->group(function () {
     Route::get('/read-apartment-details','OwnerController@readApartmentDetails')->name('readApartmentDetails');
     Route::post('/create-apartment-details','OwnerController@createApartmentDetails')->name('createApartmentDetails');
     Route::get('/edit-apartment-details/{id}','OwnerController@editApartmentDetails')->name('editApartmentDetails');
+    Route::post('/update-apartment-details','OwnerController@updateApartmentDetails')->name('updateApartmentDetails');
     Route::get('/manage-apartment-details-images/{id}','OwnerController@manageApartmentDetailsImages')->name('manageApartmentDetailsImages');
     Route::post('/create-apartment-details-images','OwnerController@createApartmentDetailsImages')->name('createApartmentDetailsImages');
     Route::get('/delete-apartment-details-single-image/{id}/{image}','OwnerController@deleteApartmentDetailsSingleImage')->name('deleteApartmentDetailsSingleImage');

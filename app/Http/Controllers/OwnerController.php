@@ -19,8 +19,12 @@ class OwnerController extends Controller
             }else{
                 $active_status = '<label class="badge badge-success">On hold</label>';
             }
+            $feature_image='';
+            if ($apartment->featureImage) {
+                $feature_image = $apartment->featureImage->image;
+            }
             $data .= '<tr>
-            <td><img class="img-fluid" src="'.asset('Apartment photoes/'.$apartment->featureImage->image).'"/></td>
+            <td><img class="img-fluid" src="'.asset('Apartment photoes/'.$feature_image).'"/></td>
             <td>'.$apartment->floor_no.'</td>
             <td>'.$apartment->flat_name.'</td>
             <td>'.$apartment->district.'</td>
@@ -68,7 +72,23 @@ class OwnerController extends Controller
 
     public function editApartmentDetails(Request $Request)
     {
-        return apartment_detail::where('id',$Request->id)->first();
+        return apartment_detail::where('id',$Request->id)->with('featureImage')->first();
+    }
+
+    public function updateApartmentDetails(Request $Request)
+    {
+        apartment_detail::where('id',$Request->id)->update(['district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent]);
+        if ($Request->file('feature_image')) {
+            if ($Request->feature_image_value) {
+                feature_image::where('apartment_id',$Request->id)->delete();
+                unlink('Apartment photoes/'.$Request->feature_image_value);
+            }
+
+            $fileName = time().'.'.$Request->feature_image->extension();
+            $Request->feature_image->move(public_path('../Apartment photoes'), $fileName);
+            feature_image::create(['apartment_id'=>$Request->id,'image'=>$fileName]);
+        }
+        return "Updated successfully";
     }
 
     public function manageApartmentDetailsImages(Request $Request)
@@ -113,5 +133,21 @@ class OwnerController extends Controller
         if (detailes_image::where('id',$Request->id)->delete()) {
             unlink('Apartment photoes/'.$Request->image);
         }
+    }
+
+    public function deleteApartmentDetails(Request $Request)
+    {
+        if ($detail_image = detailes_image::where('apartment_id',$Request->id)->get()) {
+            foreach ($detail_image as $images) {
+                unlink('Apartment photoes/'.$images->image);
+                detailes_image::where('id',$images->id)->delete();
+            }
+        }
+        if ($feature_image = feature_image::where('apartment_id',$Request->id)->first()) {
+            unlink('Apartment photoes/'.$feature_image->image);
+            feature_image::where('id',$feature_image->id);
+        }
+        apartment_detail::where('id',$Request->id)->delete();
+        return "Succesfully deleted";
     }
 }
