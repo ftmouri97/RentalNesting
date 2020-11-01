@@ -26,7 +26,7 @@ Route::view('/','index')->name('home');
  *  Owner routes
  */
 Route::prefix('owner')->group(function () {
-    Route::view('','owner.dashboard')->name('dashboard');
+    Route::view('/','owner.dashboard')->name('dashboard');
     Route::view('apartments','owner.apartments')->name('apartments');
     Route::view('/booking-requests','owner.booking-requests')->name('bookingRequests');
     Route::view('/renters','owner.renters')->name('renters');
