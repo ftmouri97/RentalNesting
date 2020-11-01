@@ -63,6 +63,13 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        for ($i=0; $i < 5; $i++) {
+            DB::table('rent_requests')->insert([
+                'renter_id'=>3||6,
+                'apartment_id'=>$i+1,
+            ]);
+        }
+
         DB::table('rent_confirmations')->insert([
             'renter_id' => 1,
             'apartment_id' => 1,
