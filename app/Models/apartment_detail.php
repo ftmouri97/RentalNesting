@@ -12,11 +12,16 @@ class apartment_detail extends Model
 
     public function detailsImages()
     {
-        return $this->hasMany('App\Models\detailes_image', 'apartment_id', 'id');
+        return $this->hasMany('App\Models\detailes_image', 'apartment_id');
     }
 
     public function featureImage()
     {
         return $this->hasOne('App\Models\feature_image','apartment_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'owner_id', 'id');
     }
 }

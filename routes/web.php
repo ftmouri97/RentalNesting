@@ -20,6 +20,7 @@ use App\Http\Controllers\FrontController;
  */
 
 Route::get('/','FrontController@index')->name('home');
+Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('aparmentDetail');
 
 
 Route::view('/registration','registration')->name('registration');

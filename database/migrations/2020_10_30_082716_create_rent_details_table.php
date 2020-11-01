@@ -17,14 +17,15 @@ class CreateRentDetailsTable extends Migration
             $table->id();
             $table->bigInteger('renter_id')->unsigned();
             $table->bigInteger('apartment_id')->unsigned();
-            $table->timestamps();
+            $table->bigInteger('owner_id')->unsigned();
             $table->string('month', 100)->nullable();
             $table->integer('rent_status')->nullable();
             $table->integer('service_charge_status')->nullable();
             $table->integer('gas_bill_status')->nullable();
-            $table->integer('water_bill_status')->nullable();
+            $table->timestamps();
 
             $table->foreign('renter_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('apartment_id')->references('id')->on('apartment_details')->onDelete('cascade');
         });
     }
