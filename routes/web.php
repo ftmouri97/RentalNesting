@@ -24,24 +24,20 @@ Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('apa
 
 
 Route::view('/registration','registration')->name('registration');
-Route::view('/login','login')->name('login');
+Route::view('/login','login');
 
 Route::namespace('Auth')->group(function () {
-   // Route::get('/login','LoginController@show_login_form')->name('login');
-    Route::post('/login','AuthController@process_login')->name('login');
-    Route::get('/register','LoginController@show_signup_form')->name('register');
-    Route::post('/register','LoginController@process_signup');
-    Route::post('/logout','LoginController@logout')->name('logout');
-  });
-
+  Route::post('/register','AuthController@process_register')->name('reg_process');
+  Route::post('/login','AuthController@process_login')->name('login');
+  Route::get('/logout','AuthController@logout')->name('logout');
+});
 
 /**
  *  Owner routes
  */
-Route::group(['prefix' => 'owner'], function()
-// ,  'middleware' => 'owner'
+Route::group(['prefix' => 'owner','middleware' => 'owner'], function()
 {
-    Route::view('/','ownerr.dashboard')->name('owner-dashboard');
+    Route::view('/','owner.dashboard')->name('owner-dashboard');
     Route::view('apartments','owner.apartments')->name('apartments');
     Route::view('/booking-requests','owner.booking-requests')->name('bookingRequests');
     Route::view('/renters','owner.renters')->name('renters');

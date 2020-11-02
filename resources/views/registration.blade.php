@@ -9,6 +9,10 @@
     -webkit-appearance: none;
     margin: 0;
     }
+
+    .bradcam_area {
+        padding: 180px 0 30px 0;
+    }
 </style>
 
 <!-- bradcam_area  -->
@@ -28,9 +32,19 @@
 {{-- body area --}}
 
 <div class="card">
-    <div class="row align-items-center card-body mx-0" style="height: 80vh">
+    <div class="card-body">
         <div class="col-md-6 offset-md-3">
-            <form action="#">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+            <form action="{{ route('reg_process') }}" method="POST">
+            @csrf
                 <div class="mt-10">
                     <input type="text" name="name" placeholder="Full name"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full name'" required
@@ -51,19 +65,24 @@
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
                         class="single-input">
                 </div>
+                <div class="mt-10">
+                    <input type="password" name="password_confirmation" placeholder="Retype Password"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
+                        class="single-input">
+                </div>
                 <div class="row justify-content-between align-items-center mt-10">
                     <div class="col row justify-content-around">
                         <div class="col">
                             <label for="renter-radio">As Renter</label>
-                            <input type="radio" id="renter-radio" name="role" value="renter" checked>
+                            <input type="radio" id="renter-radio" name="user_role" value="renter" checked>
                         </div>
                         <div class="col">
                             <label for="owner-radio">As Landlord</label>
-                            <input type="radio" id="owner-radio" name="role" value="owner">
+                            <input type="radio" id="owner-radio" name="user_role" value="owner">
                         </div>
                     </div>
                     <div class="col">
-                        <button  class="d-block ml-auto btn btn-primary">Registration</button>
+                        <button  class="d-block ml-auto btn btn-primary" type="submit">Registration</button>
                     </div>
                 </div>
             </form>
@@ -160,11 +179,7 @@
                 <div class="footer_border"></div>
                 <div class="row">
                     <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
+                        <p class="copy_right text-center"></p>
                     </div>
                 </div>
             </div>
@@ -173,8 +188,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!--/ footer end  -->
 @endsection
 
-@section('page-js')
-<script>
-</script>
-    <script src="{{asset('assets/frontend/auth.js')}}"></script>
-@endsection

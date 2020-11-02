@@ -7,6 +7,7 @@
     <title>Real state</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
@@ -31,10 +32,6 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
     <!-- header-start -->
     <header>
         <div class="header-area ">
@@ -48,25 +45,24 @@
                         </div>
                         <div class="col-xl-7 col-md-7">
                             <div class="header_right d-flex">
-                                    <div class="short_contact_list">
-                                            <ul>
-                                                <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
-                                                <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="social_media_links">
-                                            <a href="#">
-                                                <i class="fa fa-linkedin"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </div>
+                                <div class="short_contact_list">
+                                    <ul>
+                                        <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
+                                        <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
+                                    </ul>
+                                </div>
+                                <div class="social_media_links">
+                                    <a href="#">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -87,8 +83,10 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a class="@yield('home-status')" href="{{ route('home') }}">home</a></li>
+                                            @if(!Auth::check())
                                             <li><a class="@yield('registration-status')" href="{{ route('registration') }}">Registration</a></li>
                                             <li><a class="@yield('login-status')" href="{{ route('login') }}">Login</a></li>
+                                            @endif
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
@@ -101,9 +99,11 @@
                                             <i class="ti-search"></i>
                                         </a>
                                     </div>
-                                    {{-- <div class="book_btn d-none d-lg-block">
-                                        <a  href="#">Add Property</a>
-                                    </div> --}}
+                                    @if(Auth::check())
+                                    <div class="book_btn d-none d-lg-block">
+                                        <a href="{{route('logout')}}">Logout</a>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">
