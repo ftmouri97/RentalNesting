@@ -20,8 +20,8 @@ class apartment_detail extends Model
         return $this->hasOne('App\Models\feature_image','apartment_id');
     }
 
-    public function user()
+    public function owner()
     {
-        return $this->belongsTo('App\Models\User', 'owner_id', 'id');
+        return $this->hasOne('App\Models\User', 'owner_id');
     }
 }

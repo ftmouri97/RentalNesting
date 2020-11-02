@@ -38,8 +38,8 @@ Route::namespace('Auth')->group(function () {
 /**
  *  Owner routes
  */
-Route::group(['prefix' => 'owner',  'middleware' => 'owner'], function()
-
+Route::group(['prefix' => 'owner'], function()
+// ,  'middleware' => 'owner'
 {
     Route::view('/','owner.dashboard')->name('owner-dashboard');
     Route::view('apartments','owner.apartments')->name('apartments');
@@ -65,6 +65,14 @@ Route::group(['prefix' => 'owner',  'middleware' => 'owner'], function()
      *  Booking request routes
      */
     Route::get('read-bookings-requests','OwnerController@readBookingsRequests')->name('readBookingsRequests');
+    Route::post('accept-booking-request/','OwnerController@acceptBookingRequest')->name('acceptBookingsRequests');
+    Route::get('delete-booking-request/{id}','OwnerController@deleteBookingRequest')->name('deleteBookingsRequests');
+
+
+    /**
+     *  Renter detail routes
+     * */
+    Route::get('read-renter-details','OwnerController@readRenterDetails')->name('readRenterDetails');
 });
 Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
  {

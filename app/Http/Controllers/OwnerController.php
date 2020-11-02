@@ -7,12 +7,77 @@ use App\Models\apartment_detail;
 use App\Models\detailes_image;
 use App\Models\feature_image;
 use App\Models\rent_request;
+use App\Models\rent_confirmation;
+use App\Models\rent_details;
+use App\Models\User;
+use Auth;
 
 class OwnerController extends Controller
 {
+    public function readRenterDetails()
+    {
+        $owner_id = Auth::check()?Auth::user()->id:2;
+        $rent_detail = rent_details::where('owner_id',$owner_id)->get();
+        for ($i=0; $i < count($rent_detail); $i++) {
+            $renter = User::where('id',$rent_detail[$i]->renter_id)->first();
+            $apartment = apartment_detail::where('id',$rent_detail[$i]->apartment_id)->first();
+
+            $rent_status = $rent_detail[$i]->rent_status==0?'<button class="btn btn-outline-warning" onclick="rent_accepting('.$rent_detail[$i]->id.')">Due</button>':'<label class="badge badge-success">Paid</label>';
+            $service_charge_status = $rent_detail[$i]->service_charge_status==0?'<button class="btn btn-outline-warning" onclick="service_charge_accepting('.$rent_detail[$i]->id.')">Due</button>':'<label class="badge badge-success">Paid</label>';
+            $gas_bill_status = $rent_detail[$i]->gas_bill_status==0?'<button class="btn btn-outline-warning" onclick="gasbill_accepting('.$rent_detail[$i]->id.')">Due</button>':'<label class="badge badge-success">Paid</label>';
+            ?>
+            <tr>
+                <td><?php echo $rent_detail[$i]->id ?></td>
+                <td><?php echo $rent_detail[$i]->month ?></td>
+                <td><?php echo $renter->name ?></td>
+                <td><?php echo $renter->phone ?></td>
+                <td><?php echo $apartment->name.','.$apartment->address ?></td>
+                <td><?php echo $rent_status; ?></td>
+                <td><?php echo $service_charge_status; ?></td>
+                <td><?php echo $gas_bill_status; ?></td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <?php
+        }
+    }
+
+    public function acceptBookingRequest(Request $Request)
+    {
+        // $owner_id = Auth::check()?Auth::user()->id:2;
+        $rent = rent_request::where('id',$Request->rent_request_id)->first();
+        rent_request::where('id',$Request->rent_request_id)->update(['status'=>1]);
+        rent_request::where('apartment_id',$rent->apartment_id)->update(['status'=>2]);
+        rent_confirmation::create(['renter_id'=>$rent->renter_id,'owner_id'=>$rent->owner_id,'apartment_id'=>$rent->apartment_id,'advance_payment'=>$Request->advance_rent,'status'=>0]);
+    }
+
+    public function deleteBookingRequest(Request $Request)
+    {
+        rent_request::where('id',$Request->id)->update(['status'=>2]);
+    }
+
     public function readBookingsRequests()
     {
-        return "reading requests";
+        $owner_id = Auth::check()?Auth::user()->id:2;
+        $data = rent_request::where('owner_id',$owner_id)->where('status',0)->get();
+        for ($i=0; $i < count($data); $i++) {
+            $renter=User::where('id',$data[$i]->renter_id)->first();
+            $apartment=apartment_detail::where('id',$data[$i]->apartment_id)->first();
+            ?>
+            <tr>
+                <td><?php echo $i+1 .$data[$i]->id; ?></td>
+                <td><?php echo $renter->name; ?></td>
+                <td><?php echo $renter->phone; ?></td>
+                <td><?php echo $apartment->address." , ".$apartment->district; ?></td>
+                <td><button class="btn btn-primary" onclick="accept_booking_request(<?php echo $data[$i]->id; ?>)">Accept</button></td>
+                <td><button class="btn btn-danger" onclick="delete_booking_request(<?php echo $data[$i]->id; ?>)">Delete</button></td>
+            </tr>
+            <?php
+        }
     }
 
     public function readApartmentDetails()

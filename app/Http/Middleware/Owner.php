@@ -16,9 +16,12 @@ class Owner
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->user_role == 'owner'){
-            return $next($request);
+        if (auth()->check()) {
+            if(auth()->user()->user_role == 'owner'){
+                return $next($request);
+            }
         }
+
         return redirect("/login")->with('error',"You don't have owner access.");
     }
 }

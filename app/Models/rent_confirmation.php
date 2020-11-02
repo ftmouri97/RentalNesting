@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class rent_confirmation extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }
