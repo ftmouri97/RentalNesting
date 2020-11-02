@@ -41,7 +41,7 @@ Route::namespace('Auth')->group(function () {
 Route::group(['prefix' => 'owner'], function()
 // ,  'middleware' => 'owner'
 {
-    Route::view('/','owner.dashboard')->name('owner-dashboard');
+    Route::view('/','ownerr.dashboard')->name('owner-dashboard');
     Route::view('apartments','owner.apartments')->name('apartments');
     Route::view('/booking-requests','owner.booking-requests')->name('bookingRequests');
     Route::view('/renters','owner.renters')->name('renters');
