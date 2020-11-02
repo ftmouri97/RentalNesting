@@ -21,8 +21,6 @@ use App\Http\Controllers\FrontController;
 
 Route::get('/','FrontController@index')->name('home');
 Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('aparmentDetail');
-
-
 Route::view('/registration','registration')->name('registration');
 Route::view('/login','login');
 
@@ -70,8 +68,23 @@ Route::group(['prefix' => 'owner','middleware' => 'owner'], function()
      * */
     Route::get('read-renter-details','OwnerController@readRenterDetails')->name('readRenterDetails');
 });
+
+
+/**
+ * 
+ *    Admin panel routes here 
+ * 
+ * 
+ **/
+Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function(){
+  Route::view('/','admin.dashboard')->name('admin-dashboard');
+});
+
+
+
+
 Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
- {
+{
     Route::view('/','renter.dashboard')->name('renter-dashboard');
     Route::view('notification','renter.notification')->name('notification');
     Route::view('booking-list','renter.booking-list')->name('booking-list');
@@ -89,8 +102,6 @@ Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
     Route::post('show_apartment_details','RenterController@show_apartment_details');
     Route::post('cancel_booking','RenterController@cancel_booking');
     Route::post('submit_complain','RenterController@submit_complain');
-
-
 });
 
 
