@@ -30,41 +30,43 @@
 <div class="card">
     <div class="row align-items-center card-body mx-0" style="height: 80vh">
         <div class="col-md-6 offset-md-3">
-            <div class="mt-10">
-                <input type="text" name="name" placeholder="Full name"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full name'" required
-                    class="single-input">
-            </div>
-            <div class="mt-10">
-                <input type="email" name="email" placeholder="Email address"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
-                    class="single-input">
-            </div>
-            <div class="mt-10">
-                <input type="number" name="phone" placeholder="Phone number"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" required
-                    class="single-input">
-            </div>
-            <div class="mt-10">
-                <input type="password" name="password" placeholder="Password"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
-                    class="single-input">
-            </div>
-            <div class="row justify-content-between align-items-center mt-10">
-                <div class="col row justify-content-around">
-                    <div class="col">
-                        <label for="renter-radio">As Renter</label>
-                        <input type="radio" id="renter-radio" name="role" value="renter" checked>
+            <form action="#">
+                <div class="mt-10">
+                    <input type="text" name="name" placeholder="Full name"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full name'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
+                    <input type="email" name="email" placeholder="Email address"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
+                    <input type="number" name="phone" placeholder="Phone number"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
+                    <input type="password" name="password" placeholder="Password"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
+                        class="single-input">
+                </div>
+                <div class="row justify-content-between align-items-center mt-10">
+                    <div class="col row justify-content-around">
+                        <div class="col">
+                            <label for="renter-radio">As Renter</label>
+                            <input type="radio" id="renter-radio" name="role" value="renter" checked>
+                        </div>
+                        <div class="col">
+                            <label for="owner-radio">As Landlord</label>
+                            <input type="radio" id="owner-radio" name="role" value="owner">
+                        </div>
                     </div>
                     <div class="col">
-                        <label for="owner-radio">As Landlord</label>
-                        <input type="radio" id="owner-radio" name="role" value="owner">
+                        <button  class="d-block ml-auto btn btn-primary">Registration</button>
                     </div>
                 </div>
-                <div class="col">
-                    <button  class="d-block ml-auto btn btn-primary">Registration</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -169,4 +171,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </footer>
     <!--/ footer end  -->
+@endsection
+
+@section('page-js')
+<script>
+</script>
+    <script src="{{asset('assets/frontend/auth.js')}}"></script>
 @endsection
