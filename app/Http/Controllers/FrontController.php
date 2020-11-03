@@ -14,7 +14,7 @@ class FrontController extends Controller
         $beds = apartment_detail::groupBy('total_bed')->get();
         $baths = apartment_detail::groupBy('total_bath')->get();
         $apartment = apartment_detail::skip(30)->limit(6)->get();
-        return view('index',['apartments'=>$apartment,'districts'=>$district,'zones'=>$zones,'beds'=>$beds,'baths'=>$baths]);
+        return view('index2',['apartments'=>$apartment,'districts'=>$district,'zones'=>$zones,'beds'=>$beds,'baths'=>$baths]);
     }
 
     public function aparmentDetail(Request $Request)
