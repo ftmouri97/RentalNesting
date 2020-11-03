@@ -472,11 +472,11 @@
         </div>
     </div>
     <!-- /popular_property  -->
-    
+
     <!-- home_details  -->
     <div class="home_details">
         <div class="container">
-            <div class="row">   
+            <div class="row">
                 <div class="col-xl-12">
                     <div class="home_details_active owl-carousel">
                         <div class="single_details">
@@ -745,7 +745,7 @@
                                         <div class="quote">
                                             <img src="img/svg_icon/quote.svg" alt="">
                                         </div>
-                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br> 
+                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
                                                 sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
                                                 Fusce ac mattis nulla. Morbi eget ornare dui. </p>
                                         <div class="testmonial_author">
@@ -762,7 +762,7 @@
                                         <div class="quote">
                                             <img src="img/svg_icon/quote.svg" alt="">
                                         </div>
-                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br> 
+                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
                                                 sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
                                                 Fusce ac mattis nulla. Morbi eget ornare dui. </p>
                                         <div class="testmonial_author">
@@ -779,7 +779,7 @@
                                         <div class="quote">
                                             <img src="img/svg_icon/quote.svg" alt="">
                                         </div>
-                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br> 
+                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
                                                 sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
                                                 Fusce ac mattis nulla. Morbi eget ornare dui. </p>
                                         <div class="testmonial_author">
@@ -1044,7 +1044,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!--/ footer end  -->
 
     <!-- link that opens popup -->
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 
@@ -1069,9 +1069,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins.js"></script>
     <!-- <script src="js/gijgo.min.js"></script> -->
     <script src="js/slick.min.js"></script>
-   
-     
-    
+
+
+
     <!--contact js-->
     <script src="js/contact.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>
@@ -1086,11 +1086,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         {
            // alert('hello');
             var total_values =  $("#slider").slider('values');
-           
-           
+
+
             var min_value = total_values[0];
             var max_value = total_values[1];
-          
+
            alert(max_value+" "+min_value);
         }
         function collision($div1, $div2) {
@@ -1105,14 +1105,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 return false;
             return true;
         }
-        // Fetch Url value 
+        // Fetch Url value
         var getQueryString = function (parameter) {
             var href = window.location.href;
             var reg = new RegExp('[?&]' + parameter + '=([^&#]*)', 'i');
             var string = reg.exec(href);
             return string ? string[1] : null;
         };
-        // End url 
+        // End url
         // // slider call
         $('#slider').slider({
             range: true,

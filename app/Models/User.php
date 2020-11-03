@@ -16,6 +16,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\apartment_detail', 'owner_id', 'id');
     }
 
+    public function otp()
+    {
+        return $this->hasOne('App\Models\otp', 'user_id', 'id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

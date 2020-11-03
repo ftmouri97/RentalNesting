@@ -15,7 +15,7 @@ class FrontController extends Controller
         // $baths = apartment_detail::groupBy('total_bath')->get();
         $apartment = apartment_detail::where('active_status',1)->limit(6)->get();
         // return view('index',['apartments'=>$apartment,'districts'=>$district,'zones'=>$zones,'beds'=>$beds,'baths'=>$baths]);
-        return view('index',['apartments'=>$apartment]);
+        return view('index2',['apartments'=>$apartment]);
     }
 
     public function zoneSearching(Request $Request)
