@@ -82,31 +82,18 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="@yield('home-status')" href="{{ route('home') }}">home</a></li>
+                                            <li><a class="@yield('home-status')" href="{{ route('home') }}">Home</a></li>
                                             @if(!Auth::check())
                                             <li><a class="@yield('registration-status')" href="{{ route('registration') }}">Registration</a></li>
                                             <li><a class="@yield('login-status')" href="{{ route('login') }}">Login</a></li>
                                             @endif
                                             @if (Auth::check())
-                                            <li><a href="{{route(auth()->user_role)}}">Dashboard</a></li>
+                                            <li><a href="{{route(auth()->user()->user_role.'-dashboard')}}">Dashboard</a></li>
+                                            <li><a href="{{route('logout')}}">Logout</a></li>
                                             @endif
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                                <div class="Appointment">
-                                    <div class="search_btn">
-                                        <a href="#">
-                                            <i class="ti-search"></i>
-                                        </a>
-                                    </div>
-                                    @if(Auth::check())
-                                    <div class="book_btn d-none d-lg-block">
-                                        <a href="{{route('logout')}}">Logout</a>
-                                    </div>
-                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">

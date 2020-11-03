@@ -28,7 +28,7 @@
                     <div class="col-xl-6 col-md-4 col-lg-6">
                         <div class="prise_quantity">
                             <h4>{{$apartment->apartment_rent}}</h4>
-                            <a href="#">{{$apartment->user->phone}}</a>
+                            <a href="#">{{$apartment->owner->phone}}</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
         @endif
-        <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1" style="word-wrap: break-word;margin-top: 115px;">
             <div class="details_info">
                 <h4>Description</h4>
                {{$apartment->apartment_description}}
@@ -79,13 +79,28 @@
                 <form action="#">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="send_btn">
-                                @if (Auth::check())
-                                <a href="{{route('book-apartment')}}" class="send_btn">Book now!</a>
-                                @else
-                                <a href="{{route('registration')}}" class="send_btn">Join to book apartments!</a>
-                                @endif
+                            @if (session('msg'))
+                            <div class="alert alert-success">
+                                {{ session('msg') }}
                             </div>
+                            @endif
+                            @if (Auth::check())
+                                @if (Auth::user()->user_role == 'renter')
+                                    @if (Auth::user()->rent_request->apartment_id == $apartment->id)
+                                    <div class="send_btn">
+                                        <a href="javascript:void(0)" class="send_btn">Request on panding!</a>
+                                    </div>
+                                    @else
+                                    <div class="send_btn">
+                                        <a href="{{url('rent-apartment/'.$apartment->id)}}" class="send_btn">Book now!</a>
+                                    </div>
+                                    @endif
+                                @endif
+                            @else
+                                <div class="send_btn">
+                                    <a href="{{route('registration')}}" class="send_btn">Join to rent apartment!</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </form>

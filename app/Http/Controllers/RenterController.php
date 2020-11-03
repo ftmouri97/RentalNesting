@@ -8,15 +8,27 @@ use App\Models\notification;
 use App\Models\rent_confirmation;
 use App\Models\rent_details;
 use App\Models\complain;
+use App\Models\rent_request;
+use Auth;
 
 class RenterController extends Controller
 {
+    public function rentApartment(Request $Request)
+    {
+        $apartment = apartment_detail::where('id',$Request->id)->first();
+        if (rent_request::create(['renter_id'=>auth()->user()->id,'apartment_id'=>$Request->id,'owner_id'=>$apartment->owner->id,'status'=>0])) {
+
+            return redirect()->back()->with('msg',"Your booking reqyuest has been sent successfully..");
+        }
+
+    }
+
     //
     public function rent_details_insertion()
-    {   
+    {
     $date = date('Y-m');
     $month = date("F");
- 
+
      $renter_id = 3;
      $total_apartment = rent_confirmation::where('renter_id',$renter_id)->get();
     for($i=0;$i<sizeof($total_apartment);$i++)
@@ -35,19 +47,19 @@ class RenterController extends Controller
             ]);
         }
 
-        
+
     }
 
-      
+
     }
     public function check_notification()
-    { 
+    {
         $user_id = 1;
         $date = date('Y-m');
         $check_avail = notification::where('user_id',$user_id)->where('created_at','LIKE',"%".$date."%")->first();
         if($check_avail)
         {
-           
+
         }
         else
         {
@@ -55,8 +67,8 @@ class RenterController extends Controller
         }
 
         //echo $date;
-        
-        
+
+
         $notification = notification::where('user_id',$user_id)->where('status','Unread')->get();
         $total_notification = sizeof($notification);
         echo $total_notification;
@@ -66,8 +78,8 @@ class RenterController extends Controller
     {
         $renter_id = 3;
         $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
-        
-        
+
+
         $data = "";
         for($i=0;$i<sizeof($rent_details);$i++)
         {
@@ -85,8 +97,8 @@ class RenterController extends Controller
                 $data.=' <td style="color:green">Paid</td>';
             }
 
-  
-           
+
+
         $data.='</tr>';
 
         }
@@ -104,15 +116,15 @@ class RenterController extends Controller
             'apartment_id'=>$appartment_id,
             'message'=>$message
         ]);
-        
+
 
     }
     public function get_gas_bill_details()
     {
         $renter_id = 3;
         $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
-        
-        
+
+
         $data = "";
         for($i=0;$i<sizeof($rent_details);$i++)
         {
@@ -130,8 +142,8 @@ class RenterController extends Controller
                 $data.=' <td style="color:green">Paid</td>';
             }
 
-  
-           
+
+
         $data.='</tr>';
 
         }
@@ -140,11 +152,11 @@ class RenterController extends Controller
 
     }
     public function get_rent_details()
-    { 
+    {
         $renter_id = 3;
         $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
-        
-        
+
+
         $data = "";
         for($i=0;$i<sizeof($rent_details);$i++)
         {
@@ -162,8 +174,8 @@ class RenterController extends Controller
                 $data.=' <td style="color:green">Paid</td>';
             }
 
-  
-           
+
+
         $data.='</tr>';
 
         }
@@ -171,7 +183,7 @@ class RenterController extends Controller
          echo $data;
 
     }
-    
+
     public function get_notification()
     {
         $user_id = 1;
@@ -206,7 +218,7 @@ class RenterController extends Controller
          <h6><b>Description</b></h6>
          <p>'.$apartment_details->appartment_description.'</p>';
          echo $data;
-        
+
     }
    public function cancel_booking(Request $request)
    {
@@ -227,7 +239,7 @@ class RenterController extends Controller
             <td>'.$apartment[$i]->address.'</td>
             <td>'.$apartment[$i]->district.'</td>
             <td>'.$apartment[$i]->zone.'</td>
-            
+
             <td>
               <button class="btn btn-outline-primary" onclick = "show_apartment_details('.$apartment[$i]->id.')">View Details</button>
             </td>
@@ -236,9 +248,9 @@ class RenterController extends Controller
           </td>
         </tr>';
         }
-        
+
      echo $data;
-         
-       
+
+
     }
 }

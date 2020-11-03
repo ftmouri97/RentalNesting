@@ -92,7 +92,7 @@ class FrontController extends Controller
         $data = apartment_detail::where('active_status',1)->where('zone','Like',$Request->zoneSearching.'%')->get();
         foreach ($data as $value) {
             ?>
-            <a href="javascript:void(0)" class="list-group-item list-group-item-action border-1"><?php echo $value->zone.",".$value->district; ?></a>
+            <a href="javascript:void(0)" class="list-group-item list-group-item-action border-1 district-item"><?php echo $value->zone.",".$value->district;?></a>
             <?php
         }
     }

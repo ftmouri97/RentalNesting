@@ -16,6 +16,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\apartment_detail', 'owner_id', 'id');
     }
 
+    public function rent_request()
+    {
+        return $this->hasMany('App\Models\rent_request', 'renter_id', 'id');
+    }
+
     public function otp()
     {
         return $this->hasOne('App\Models\otp', 'user_id', 'id');

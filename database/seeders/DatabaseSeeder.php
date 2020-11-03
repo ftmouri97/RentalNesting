@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => Str::random(10),
                 'email' => Str::random(10) . '@gmail.com',
-                'phone' => '01811111'.$i,
+                'phone' => '018154311'.$i,
                 'password' => Hash::make('asd'),
                 'user_role' => 'owner'
             ]);
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => Str::random(10),
                 'email' => Str::random(10) . '@gmail.com',
-                'phone' => '0181111'.$i.'1',
+                'phone' => '01811443'.$i,
                 'password' => Hash::make('asd'),
                 'user_role' => 'renter'
             ]);

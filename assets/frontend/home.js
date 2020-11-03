@@ -21,11 +21,12 @@ $("#zone-search").keyup(function () {
         },
     });
     } else {
-    $("#showing-zone").html("");
+        $("#showing-zone").html("");
     }
 });
 // Set searched text in input field on click of search button
-$(document).on("click", "a", function () {
+$(document).on("click", ".district-item", function () {
+    // $("#zone-search").val($(this).text());
     $("#zone-search").val($(this).text());
     $("#showing-zone").html("");
 });
@@ -58,9 +59,6 @@ $("#search").click(function() {
             },
         });
     }else{
-
         alert("Give a location");
-        $("#zone-search").text("");
-
     }
 })
