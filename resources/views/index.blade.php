@@ -9,8 +9,84 @@
     }
 </style>
 
+<!-- slider_area_start -->
+<div class="slider_area">
+    <div class="single_slider  d-flex align-items-center slider_bg_1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="slider_text text-center justify-content-center">
+                        <h3>Find your best Property</h3>
+                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                    </div>
+                    <div class="property_form">
+                        <form>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form_wrap d-flex">
+                                        <div class="single-field max_width ">
+                                            <label for="#">Location</label>
+                                            <input class="form-control" type="text" id="zone-search">
+                                            <ul class="bg-light text-dark" id="showing-zone"></ul>
+                                        </div>
+                                        <div class="single_field range_slider">
+                                            <label for="#">Price ($)</label>
+                                            <div id="slider"></div>
+                                        </div>
+                                        <div class="single-field min_width">
+                                            <label for="#">Bed Room</label>
+                                            <select class="wide" id="bed-search">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        </div>
+                                        <div class="single-field min_width ">
+                                            <label for="#">Bath Room</label>
+                                            <select class="wide" id="bath-search">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        </div>
+                                        <div class="serach_icon">
+                                            <a href="javascript:void(0)" id="search">
+                                                <i class="ti-search"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider_area_end -->
+
+<!-- search_apartment  -->
+<div class="popular_property" id="search_apartment_div" style="display: none">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title mb-40 text-center">
+                    <h3>Searched Apertments</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="search_apartment">
+
+        </div>
+    </div>
+</div>
+<!-- /search_apartment  -->
 
 <!-- popular_property  -->
+@if (count($apartments)>0)
 <div class="popular_property">
     <div class="container">
         <div class="row">
@@ -290,6 +366,7 @@
         </div>
     </div>
 </div>
+@endif
 <!-- /popular_property  -->
 
 <!-- home_details  -->
@@ -914,6 +991,72 @@
 
 
 @section('page-js')
-<script src="{{asset('assets/frontend/home.js')}}"></script>
+<script>
+    function collision($div1, $div2) {
+        var x1 = $div1.offset().left;
+        var w1 = 40;
+        var r1 = x1 + w1;
+        var x2 = $div2.offset().left;
+        var w2 = 40;
+        var r2 = x2 + w2;
 
+        if (r1 < x2 || x1 > r2)
+            return false;
+        return true;
+    }
+    // Fetch Url value
+    var getQueryString = function (parameter) {
+        var href = window.location.href;
+        var reg = new RegExp('[?&]' + parameter + '=([^&#]*)', 'i');
+        var string = reg.exec(href);
+        return string ? string[1] : null;
+    };
+    // End url
+    // // slider call
+    $('#slider').slider({
+        range: true,
+        min: 4000,
+        max: 40000,
+        step: 1,
+        values: [getQueryString('minval') ? getQueryString('minval') : 4000, getQueryString('maxval') ?
+            getQueryString('maxval') :40000
+        ],
+
+        slide: function (event, ui) {
+
+            $('.ui-slider-handle:eq(0) .price-range-min').html( ui.values[0]);
+            $('.ui-slider-handle:eq(1) .price-range-max').html( ui.values[1]);
+            $('.price-range-both').html('<i>' + ui.values[0] + ' - </i>' + ui.values[1]);
+
+            // get values of min and max
+            $("#minval").val(ui.values[0]);
+            $("#maxval").val(ui.values[1]);
+
+            if (ui.values[0] == ui.values[1]) {
+                $('.price-range-both i').css('display', 'none');
+            } else {
+                $('.price-range-both i').css('display', 'inline');
+            }
+
+            if (collision($('.price-range-min'), $('.price-range-max')) == true) {
+                $('.price-range-min, .price-range-max').css('opacity', '0');
+                $('.price-range-both').css('display', 'block');
+            } else {
+                $('.price-range-min, .price-range-max').css('opacity', '1');
+                $('.price-range-both').css('display', 'none');
+            }
+
+        }
+    });
+
+    $('.ui-slider-range').append('<span class="price-range-both value"><i>' + $('#slider').slider('values', 0) +
+        ' - </i>' + $('#slider').slider('values', 1) + '</span>');
+
+    $('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">' + $('#slider').slider('values', 0) +
+        '</span>');
+
+    $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1) +
+        '</span>');
+</script>
+<script src="{{asset('assets/frontend/home.js')}}"></script>
 @endsection

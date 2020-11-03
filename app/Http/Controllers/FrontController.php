@@ -10,13 +10,12 @@ class FrontController extends Controller
     public function apartmentSearching(Request $Request)
     {
         $location = explode(',',$Request->zone);
-        $zone = $location[0];
         $distri = '';
          if (count($location)>1) {
             $distri = $location[1];
          }
          $district = $distri;
-         $zone = $zone;
+         $zone = $location[0];
          $data = apartment_detail::where('active_status',1)->where('apartment_rent','<',$Request->price_max)->get();
         //  $data = apartment_detail::where('active_status',1)->where('apartment_rent','<',$Request->price_max)->where('apartment_rent','>',$Request->price_min)->where('zone',$zone)->where('district',$district)->get();
         //  file_put_contents('asd.text',$data);
@@ -85,7 +84,7 @@ class FrontController extends Controller
     public function index()
     {
         $apartment = apartment_detail::where('active_status',1)->get();
-        return view('index2',['apartments'=>$apartment]);
+        return view('index',['apartments'=>$apartment]);
     }
 
     public function zoneSearching(Request $Request)
