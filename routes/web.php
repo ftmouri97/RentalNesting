@@ -21,6 +21,7 @@ use App\Http\Controllers\FrontController;
 
 Route::get('/','FrontController@index')->name('home');
 Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('aparmentDetail');
+Route::post('zone-searching','FrontController@zoneSearching')->name('zoneSearching');
 Route::view('/registration','registration')->name('registration');
 Route::view('/login','login');
 
@@ -41,6 +42,7 @@ Route::group(['prefix' => 'owner','middleware' => 'owner'], function()
     Route::view('/renters','owner.renters')->name('renters');
     Route::view('/rents','owner.rents')->name('rents');
     Route::view('/service-charges','owner.service-charges')->name('serviceCharges');
+    Route::view('/gas-bill','owner.gas-bill')->name('gasBill');
     Route::view('/complains', 'owner.complain')->name('complains');;
 
     /*
@@ -67,17 +69,40 @@ Route::group(['prefix' => 'owner','middleware' => 'owner'], function()
      *  Renter detail routes
      * */
     Route::get('read-renter-details','OwnerController@readRenterDetails')->name('readRenterDetails');
+    Route::get('rent-accepting/{id}','OwnerController@rentAccepting')->name('rentAccepting');
+    Route::get('service-charge-accepting/{id}','OwnerController@serviceChargeAccepting')->name('serviceChargeAccepting');
+    Route::get('gas-bill-accepting/{id}','OwnerController@gasBillAccepting')->name('gasBillAccepting');
+    /**
+     * Showing rents and services and complain
+     */
+    Route::get('rent-showing','OwnerController@rentShowing')->name('rentShowing');
+    Route::get('service-charge-showing','OwnerController@serviceChargeShowing')->name('serviceChargeShowing');
+    Route::get('gas-bill-showing','OwnerController@gasBillShowing')->name('gasBillShowing');
+    Route::get('complain-showing','OwnerController@complainShowing')->name('complainShowing');
 });
 
 
 /**
- * 
- *    Admin panel routes here 
- * 
- * 
+ *
+ *    Admin panel routes here
+ *
+ *
  **/
 Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function(){
   Route::view('/','admin.dashboard')->name('admin-dashboard');
+  Route::view('/owner-posts','admin.ownerPosts')->name('ownerPosts');
+  Route::view('/owner-login','admin.ownerLogin')->name('ownerLogin');
+  Route::view('/commission','admin.commission')->name('commission');
+
+
+  /**
+   * Owner Registration Page
+   */
+  Route::get('owner-login-requests','AdminController@ownerRegistrationRequests');
+  Route::get('owner-approval/{id}','AdminController@ownerApproval');
+  Route::get('owner-panding-posts','AdminController@ownerPandingPosts');
+  Route::get('accept-owner-panding-posts/{id}','AdminController@acceptOwnerPandingPosts');
+  Route::get('delete-owner-panding-posts/{id}','AdminController@deleteOwnerPandingPosts');
 });
 
 

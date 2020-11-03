@@ -118,6 +118,68 @@
     </header>
     <!-- header-end -->
 
+<!-- slider_area_start -->
+<div class="slider_area">
+    <div class="single_slider  d-flex align-items-center slider_bg_1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="slider_text text-center justify-content-center">
+                        <h3>Find your best Property</h3>
+                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                    </div>
+                    <div class="property_form">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form_wrap d-flex">
+                                        <div class="single-field max_width ">
+                                            <label for="#">Location</label>
+                                            <input class="form-control" type="text" id="zone-serch">
+                                            <ul class="bg-light text-dark" id="showing-zone"></ul>
+                                        </div>
+                                        <div class="single_field range_slider">
+                                            <label for="#">Price ($)</label>
+                                            <div id="slider"></div>
+                                        </div>
+                                        <div class="single-field min_width ">
+                                            <label for="#">Bed Room</label>
+                                            <select class="wide">
+                                                {{-- @php $i=1; @endphp
+                                                @foreach ($beds as $apartment)
+                                                <option @if($i==1) data-display="{{ $apartment->total_bed }}" @endif>
+                                                    {{ $apartment->total_bed }}</option>
+                                                @php $i++; @endphp
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                        <div class="single-field min_width ">
+                                            <label for="#">Bath Room</label>
+                                            <select class="wide">
+                                                {{-- @php $i=1; @endphp
+                                                @foreach ($baths as $apartment)
+                                                <option @if($i==1) data-display="{{ $apartment->total_bath }}" @endif>
+                                                    {{ $apartment->total_bath }}</option>
+                                                @php $i++; @endphp
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                        <div class="serach_icon">
+                                            <a href="javascript:void(0)" id="search">
+                                                <i class="ti-search"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider_area_end -->
     @yield('body')
 
     <!-- link that opens popup -->
@@ -128,7 +190,7 @@
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
     <!-- JS here -->
     <script src="{{asset('assets/realstate')}}/js/vendor/modernizr-3.5.0.min.js"></script>
-    {{-- <script src="{{asset('assets/realstate')}}/js/vendor/jquery-1.12.4.min.js"></script> --}}
+    <script src="{{asset('assets/realstate')}}/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/popper.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/owl.carousel.min.js"></script>
@@ -158,6 +220,8 @@
 
 
     <script src="{{asset('assets/realstate')}}/js/main.js"></script>
+
+
     <script>
         function collision($div1, $div2) {
             var x1 = $div1.offset().left;
@@ -225,7 +289,6 @@
         $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1) +
             'k</span>');
     </script>
-
     @yield('page-js')
 </body>
 

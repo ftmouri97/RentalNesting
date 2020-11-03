@@ -36,23 +36,28 @@ class AuthController extends Controller
             'password'=>$request->password
             );
 
-        $user = User::where('phone',$request->phone)->first();;
-        if (auth()->attempt($credentials)) {
-            if($user->user_role =="renter")
-            {
-            return redirect()->route('renter-dashboard');
-            }
-            else if($user->user_role =="owner")
-            {
-                return redirect()->route('owner-dashboard');
-            }
-            else if($user->user_role =="admin")
-            {
-                return redirect()->route('admin-dashboard');
-            }
+        $user = User::where('phone',$request->phone)->first();
+        if ($user->status==1||$user->user_role !=="owner") {
+            if (auth()->attempt($credentials)) {
+                if($user->user_role =="renter")
+                {
+                return redirect()->route('renter-dashboard');
+                }
+                else if($user->user_role =="owner")
+                {
+                    return redirect()->route('owner-dashboard');
+                }
+                else if($user->user_role =="admin")
+                {
+                    return redirect()->route('admin-dashboard');
+                }
 
+            }else{
+                session()->flash('message', 'Invalid credentials');
+                return redirect()->back();
+            }
         }else{
-            session()->flash('message', 'Invalid credentials');
+            session()->flash('message', 'Your acoount has not been activated yet!');
             return redirect()->back();
         }
     }

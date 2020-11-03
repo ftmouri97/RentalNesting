@@ -17,8 +17,70 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/css/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="http://www.urbanui.com/" />
+  <style>
+      /* The switch - the box around the slider */
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* The slider */
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        input:checked + .slider {
+        background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
+        }
+  </style>
 </head>
 <body>
   <div class="container-scroller">
@@ -396,48 +458,30 @@
               </div>
               <div class="profile-name">
                 <p class="name">
-                  Welcome Jane
+                  Welcome {{ auth()->user()->name }}
                 </p>
                 <p class="designation">
-                  Super Admin
+                    {{ auth()->user()->user_role }}
                 </p>
               </div>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('apartments')}}">
-              <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Appartment Informations</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('bookingRequests')}}">
+            <a class="nav-link" href="{{route('ownerLogin')}}">
               <i class="fa fa-puzzle-piece menu-icon"></i>
-              <span class="menu-title">Booking Requests</span>
+              <span class="menu-title">owner login approvel</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('renters')}}">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Renters</span>
+            <a class="nav-link" href="{{route('ownerPosts')}}">
+              <i class="fa fa-home menu-icon"></i>
+              <span class="menu-title">Owner post approval</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('rents')}}">
+            <a class="nav-link" href="{{route('commission')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Rents</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('serviceCharges')}}">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Service charges</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('complains')}}">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Complains</span>
+              <span class="menu-title">commisiion</span>
             </a>
           </li>
         </ul>

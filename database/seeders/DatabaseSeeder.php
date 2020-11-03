@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         DB::table('users')->insert([
-            'name' => 'Admin',
+            'name' => 'Sany',
             'email' => 'mazharulalam26@gmail.com',
             'phone' => '01876626011',
             'password' => Hash::make('asd'),
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => Str::random(10),
                 'email' => Str::random(10) . '@gmail.com',
-                'phone' => '01811111'.$i,
+                'phone' => '0181111'.$i.'1',
                 'password' => Hash::make('asd'),
                 'user_role' => 'renter'
             ]);
