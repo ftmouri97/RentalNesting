@@ -22,6 +22,8 @@ use App\Http\Controllers\FrontController;
 Route::get('/','FrontController@index')->name('home');
 Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('aparmentDetail');
 Route::post('zone-searching','FrontController@zoneSearching')->name('zoneSearching');
+Route::post('apartment-searching','FrontController@apartmentSearching')->name('apartmentSearching');
+
 Route::view('/registration','registration')->name('registration');
 Route::view('/login','login');
 

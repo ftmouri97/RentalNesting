@@ -7,9 +7,10 @@
     <title>Real state</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/realstate') }}/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -31,9 +32,6 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
 
     <!-- header-start -->
     <header>
@@ -48,25 +46,24 @@
                         </div>
                         <div class="col-xl-7 col-md-7">
                             <div class="header_right d-flex">
-                                    <div class="short_contact_list">
-                                            <ul>
-                                                <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
-                                                <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="social_media_links">
-                                            <a href="#">
-                                                <i class="fa fa-linkedin"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </div>
+                                <div class="short_contact_list">
+                                    <ul>
+                                        <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
+                                        <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
+                                    </ul>
+                                </div>
+                                <div class="social_media_links">
+                                    <a href="#">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -86,21 +83,14 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
-                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                        <li><a href="about.html">about</a></li>
-                                                        <li><a href="property_details.html">property details</a></li>
-                                                        <li><a href="elements.html">elements</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="Property.html">Property</a></li>
-                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a class="@yield('home-status')" href="{{ route('home') }}">home</a></li>
+                                            @if(!Auth::check())
+                                            <li><a class="@yield('registration-status')" href="{{ route('registration') }}">Registration</a></li>
+                                            <li><a class="@yield('login-status')" href="{{ route('login') }}">Login</a></li>
+                                            @endif
+                                            @if (auth()->check())
+                                            <li><a href="{{route(auth()->user()->user_role.'-dashboard')}}">Dashboard</a></li>
+                                            @endif
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
@@ -113,9 +103,11 @@
                                             <i class="ti-search"></i>
                                         </a>
                                     </div>
+                                    @if(Auth::check())
                                     <div class="book_btn d-none d-lg-block">
-                                        <a  href="#">Add Property</a>
+                                        <a href="{{route('logout')}}">Logout</a>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">
@@ -132,71 +124,79 @@
 
     <!-- slider_area_start -->
     <div class="slider_area">
-            <div class="single_slider  d-flex align-items-center slider_bg_1">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-xl-10 offset-xl-1">
-                                <div class="slider_text text-center justify-content-center">
-                                    <h3>Find your best Property</h3>
-                                    <p>Esteem spirit temper too say adieus who direct esteem.</p>
-                                </div>
-                                <div class="property_form">
-                                    <form action="#">
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="form_wrap d-flex">
-                                                        <div class="single-field max_width ">
-                                                                <label for="#">Location</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="NewYork">NewYork</option>
-                                                                        <option value="1">Bangladesh</option>
-                                                                        <option value="2">India</option>
-                                                                </select>
-                                                            </div>
-                                                        <div class="single-field max_width ">
-                                                                <label for="#">Property type</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="Apartment">Apartment</option>
-                                                                        <option value="1">Apartment</option>
-                                                                        <option value="2">Apartment</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="single_field range_slider">
-                                                                    <label for="#">Price ($)</label>
-                                                                <div id="slider"></div>
-                                                            </div>
-                                                        <div class="single-field min_width ">
-                                                                <label for="#">Bed Room</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="01">01</option>
-                                                                        <option value="1">02</option>
-                                                                        <option value="2">03</option>
-                                                                </select>
-                                                            </div>
-                                                        <div class="single-field min_width ">
-                                                                <label for="#">Bath Room</label>
-                                                                <select class="wide" >
-                                                                        <option data-display="01">01</option>
-                                                                        <option value="1">02</option>
-                                                                        <option value="2">03</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="serach_icon">
-                                                                    <a href="javascript:;" onclick="test()" >
-                                                                            <i class="ti-search"></i>
-                                                                    </a>
-                                                                </div>
-                                                </div>
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-10 offset-xl-1">
+                        <div class="slider_text text-center justify-content-center">
+                            <h3>Find your best Property</h3>
+                            <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                        </div>
+                        <div class="property_form">
+                            <form>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="form_wrap d-flex">
+                                            <div class="single-field max_width ">
+                                                <label for="#">Location</label>
+                                                <input class="form-control" type="text" id="zone-search">
+                                                <ul class="bg-light text-dark" id="showing-zone"></ul>
+                                            </div>
+                                            <div class="single_field range_slider">
+                                                <label for="#">Price ($)</label>
+                                                <div id="slider"></div>
+                                            </div>
+                                            <div class="single-field min_width">
+                                                <label for="#">Bed Room</label>
+                                                <select class="wide" id="bed-search">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                            <div class="single-field min_width ">
+                                                <label for="#">Bath Room</label>
+                                                <select class="wide" id="bath-search">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                            <div class="serach_icon">
+                                                <a href="javascript:void(0)" id="search">
+                                                    <i class="ti-search"></i>
+                                                </a>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
     <!-- slider_area_end -->
+
+    <!-- search_apartment  -->
+    <div class="popular_property" id="search_apartment_div" style="display: none">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title mb-40 text-center">
+                        <h3>Searched Apertments</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="search_apartment">
+
+            </div>
+        </div>
+    </div>
+    <!-- /search_apartment  -->
 
     <!-- popular_property  -->
     <div class="popular_property">
@@ -204,270 +204,61 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title mb-40 text-center">
-                        <h3>Popular Properties</h3>
+                        <h3>Popular Apertments</h3>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+                @php
+                    $j = count($apartments)>6?6:count($apartments);
+                @endphp
+                @for ($i=0;$i<  $j;$i++)
                 <div class="col-xl-4 col-md-6 col-lg-4">
                     <div class="single_property">
                         <div class="property_thumb">
                             <div class="property_tag">
-                                    For Sale
+                                For Sale
                             </div>
-                            <img src="img/property/1.png" alt="">
+                            @if ($apartments[$i]->featureImage)
+                            <img src="{{asset('Apartment photoes/'.$apartments[$i]->featureImage->image)}}" alt="">
+                            @else
+                            <img src="" alt="">
+                            @endif
                         </div>
                         <div class="property_content">
                             <div class="main_pro">
-                                    <h3><a href="#">Comfortable Apartment in Palace</a></h3>
-                                    <div class="mark_pro">
-                                        <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Popular Properties</span>
-                                    </div>
-                                    <span class="amount">From $20k</span>
+                                <h3><a href="{{url('apartment-details/'.$apartments[$i]->id)}}">Comfortable Apartment in
+                                        {{$apartments[$i]->zone}}</a></h3>
+                                <div class="mark_pro">
+                                    <img src="{{asset('assets/realstate')}}/img/svg_icon/location.svg" alt="">
+                                    <span>Popular Properties</span>
+                                </div>
+                                <span class="amount">From {{$apartments[$i]->apartment_rent}}</span>
                             </div>
                         </div>
                         <div class="footer_pro">
-                                <ul>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/square.svg" alt="">
-                                            <span>1200 Sqft</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bed.svg" alt="">
-                                            <span>2 Bed</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bath.svg" alt="">
-                                            <span>2 Bath</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_property">
-                        <div class="property_thumb">
-                            <div class="property_tag red">
-                                    For Rent
-                            </div>
-                            <img src="img/property/2.png" alt="">
-                        </div>
-                        <div class="property_content">
-                            <div class="main_pro">
-                                    <h3><a href="#">Comfortable Apartment in Palace</a></h3>
-                                    <div class="mark_pro">
-                                        <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Popular Properties</span>
+                            <ul>
+                                <li>
+                                    <div class="single_info_doc">
+                                        <img src="{{asset('assets/realstate')}}/img/svg_icon/square.svg" alt="">
+                                        <span>{{$apartments[$i]->apartment_size}}</span>
                                     </div>
-                                    <span class="amount">$563/month</span>
-                            </div>
-                        </div>
-                        <div class="footer_pro">
-                                <ul>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/square.svg" alt="">
-                                            <span>1200 Sqft</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bed.svg" alt="">
-                                            <span>2 Bed</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bath.svg" alt="">
-                                            <span>2 Bath</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_property">
-                        <div class="property_thumb">
-                            <div class="property_tag">
-                                    For Sale
-                            </div>
-                            <img src="img/property/3.png" alt="">
-                        </div>
-                        <div class="property_content">
-                            <div class="main_pro">
-                                    <h3><a href="#">Comfortable Apartment in Palace</a></h3>
-                                    <div class="mark_pro">
-                                        <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Popular Properties</span>
+                                </li>
+                                <li>
+                                    <div class="single_info_doc">
+                                        <img src="{{asset('assets/realstate')}}/img/svg_icon/bed.svg" alt="">
+                                        <span>{{$apartments[$i]->total_bed}}</span>
                                     </div>
-                                    <span class="amount">From $20k</span>
-                            </div>
-                        </div>
-                        <div class="footer_pro">
-                                <ul>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/square.svg" alt="">
-                                            <span>1200 Sqft</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bed.svg" alt="">
-                                            <span>2 Bed</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bath.svg" alt="">
-                                            <span>2 Bath</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_property">
-                        <div class="property_thumb">
-                            <div class="property_tag red">
-                                    For Rent
-                            </div>
-                            <img src="img/property/4.png" alt="">
-                        </div>
-                        <div class="property_content">
-                            <div class="main_pro">
-                                    <h3><a href="#">Comfortable Apartment in Palace</a></h3>
-                                    <div class="mark_pro">
-                                        <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Popular Properties</span>
+                                </li>
+                                <li>
+                                    <div class="single_info_doc">
+                                        <img src="{{asset('assets/realstate')}}/img/svg_icon/bath.svg" alt="">
+                                        <span>{{$apartments[$i]->total_bath}}</span>
                                     </div>
-                                    <span class="amount">$563/month</span>
-                            </div>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="footer_pro">
-                                <ul>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/square.svg" alt="">
-                                            <span>1200 Sqft</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bed.svg" alt="">
-                                            <span>2 Bed</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bath.svg" alt="">
-                                            <span>2 Bath</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_property">
-                        <div class="property_thumb">
-                            <div class="property_tag">
-                                    For Sale
-                            </div>
-                            <img src="img/property/5.png" alt="">
-                        </div>
-                        <div class="property_content">
-                            <div class="main_pro">
-                                    <h3><a href="#">Comfortable Apartment in Palace</a></h3>
-                                    <div class="mark_pro">
-                                        <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Popular Properties</span>
-                                    </div>
-                                    <span class="amount">From $20k</span>
-                            </div>
-                        </div>
-                        <div class="footer_pro">
-                                <ul>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/square.svg" alt="">
-                                            <span>1200 Sqft</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bed.svg" alt="">
-                                            <span>2 Bed</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bath.svg" alt="">
-                                            <span>2 Bath</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="single_property">
-                        <div class="property_thumb">
-                            <div class="property_tag">
-                                    For Sale
-                            </div>
-                            <img src="img/property/6.png" alt="">
-                        </div>
-                        <div class="property_content">
-                            <div class="main_pro">
-                                    <h3><a href="#">Comfortable Apartment in Palace</a></h3>
-                                    <div class="mark_pro">
-                                        <img src="img/svg_icon/location.svg" alt="">
-                                        <span>Popular Properties</span>
-                                    </div>
-                                    <span class="amount">From $20k</span>
-                            </div>
-                        </div>
-                        <div class="footer_pro">
-                                <ul>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/square.svg" alt="">
-                                            <span>1200 Sqft</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bed.svg" alt="">
-                                            <span>2 Bed</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single_info_doc">
-                                            <img src="img/svg_icon/bath.svg" alt="">
-                                            <span>2 Bath</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="more_property_btn text-center">
-                        <a href="#" class="boxed-btn3-line">More Properties</a>
-                    </div>
-                </div>
+                @endfor
             </div>
         </div>
     </div>
@@ -490,15 +281,15 @@
                                                     <div class="info_header">
                                                             <h3>Blue haven modern home</h3>
                                                             <div class="popular_pro d-flex">
-                                                                <img src="img/svg_icon/location.svg" alt="">
+                                                                <img src="{{ asset('assets/realstate') }}/img/svg_icon/location.svg" alt="">
                                                                 <span>Popular Properties</span>
                                                             </div>
                                                     </div>
                                                     <div class="info_content">
                                                         <ul>
-                                                            <li> <img src="img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
-                                                            <li> <img src="img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
-                                                            <li> <img src="img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
                                                         </ul>
                                                         <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily or picture placing drawing. Apartments frequently or motionless on reasonable.</p>
                                                         <div class="prise_view_details d-flex justify-content-between align-items-center">
@@ -522,15 +313,15 @@
                                                     <div class="info_header">
                                                             <h3>Blue haven modern home</h3>
                                                             <div class="popular_pro d-flex">
-                                                                <img src="img/svg_icon/location.svg" alt="">
+                                                                <img src="{{ asset('assets/realstate') }}/img/svg_icon/location.svg" alt="">
                                                                 <span>Popular Properties</span>
                                                             </div>
                                                     </div>
                                                     <div class="info_content">
                                                         <ul>
-                                                            <li> <img src="img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
-                                                            <li> <img src="img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
-                                                            <li> <img src="img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
                                                         </ul>
                                                         <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily or picture placing drawing. Apartments frequently or motionless on reasonable.</p>
                                                         <div class="prise_view_details d-flex justify-content-between align-items-center">
@@ -554,15 +345,15 @@
                                                     <div class="info_header">
                                                             <h3>Blue haven modern home</h3>
                                                             <div class="popular_pro d-flex">
-                                                                <img src="img/svg_icon/location.svg" alt="">
+                                                                <img src="{{ asset('assets/realstate') }}/img/svg_icon/location.svg" alt="">
                                                                 <span>Popular Properties</span>
                                                             </div>
                                                     </div>
                                                     <div class="info_content">
                                                         <ul>
-                                                            <li> <img src="img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
-                                                            <li> <img src="img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
-                                                            <li> <img src="img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
                                                         </ul>
                                                         <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily or picture placing drawing. Apartments frequently or motionless on reasonable.</p>
                                                         <div class="prise_view_details d-flex justify-content-between align-items-center">
@@ -586,15 +377,15 @@
                                                     <div class="info_header">
                                                             <h3>Blue haven modern home</h3>
                                                             <div class="popular_pro d-flex">
-                                                                <img src="img/svg_icon/location.svg" alt="">
+                                                                <img src="{{ asset('assets/realstate') }}/img/svg_icon/location.svg" alt="">
                                                                 <span>Popular Properties</span>
                                                             </div>
                                                     </div>
                                                     <div class="info_content">
                                                         <ul>
-                                                            <li> <img src="img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
-                                                            <li> <img src="img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
-                                                            <li> <img src="img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
                                                         </ul>
                                                         <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily or picture placing drawing. Apartments frequently or motionless on reasonable.</p>
                                                         <div class="prise_view_details d-flex justify-content-between align-items-center">
@@ -618,15 +409,15 @@
                                                     <div class="info_header">
                                                             <h3>Blue haven modern home</h3>
                                                             <div class="popular_pro d-flex">
-                                                                <img src="img/svg_icon/location.svg" alt="">
+                                                                <img src="{{ asset('assets/realstate') }}/img/svg_icon/location.svg" alt="">
                                                                 <span>Popular Properties</span>
                                                             </div>
                                                     </div>
                                                     <div class="info_content">
                                                         <ul>
-                                                            <li> <img src="img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
-                                                            <li> <img src="img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
-                                                            <li> <img src="img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/square.svg" alt=""> <span>1200 Sqft</span>  </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bed.svg" alt=""> <span>2 Bed</span> </li>
+                                                            <li> <img src="{{ asset('assets/realstate') }}/img/svg_icon/bath.svg" alt=""> <span>2 Bath</span> </li>
                                                         </ul>
                                                         <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily or picture placing drawing. Apartments frequently or motionless on reasonable.</p>
                                                         <div class="prise_view_details d-flex justify-content-between align-items-center">
@@ -699,7 +490,7 @@
                             </div>
                     <div class="col-xl-6 col-lg-6">
                         <div class="accordion_thumb">
-                            <img src="img/banner/accordion.png" alt="">
+                            <img src="{{ asset('assets/realstate') }}/img/banner/accordion.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -743,14 +534,14 @@
                         <div class="single_carousel">
                                 <div class="single_testmonial text-center">
                                         <div class="quote">
-                                            <img src="img/svg_icon/quote.svg" alt="">
+                                            <img src="{{ asset('assets/realstate') }}/img/svg_icon/quote.svg" alt="">
                                         </div>
                                         <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
                                                 sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
                                                 Fusce ac mattis nulla. Morbi eget ornare dui. </p>
                                         <div class="testmonial_author">
                                             <div class="thumb">
-                                                    <img src="img/case/testmonial.png" alt="">
+                                                    <img src="{{ asset('assets/realstate') }}/img/case/testmonial.png" alt="">
                                             </div>
                                             <h3>Robert Thomson</h3>
                                             <span>Business Owner</span>
@@ -760,14 +551,14 @@
                         <div class="single_carousel">
                                 <div class="single_testmonial text-center">
                                         <div class="quote">
-                                            <img src="img/svg_icon/quote.svg" alt="">
+                                            <img src="{{ asset('assets/realstate') }}/img/svg_icon/quote.svg" alt="">
                                         </div>
                                         <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
                                                 sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
                                                 Fusce ac mattis nulla. Morbi eget ornare dui. </p>
                                         <div class="testmonial_author">
                                             <div class="thumb">
-                                                    <img src="img/case/testmonial.png" alt="">
+                                                    <img src="{{ asset('assets/realstate') }}/img/case/testmonial.png" alt="">
                                             </div>
                                             <h3>Robert Thomson</h3>
                                             <span>Business Owner</span>
@@ -777,14 +568,14 @@
                         <div class="single_carousel">
                                 <div class="single_testmonial text-center">
                                         <div class="quote">
-                                            <img src="img/svg_icon/quote.svg" alt="">
+                                            <img src="{{ asset('assets/realstate') }}/img/svg_icon/quote.svg" alt="">
                                         </div>
                                         <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
                                                 sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
                                                 Fusce ac mattis nulla. Morbi eget ornare dui. </p>
                                         <div class="testmonial_author">
                                             <div class="thumb">
-                                                    <img src="img/case/testmonial.png" alt="">
+                                                    <img src="{{ asset('assets/realstate') }}/img/case/testmonial.png" alt="">
                                             </div>
                                             <h3>Robert Thomson</h3>
                                             <span>Business Owner</span>
@@ -814,7 +605,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-6">
                                 <div class="single_team">
                                     <div class="team_thumb">
-                                        <img src="img/team/1.png" alt="">
+                                        <img src="{{ asset('assets/realstate') }}/img/team/1.png" alt="">
                                         <div class="social_link">
                                                 <ul>
                                                     <li><a href="#">
@@ -841,7 +632,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-6">
                                 <div class="single_team">
                                     <div class="team_thumb">
-                                        <img src="img/team/2.png" alt="">
+                                        <img src="{{ asset('assets/realstate') }}/img/team/2.png" alt="">
                                         <div class="social_link">
                                                 <ul>
                                                     <li><a href="#">
@@ -868,7 +659,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-6">
                                 <div class="single_team">
                                     <div class="team_thumb">
-                                        <img src="img/team/3.png" alt="">
+                                        <img src="{{ asset('assets/realstate') }}/img/team/3.png" alt="">
                                         <div class="social_link">
                                                 <ul>
                                                     <li><a href="#">
@@ -895,7 +686,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-6">
                                 <div class="single_team">
                                     <div class="team_thumb">
-                                        <img src="img/team/4.png" alt="">
+                                        <img src="{{ asset('assets/realstate') }}/img/team/4.png" alt="">
                                         <div class="social_link">
                                                 <ul>
                                                     <li><a href="#">
@@ -953,7 +744,7 @@
                         <div class="footer_widget">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="img/footer_logo.png" alt="">
+                                    <img src="{{ asset('assets/realstate') }}/img/footer_logo.png" alt="">
                                 </a>
                             </div>
                             <p>
@@ -1082,17 +873,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <script src="js/main.js"></script>
     <script>
-        function test()
-        {
-           // alert('hello');
-            var total_values =  $("#slider").slider('values');
-
-
-            var min_value = total_values[0];
-            var max_value = total_values[1];
-
-           alert(max_value+" "+min_value);
-        }
         function collision($div1, $div2) {
             var x1 = $div1.offset().left;
             var w1 = 40;
@@ -1116,18 +896,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         // // slider call
         $('#slider').slider({
             range: true,
-            min: 20,
-            max: 200,
+            min: 4000,
+            max: 40000,
             step: 1,
-            values: [getQueryString('minval') ? getQueryString('minval') : 20, getQueryString('maxval') ?
-                getQueryString('maxval') :200
+            values: [getQueryString('minval') ? getQueryString('minval') : 4000, getQueryString('maxval') ?
+                getQueryString('maxval') :40000
             ],
 
             slide: function (event, ui) {
 
-                $('.ui-slider-handle:eq(0) .price-range-min').html( ui.values[0] + 'K');
-                $('.ui-slider-handle:eq(1) .price-range-max').html( ui.values[1] + 'K');
-                $('.price-range-both').html('<i>K' + ui.values[0] + ' - </i>K' + ui.values[1]);
+                $('.ui-slider-handle:eq(0) .price-range-min').html( ui.values[0]);
+                $('.ui-slider-handle:eq(1) .price-range-max').html( ui.values[1]);
+                $('.price-range-both').html('<i>' + ui.values[0] + ' - </i>' + ui.values[1]);
 
                 // get values of min and max
                 $("#minval").val(ui.values[0]);
@@ -1154,11 +934,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             ' - </i>' + $('#slider').slider('values', 1) + '</span>');
 
         $('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">' + $('#slider').slider('values', 0) +
-            'k</span>');
+            '</span>');
 
         $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1) +
-            'k</span>');
+            '</span>');
     </script>
+
+    <script src="{{asset('assets/frontend/home.js')}}"></script>
 </body>
 
 </html>
