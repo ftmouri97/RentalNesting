@@ -47,11 +47,14 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
+          @if(auth()->check())
           <li class="nav-item d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <span class="btn btn-primary">+ Create new</span>
+            <a class="nav-link" href="{{route('logout')}}">
+              <!-- <span class="btn btn-primary">+ Create new</span> -->
+              <span class="btn btn-primary">Logout</span>
             </a>
           </li>
+          @endif
           <li class="nav-item dropdown d-none d-lg-flex">
             <div class="nav-link">
               <span class="dropdown-toggle btn btn-outline-dark" id="languageDropdown" data-toggle="dropdown">English</span>
@@ -429,6 +432,12 @@
             <a class="nav-link" href="{{route('serviceCharges')}}">
               <i class="fab fa-trello menu-icon"></i>
               <span class="menu-title">Service charges</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('gasBill')}}">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">Gas bill</span>
             </a>
           </li>
           <li class="nav-item">

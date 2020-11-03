@@ -10,6 +10,11 @@ class apartment_detail extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function complains()
+    {
+        return $this->hasMany('App\Models\complain','apartment_id','id');
+    }
+
     public function detailsImages()
     {
         return $this->hasMany('App\Models\detailes_image', 'apartment_id');
@@ -22,6 +27,6 @@ class apartment_detail extends Model
 
     public function owner()
     {
-        return $this->hasOne('App\Models\User', 'owner_id');
+        return $this->belongsTo('App\Models\User');
     }
 }

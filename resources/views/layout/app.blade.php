@@ -7,6 +7,7 @@
     <title>Real state</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
@@ -31,10 +32,6 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
     <!-- header-start -->
     <header>
         <div class="header-area ">
@@ -48,25 +45,24 @@
                         </div>
                         <div class="col-xl-7 col-md-7">
                             <div class="header_right d-flex">
-                                    <div class="short_contact_list">
-                                            <ul>
-                                                <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
-                                                <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="social_media_links">
-                                            <a href="#">
-                                                <i class="fa fa-linkedin"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </div>
+                                <div class="short_contact_list">
+                                    <ul>
+                                        <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
+                                        <li><a href="#"> <i class="fa fa-phone"></i> 1601-609 6780</a></li>
+                                    </ul>
+                                </div>
+                                <div class="social_media_links">
+                                    <a href="#">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -87,8 +83,10 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a class="@yield('home-status')" href="{{ route('home') }}">home</a></li>
+                                            @if(!Auth::check())
                                             <li><a class="@yield('registration-status')" href="{{ route('registration') }}">Registration</a></li>
                                             <li><a class="@yield('login-status')" href="{{ route('login') }}">Login</a></li>
+                                            @endif
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
@@ -101,9 +99,11 @@
                                             <i class="ti-search"></i>
                                         </a>
                                     </div>
-                                    {{-- <div class="book_btn d-none d-lg-block">
-                                        <a  href="#">Add Property</a>
-                                    </div> --}}
+                                    @if(Auth::check())
+                                    <div class="book_btn d-none d-lg-block">
+                                        <a href="{{route('logout')}}">Logout</a>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">
@@ -118,6 +118,68 @@
     </header>
     <!-- header-end -->
 
+<!-- slider_area_start -->
+<div class="slider_area">
+    <div class="single_slider  d-flex align-items-center slider_bg_1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="slider_text text-center justify-content-center">
+                        <h3>Find your best Property</h3>
+                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                    </div>
+                    <div class="property_form">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form_wrap d-flex">
+                                        <div class="single-field max_width ">
+                                            <label for="#">Location</label>
+                                            <input class="form-control" type="text" id="zone-serch">
+                                            <ul class="bg-light text-dark" id="showing-zone"></ul>
+                                        </div>
+                                        <div class="single_field range_slider">
+                                            <label for="#">Price ($)</label>
+                                            <div id="slider"></div>
+                                        </div>
+                                        <div class="single-field min_width ">
+                                            <label for="#">Bed Room</label>
+                                            <select class="wide">
+                                                {{-- @php $i=1; @endphp
+                                                @foreach ($beds as $apartment)
+                                                <option @if($i==1) data-display="{{ $apartment->total_bed }}" @endif>
+                                                    {{ $apartment->total_bed }}</option>
+                                                @php $i++; @endphp
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                        <div class="single-field min_width ">
+                                            <label for="#">Bath Room</label>
+                                            <select class="wide">
+                                                {{-- @php $i=1; @endphp
+                                                @foreach ($baths as $apartment)
+                                                <option @if($i==1) data-display="{{ $apartment->total_bath }}" @endif>
+                                                    {{ $apartment->total_bath }}</option>
+                                                @php $i++; @endphp
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                        <div class="serach_icon">
+                                            <a href="javascript:void(0)" id="search">
+                                                <i class="ti-search"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider_area_end -->
     @yield('body')
 
     <!-- link that opens popup -->
@@ -128,7 +190,7 @@
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
     <!-- JS here -->
     <script src="{{asset('assets/realstate')}}/js/vendor/modernizr-3.5.0.min.js"></script>
-    {{-- <script src="{{asset('assets/realstate')}}/js/vendor/jquery-1.12.4.min.js"></script> --}}
+    <script src="{{asset('assets/realstate')}}/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/popper.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('assets/realstate')}}/js/owl.carousel.min.js"></script>

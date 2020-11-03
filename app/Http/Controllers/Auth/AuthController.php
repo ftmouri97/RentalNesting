@@ -4,43 +4,60 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    //
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('home');
+    }
+
+    public function process_register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|unique:users',
+            'email' => 'required|unique:users|email',
+            'password' => 'required|confirmed',
+        ]);
+
+        if (User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role])) {
+            return redirect()->route('login');
+        }
+    }
+
     public function process_login(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'password' => 'required'
-        // ]);
-
-        //$credentials = $request->except(['_token']);
         $credentials = array(
             'phone' => $request->phone,
             'password'=>$request->password
             );
 
         $user = User::where('phone',$request->phone)->first();
-        file_put_contents('test2.txt',$request->phone);
-        if (auth()->attempt($credentials)) {
-            //file_put_contents('test.txt',"success");
-            if($user->user_role =="renter")
-            {
-            return redirect()->route('renter-dashboard');
-            }
-            else if($user->user_role =="owner")
-            {
-                return redirect()->route('owner-dashboard');
-            }
-            else if($user->user_role =="admin")
-            {
-                return redirect()->route('/');
-            }
+        if ($user->status==1||$user->user_role !=="owner") {
+            if (auth()->attempt($credentials)) {
+                if($user->user_role =="renter")
+                {
+                return redirect()->route('renter-dashboard');
+                }
+                else if($user->user_role =="owner")
+                {
+                    return redirect()->route('owner-dashboard');
+                }
+                else if($user->user_role =="admin")
+                {
+                    return redirect()->route('admin-dashboard');
+                }
 
+            }else{
+                session()->flash('message', 'Invalid credentials');
+                return redirect()->back();
+            }
         }else{
-            session()->flash('message', 'Invalid credentials');
-            //file_put_contents('test.txt',"not_success");
+            session()->flash('message', 'Your acoount has not been activated yet!');
             return redirect()->back();
         }
     }

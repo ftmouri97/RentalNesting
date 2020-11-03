@@ -3,6 +3,18 @@
 @section('login-status','active')
 @section('body')
 
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    .bradcam_area {
+        padding: 180px 0 30px 0;
+    }
+</style>
+
 <!-- bradcam_area  -->
 <div class="bradcam_area bradcam_bg_1">
     <div class="container">
@@ -18,30 +30,29 @@
 <!--/ bradcam_area  -->
 
 <div class="card">
-    <div class="row align-items-center card-body mx-0" style="height: 80vh">
+    <div class="row align-items-center card-body mx-0 py-5">
         <div class="col-md-6 offset-md-3">
-        
             <div class="mt-10">
-            @if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-         @endif
-
+                @if (session('message'))
+                <div class="alert alert-danger">
+                    {{ session('message') }}
+                </div>
+                @endif
+            </div>
             <form  method="post" action="{{ route('login') }}">
-            @csrf
+                @csrf
                 <input type="number" name="phone" placeholder="Phone number"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" required
-                    class="single-input">
-            </div>
-            <div class="mt-10">
-                <input type="password" name="password" placeholder="Password"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
-                    class="single-input">
-            </div>
-            <div class="row mt-10 mx-0">
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" required
+                        class="single-input">
+                
+                <div class="mt-10">
+                    <input type="password" name="password" placeholder="Password"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
+                        class="single-input">
+                </div>
+                <div class="row mt-10 mx-0">
                     <button type = "submit" class="col-12 btn btn-primary">Login</button>
-            </div>
+                </div>
             </form>
         </div>
     </div>

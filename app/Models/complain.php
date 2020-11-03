@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class complain extends Model
 {
    protected $guarded = [];
+   public function renter()
+   {
+       return $this->belongsTo('App\Models\User', 'renter_id');
+   }
 }
