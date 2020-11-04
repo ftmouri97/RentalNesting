@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\otp;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,8 +25,10 @@ class AuthController extends Controller
             'password' => 'required|confirmed',
         ]);
 
-        if (User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role])) {
-            return redirect()->route('login');
+        if ($user = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role])) {
+            otp::create(['user_id'=>$user->id,'otp'=>1234]);
+            return redirect('otp/'.$user->id);
+            // session()->flash('message', 'Invalid credentials');
         }
     }
 
@@ -37,7 +40,7 @@ class AuthController extends Controller
             );
 
         $user = User::where('phone',$request->phone)->first();
-        if ($user->status==1||$user->user_role !=="owner") {
+        if ($user->status==2||$user->user_role !=="owner") {
             if (auth()->attempt($credentials)) {
                 if($user->user_role =="renter")
                 {

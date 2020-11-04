@@ -163,7 +163,7 @@ class AdminController extends Controller
     public function ownerApproval(Request $Request)
     {
         $user = User::find($Request->id);
-        $user->status = $user->status==1?0:1;
+        $user->status = $user->status==2?1:2;
         $user->save();
         return "Owner status updated";
     }

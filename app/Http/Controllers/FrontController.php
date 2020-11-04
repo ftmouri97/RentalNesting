@@ -4,9 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\apartment_detail;
+use App\Models\otp;
+use App\Models\User;
 
 class FrontController extends Controller
 {
+    public function sendingOtp(Request $Request)
+    {
+        $user = User::where('id',$Request->user)->first();
+        $otp = otp::where('user_id',$Request->user)->where('otp',$Request->otp)->first();
+        if ($otp) {
+            $user->status = 1;
+            $user->save();
+            if ($user->user_role == 'owner') {
+                return redirect()->route('login')->with('message','Registration successfull. wait for approve your account.');
+            }else{
+                return redirect()->route('login')->with('message','Registration successfull');
+            }
+        }
+        else {
+            return redirect()->back()->with('message','Incorrect otp! give correct otp.');
+        }
+    }
+
     public function apartmentSearching(Request $Request)
     {
         $location = explode(',',$Request->zone);

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\FrontController;
+// use App\Http\Controllers\OwnerController;
+// use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,9 @@ Route::get('/','FrontController@index')->name('home');
 Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('aparmentDetail');
 Route::post('zone-searching','FrontController@zoneSearching')->name('zoneSearching');
 Route::post('apartment-searching','FrontController@apartmentSearching')->name('apartmentSearching');
+
+Route::view('otp/{id}','otp')->name('otp');
+Route::post('sending-otp','FrontController@sendingOtp')->name('sending-otp');
 
 Route::view('/registration','registration')->name('registration');
 Route::view('/login','login');
