@@ -52,7 +52,7 @@ class AuthController extends Controller
 
         $a = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role]);
         if ($a) {
-           $otp_request = json_decode($this->mobile_number($request->phone));
+           $otp_request = json_decode($this->send_otp($request->phone));
 
            $otp = $otp_request->otp;
            if(otp::where('user_id',$a->id)->first())
