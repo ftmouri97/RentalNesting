@@ -10,6 +10,31 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function send_otp($mobile_number)
+    {
+        //$mobile_number = "01845318609";
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://13.250.7.83/exam/api/send_sms",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"msisdn\"\r\n\r\n".$mobile_number."\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"msg\"\r\n\r\ntest\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
+                "postman-token: 24205d22-b04d-11ff-d75e-37564e566b5c"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            return $response;
+
+    }
     public function logout()
     {
         auth()->logout();
@@ -25,11 +50,22 @@ class AuthController extends Controller
             'password' => 'required|confirmed',
         ]);
 
-        if ($user = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role])) {
-            otp::create(['user_id'=>$user->id,'otp'=>1234]);
-            return redirect('otp/'.$user->id);
-            // session()->flash('message', 'Invalid credentials');
+        $a = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role]);
+        if ($a) {
+           $otp_request = json_decode($this->mobile_number($request->phone));
+
+           $otp = $otp_request->otp;
+           if(otp::where('user_id',$a->id)->first())
+           {
+               otp::where('user_id',$a->id)->update(['otp'=>$otp]);
+           }
+           else
+           {
+               otp::create(['user_id'=>$a->id,"otp"=>$otp]);
+           }
+           return redirect('otp/'.$a->id);
         }
+
     }
 
     public function process_login(Request $request)

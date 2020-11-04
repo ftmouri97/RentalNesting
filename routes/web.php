@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
  *  Frontend routes
  */
 
+
 Route::get('/','FrontController@index')->name('home');
 Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('aparmentDetail');
 Route::post('zone-searching','FrontController@zoneSearching')->name('zoneSearching');
