@@ -160,43 +160,45 @@
 <!-- /popular_property  -->
 
 <!-- home_details  -->
+@if (count($apartments)>0)
 <div class="home_details">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="home_details_active owl-carousel">
+                    @foreach ($apartments as $apartment)
                     <div class="single_details">
                         <div class="row">
                             <div class="col-xl-6 col-md-6">
                                 <div class="modern_home_info">
                                     <div class="modern_home_info_inner">
                                         <span class="for_sale">
-                                            For Sale
+                                            For Rent
                                         </span>
                                         <div class="info_header">
-                                            <h3>Blue haven modern home</h3>
+                                            <h3>{{$apartment->flat_name}}</h3>
                                             <div class="popular_pro d-flex">
-                                                <img src="{{asset('assets/realstate')}}/img/svg_icon/location.svg"
+                                                <img src="@if($apartment->featureImage)
+                                                {{asset('Apartment photoes/'.$apartment->featureImage->image)}}
+                                                @endif"
                                                     alt="">
-                                                <span>Popular Properties</span>
+                                                <span>Popular Apartment</span>
                                             </div>
                                         </div>
                                         <div class="info_content">
                                             <ul>
                                                 <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/square.svg"
-                                                        alt=""> <span>1200 Sqft</span> </li>
+                                                        alt=""> <span>{{$apartment->apartment_size}}</span> </li>
                                                 <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bed.svg"
-                                                        alt=""> <span>2 Bed</span> </li>
+                                                        alt=""> <span>{{$apartment->total_bed}} Bed</span> </li>
                                                 <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bath.svg"
-                                                        alt=""> <span>2 Bath</span> </li>
+                                                        alt=""> <span>{{$apartment->total_bath}} Bath</span> </li>
                                             </ul>
-                                            <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily
-                                                or picture placing drawing. Apartments frequently or motionless on
-                                                reasonable.</p>
+                                        <p style="word-break: break-all;">{{{$apartment->apartment_description}}}</p>
                                             <div
                                                 class="prise_view_details d-flex justify-content-between align-items-center">
-                                                <span>$4567</span>
-                                                <a class="boxed-btn3-line" href="#">View Details</a>
+                                                <span>BDT {{$apartment->apartment_rent}}</span>
+                                                <a class="boxed-btn3-line" href="{{url('apartment-details/'.$apartment->id)}}">View Details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -204,239 +206,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="single_details">
-                        <div class="row">
-                            <div class="col-xl-6 col-md-6">
-                                <div class="modern_home_info">
-                                    <div class="modern_home_info_inner">
-                                        <span class="for_sale">
-                                            For Sale
-                                        </span>
-                                        <div class="info_header">
-                                            <h3>Blue haven modern home</h3>
-                                            <div class="popular_pro d-flex">
-                                                <img src="{{asset('assets/realstate')}}/img/svg_icon/location.svg"
-                                                    alt="">
-                                                <span>Popular Properties</span>
-                                            </div>
-                                        </div>
-                                        <div class="info_content">
-                                            <ul>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/square.svg"
-                                                        alt=""> <span>1200 Sqft</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bed.svg"
-                                                        alt=""> <span>2 Bed</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bath.svg"
-                                                        alt=""> <span>2 Bath</span> </li>
-                                            </ul>
-                                            <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily
-                                                or picture placing drawing. Apartments frequently or motionless on
-                                                reasonable.</p>
-                                            <div
-                                                class="prise_view_details d-flex justify-content-between align-items-center">
-                                                <span>$4567</span>
-                                                <a class="boxed-btn3-line" href="#">View Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_details">
-                        <div class="row">
-                            <div class="col-xl-6 col-md-6">
-                                <div class="modern_home_info">
-                                    <div class="modern_home_info_inner">
-                                        <span class="for_sale">
-                                            For Sale
-                                        </span>
-                                        <div class="info_header">
-                                            <h3>Blue haven modern home</h3>
-                                            <div class="popular_pro d-flex">
-                                                <img src="{{asset('assets/realstate')}}/img/svg_icon/location.svg"
-                                                    alt="">
-                                                <span>Popular Properties</span>
-                                            </div>
-                                        </div>
-                                        <div class="info_content">
-                                            <ul>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/square.svg"
-                                                        alt=""> <span>1200 Sqft</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bed.svg"
-                                                        alt=""> <span>2 Bed</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bath.svg"
-                                                        alt=""> <span>2 Bath</span> </li>
-                                            </ul>
-                                            <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily
-                                                or picture placing drawing. Apartments frequently or motionless on
-                                                reasonable.</p>
-                                            <div
-                                                class="prise_view_details d-flex justify-content-between align-items-center">
-                                                <span>$4567</span>
-                                                <a class="boxed-btn3-line" href="#">View Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_details">
-                        <div class="row">
-                            <div class="col-xl-6 col-md-6">
-                                <div class="modern_home_info">
-                                    <div class="modern_home_info_inner">
-                                        <span class="for_sale">
-                                            For Sale
-                                        </span>
-                                        <div class="info_header">
-                                            <h3>Blue haven modern home</h3>
-                                            <div class="popular_pro d-flex">
-                                                <img src="{{asset('assets/realstate')}}/img/svg_icon/location.svg"
-                                                    alt="">
-                                                <span>Popular Properties</span>
-                                            </div>
-                                        </div>
-                                        <div class="info_content">
-                                            <ul>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/square.svg"
-                                                        alt=""> <span>1200 Sqft</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bed.svg"
-                                                        alt=""> <span>2 Bed</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bath.svg"
-                                                        alt=""> <span>2 Bath</span> </li>
-                                            </ul>
-                                            <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily
-                                                or picture placing drawing. Apartments frequently or motionless on
-                                                reasonable.</p>
-                                            <div
-                                                class="prise_view_details d-flex justify-content-between align-items-center">
-                                                <span>$4567</span>
-                                                <a class="boxed-btn3-line" href="#">View Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_details">
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="modern_home_info">
-                                    <div class="modern_home_info_inner">
-                                        <span class="for_sale">
-                                            For Sale
-                                        </span>
-                                        <div class="info_header">
-                                            <h3>Blue haven modern home</h3>
-                                            <div class="popular_pro d-flex">
-                                                <img src="{{asset('assets/realstate')}}/img/svg_icon/location.svg"
-                                                    alt="">
-                                                <span>Popular Properties</span>
-                                            </div>
-                                        </div>
-                                        <div class="info_content">
-                                            <ul>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/square.svg"
-                                                        alt=""> <span>1200 Sqft</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bed.svg"
-                                                        alt=""> <span>2 Bed</span> </li>
-                                                <li> <img src="{{asset('assets/realstate')}}/img/svg_icon/bath.svg"
-                                                        alt=""> <span>2 Bath</span> </li>
-                                            </ul>
-                                            <p>Esteem spirit temper too say adieus who direct esteem. It estee luckily
-                                                or picture placing drawing. Apartments frequently or motionless on
-                                                reasonable.</p>
-                                            <div
-                                                class="prise_view_details d-flex justify-content-between align-items-center">
-                                                <span>$4567</span>
-                                                <a class="boxed-btn3-line" href="#">View Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+@endif
 <!-- /home_details  -->
-
-<!-- accordion  -->
-<div class="accordion_area">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-xl-6 col-lg-6">
-                <div class="faq_ask">
-                    <h3>Frequently ask</h3>
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Adieus who direct esteem <span>It esteems luckily?</span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion"
-                                style="">
-                                <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems
-                                    luckily or picture placing drawing.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Who direct esteem It esteems?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"
-                                style="">
-                                <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems
-                                    luckily or picture placing drawing.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        Duis consectetur feugiat auctor?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                data-parent="#accordion" style="">
-                                <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems
-                                    luckily or picture placing drawing.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="accordion_thumb">
-                    <img src="{{asset('assets/realstate')}}/img/banner/accordion.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- accordion  -->
 
 <!-- counter_area  -->
 <div class="counter_area">
@@ -464,196 +241,6 @@
     </div>
 </div>
 <!-- /counter_area  -->
-
-<!-- testimonial_area  -->
-<div class="testimonial_area overlay ">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="testmonial_active owl-carousel">
-                    <div class="single_carousel">
-                        <div class="single_testmonial text-center">
-                            <div class="quote">
-                                <img src="{{asset('assets/realstate')}}/img/svg_icon/quote.svg" alt="">
-                            </div>
-                            <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
-                                sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque. <br>
-                                Fusce ac mattis nulla. Morbi eget ornare dui. </p>
-                            <div class="testmonial_author">
-                                <div class="thumb">
-                                    <img src="{{asset('assets/realstate')}}/img/case/testmonial.png" alt="">
-                                </div>
-                                <h3>Robert Thomson</h3>
-                                <span>Business Owner</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_carousel">
-                        <div class="single_testmonial text-center">
-                            <div class="quote">
-                                <img src="{{asset('assets/realstate')}}/img/svg_icon/quote.svg" alt="">
-                            </div>
-                            <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
-                                sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque. <br>
-                                Fusce ac mattis nulla. Morbi eget ornare dui. </p>
-                            <div class="testmonial_author">
-                                <div class="thumb">
-                                    <img src="{{asset('assets/realstate')}}/img/case/testmonial.png" alt="">
-                                </div>
-                                <h3>Robert Thomson</h3>
-                                <span>Business Owner</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_carousel">
-                        <div class="single_testmonial text-center">
-                            <div class="quote">
-                                <img src="{{asset('assets/realstate')}}/img/svg_icon/quote.svg" alt="">
-                            </div>
-                            <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br>
-                                sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque. <br>
-                                Fusce ac mattis nulla. Morbi eget ornare dui. </p>
-                            <div class="testmonial_author">
-                                <div class="thumb">
-                                    <img src="{{asset('assets/realstate')}}/img/case/testmonial.png" alt="">
-                                </div>
-                                <h3>Robert Thomson</h3>
-                                <span>Business Owner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /testimonial_area  -->
-
-<!-- team_area  -->
-<div class="team_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="section_title mb-40 text-center">
-                    <h3>
-                        Our Agents
-                    </h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="single_team">
-                    <div class="team_thumb">
-                        <img src="{{asset('assets/realstate')}}/img/team/1.png" alt="">
-                        <div class="social_link">
-                            <ul>
-                                <li><a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team_info text-center">
-                        <h3>Milani Mou</h3>
-                        <p>Business Agent</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="single_team">
-                    <div class="team_thumb">
-                        <img src="{{asset('assets/realstate')}}/img/team/2.png" alt="">
-                        <div class="social_link">
-                            <ul>
-                                <li><a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team_info text-center">
-                        <h3>Halim Yoka</h3>
-                        <p>Business Agent</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="single_team">
-                    <div class="team_thumb">
-                        <img src="{{asset('assets/realstate')}}/img/team/3.png" alt="">
-                        <div class="social_link">
-                            <ul>
-                                <li><a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team_info text-center">
-                        <h3>Dalim Karma</h3>
-                        <p>Business Agent</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="single_team">
-                    <div class="team_thumb">
-                        <img src="{{asset('assets/realstate')}}/img/team/4.png" alt="">
-                        <div class="social_link">
-                            <ul>
-                                <li><a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li><a href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team_info text-center">
-                        <h3>Micky</h3>
-                        <p>Business Agent</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /team_area  -->
 
 <!-- contact_action_area  -->
 <div class="contact_action_area">
