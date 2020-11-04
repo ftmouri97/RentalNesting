@@ -13,6 +13,42 @@ use Auth;
 
 class RenterController extends Controller
 {
+
+    public function send_otp()
+    {
+        $mobile_number = "01845318609";
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://13.250.7.83/exam/api/send_sms",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"msisdn\"\r\n\r\n".$mobile_number."\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"msg\"\r\n\r\ntest\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
+                "postman-token: 24205d22-b04d-11ff-d75e-37564e566b5c"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            file_put_contents('test.txt',$response);
+            // $err = curl_error($curl);
+
+            // curl_close($curl);
+
+            // if ($err) {
+            // echo "cURL Error #:" . $err;
+            // } else {
+            // echo $response;
+            // }
+
+    }
+
     public function rentApartment(Request $Request)
     {
         $apartment = apartment_detail::where('id',$Request->id)->first();
@@ -29,7 +65,7 @@ class RenterController extends Controller
     $date = date('Y-m');
     $month = date("F");
 
-     $renter_id = 3;
+     $renter_id =  Auth::user()->id;;
      $total_apartment = rent_confirmation::where('renter_id',$renter_id)->get();
     for($i=0;$i<sizeof($total_apartment);$i++)
     {
@@ -54,7 +90,7 @@ class RenterController extends Controller
     }
     public function check_notification()
     {
-        $user_id = 1;
+        $user_id =  Auth::user()->id;;
         $date = date('Y-m');
         $check_avail = notification::where('user_id',$user_id)->where('created_at','LIKE',"%".$date."%")->first();
         if($check_avail)
@@ -76,7 +112,7 @@ class RenterController extends Controller
     }
     public function get_service_charge_details()
     {
-        $renter_id = 3;
+        $renter_id =  Auth::user()->id;;
         $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
 
 
@@ -108,7 +144,7 @@ class RenterController extends Controller
     }
     public function submit_complain(Request $request)
     {
-        $renter_id = 3;
+        $renter_id =  Auth::user()->id;;
         $appartment_id = rent_confirmation::where('renter_id',$renter_id)->first()->apartment_id;
         $message = $request->message;
         complain::create([
@@ -121,7 +157,7 @@ class RenterController extends Controller
     }
     public function get_gas_bill_details()
     {
-        $renter_id = 3;
+        $renter_id =  Auth::user()->id;;
         $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
 
 
@@ -153,7 +189,7 @@ class RenterController extends Controller
     }
     public function get_rent_details()
     {
-        $renter_id = 3;
+        $renter_id =  Auth::user()->id;
         $rent_details = rent_details::where('renter_id',$renter_id)->orderby('id','desc')->get();
 
 
@@ -186,7 +222,7 @@ class RenterController extends Controller
 
     public function get_notification()
     {
-        $user_id = 1;
+        $user_id =  Auth::user()->id;;
         $notification = notification::where('user_id',$user_id)->orderBy('id', 'DESC')->get();
         $data = "";
         for($i=0;$i<sizeof($notification);$i++)
@@ -228,7 +264,7 @@ class RenterController extends Controller
 
     public function get_all_booking()
     {
-       $user_id = 2;
+       $user_id =  Auth::user()->id;;
          $apartment = apartment_detail::where('owner_id',$user_id)->get();
         $data = "";
         for($i=0;$i<sizeof($apartment);$i++)

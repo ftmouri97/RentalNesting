@@ -7,6 +7,8 @@ use App\Models\apartment_detail;
 
 class FrontController extends Controller
 {
+  
+
     public function apartmentSearching(Request $Request)
     {
         $location = explode(',',$Request->zone);
