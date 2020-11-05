@@ -342,7 +342,19 @@ class OwnerController extends Controller
                 $feature_image = $apartment->featureImage->image;
             }
 
-            $active_status = ($apartment->active_status==0?'<label class="badge badge-success">On hold</label>':$apartment->active_status==1)?'<label class="badge badge-primary">Approved</label>':'<label class="badge badge-danger">Denied</label>';
+            if($apartment->active_status == 0)
+            {
+                $active_status = '<label class="badge badge-success">On Hold</label>';
+            }
+            else if($apartment->active_status == 1){
+                $active_status = '<label class="badge badge-primary">Approved</label>';
+            }
+            else
+            {
+                $active_status = '<label class="badge badge-danger">Denied</label>';
+            }
+            
+    
             ?>
             <tr>
             <td><img class="img-fluid" src="../Apartment photoes/<?php echo $feature_image ?>"/></td>
