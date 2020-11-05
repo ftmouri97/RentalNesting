@@ -17,7 +17,7 @@ class Owner
     public function handle(Request $request, Closure $next)
     {
         if (auth()->check()) {
-            if(auth()->user()->user_role == 'owner'){
+            if(auth()->user()->user_role == 'owner' && auth()->user()->status == 2 ){
                 return $next($request);
             }
         }

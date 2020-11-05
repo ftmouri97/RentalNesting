@@ -17,7 +17,7 @@ class Renter
     public function handle(Request $request, Closure $next)
     {
         if (auth()->check()) {
-            if(auth()->user()->user_role == 'renter'){
+            if(auth()->user()->user_role == 'renter' && auth()->user()->status == 1){
                 return $next($request);
             }
         }
