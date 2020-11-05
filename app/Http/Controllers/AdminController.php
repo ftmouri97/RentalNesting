@@ -137,7 +137,7 @@ class AdminController extends Controller
               <tbody >
         <?php
         foreach ($variable as $value) {
-            $checked = $value->status=='1'?'checked':'';
+            $checked = $value->status=='2'?'checked':'';
             ?>
             <tr>
                 <td><?php echo $value->id ?></td>
