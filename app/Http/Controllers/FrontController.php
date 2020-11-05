@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\apartment_detail;
 use App\Models\otp;
 use App\Models\User;
+use App\Models\rent_request;
 
 class FrontController extends Controller
 {
@@ -121,6 +122,12 @@ class FrontController extends Controller
     public function aparmentDetail(Request $Request)
     {
         $data = apartment_detail::where('id',$Request->id)->first();
-        return view('apartment_details',['apartment'=>$data]);
+        $status_check = 'false';
+        if (auth()->check()) {
+            if (rent_request::where('apartment_id',$Request->id)->where('renter_id',auth()->user()->id)->first()) {
+                $status_check = 'true';
+            }
+        }
+        return view('apartment_details',['apartment'=>$data,'status_check'=>$status_check]);
     }
 }

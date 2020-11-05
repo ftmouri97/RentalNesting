@@ -86,18 +86,7 @@
                             @endif
                             @if (Auth::check())
                                 @if (Auth::user()->user_role == 'renter')
-                                @php
-                                    function isUserBookedThisApartment($id) {
-                                        foreach (Auth::user()->rent_request as $val) {
-                                            if ($val['apartment_id'] === $id) {
-                                                return true;
-                                            }else {
-                                                return false;
-                                            }
-                                        }
-                                    }
-                                @endphp
-                                    @if (isUserBookedThisApartment($apartment->id))
+                                    @if ($status_check === 'true')
                                     <div class="send_btn">
                                         <a href="javascript:void(0)" class="send_btn">Request on panding!</a>
                                     </div>

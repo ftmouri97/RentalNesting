@@ -215,11 +215,10 @@ class OwnerController extends Controller
 
     public function acceptBookingRequest(Request $Request)
     {
-        // $owner_id = Auth::check()?Auth::user()->id:2;
-        $rent = rent_request::where('id',$Request->rent_request_id)->first();
-        rent_request::where('id',$Request->rent_request_id)->update(['status'=>1]);
-        rent_request::where('apartment_id',$rent->apartment_id)->update(['status'=>2]);
-        rent_confirmation::create(['renter_id'=>$rent->renter_id,'owner_id'=>$rent->owner_id,'apartment_id'=>$rent->apartment_id,'advance_payment'=>$Request->advance_rent,'status'=>0]);
+        $rent_request = rent_request::where('id',$Request->rent_request_id)->first();
+        $rent_request->apartment->update(['active_status'=>2]);
+        $rent_request->update(['status'=>1]);
+        rent_confirmation::create(['renter_id'=>$rent_request->renter_id,'owner_id'=>$rent_request->owner_id,'apartment_id'=>$rent_request->apartment_id,'advance_payment'=>$Request->advance_rent,'status'=>0]);
     }
 
     public function deleteBookingRequest(Request $Request)
@@ -229,6 +228,20 @@ class OwnerController extends Controller
 
     public function readBookingsRequests()
     {
+        ?>
+        <table id="order-listing" class="table">
+              <thead>
+                <tr>
+                    <th>SL No#</th>
+                    <th>Renter Name</th>
+                    <th>Renter Phone</th>
+                    <th>Apertment</th>
+                    <th>Accept</th>
+                    <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+        <?php
         $owner_id = Auth::check()?Auth::user()->id:2;
         $data = rent_request::where('owner_id',$owner_id)->where('status',0)->get();
         for ($i=0; $i < count($data); $i++) {
@@ -245,6 +258,11 @@ class OwnerController extends Controller
             </tr>
             <?php
         }
+        ?>
+        </tbody>
+            </table>
+            <script src="../assets/melody/js/data-table.js"></script>
+        <?php
     }
 
     public function readApartmentDetails()
@@ -314,7 +332,7 @@ class OwnerController extends Controller
 
     public function createApartmentDetails(Request $Request)
     {
-        $apartment = apartment_detail::create(['owner_id'=>2,'district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent, 'active_status'=>0, 'commission_status'=>0]);
+        $apartment = apartment_detail::create(['owner_id'=>auth()->user()->id,'district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent, 'active_status'=>0, 'commission_status'=>0]);
         if ($apartment) {
             $fileName = time().'.'.$Request->feature_image->extension();
             $Request->feature_image->move(public_path('../Apartment photoes'), $fileName);
