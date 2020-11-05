@@ -25,8 +25,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index-2.html"><img src="images/logo.svg" alt="logo"/></a>
-          <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+          <a class="navbar-brand brand-logo" href="index-2.html"><img src="{{asset('assets/melody')}}/images/logo.svg" alt="logo"/></a>
+          <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="{{asset('assets/melody')}}/images/logo-mini.svg" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-end">
           <button class="navbar-toggler navbar-toggler align-self-right" type="button" data-toggle="minimize">
@@ -246,6 +246,12 @@
             <a class="nav-link" href="{{route('bookingRequests')}}">
               <i class="fa fa-puzzle-piece menu-icon"></i>
               <span class="menu-title">Booking Requests</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('renterInfo')}}">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">Renter informations</span>
             </a>
           </li>
           <li class="nav-item">

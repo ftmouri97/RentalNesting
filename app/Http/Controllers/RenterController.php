@@ -78,8 +78,7 @@ class RenterController extends Controller
                 "month"=>$month,
                 "rent_status"=>0,
                 "service_charge_status"=>0,
-                "gas_bill_status"=>0,
-                "water_bill_status"=>0
+                "gas_bill_status"=>0
             ]);
         }
 

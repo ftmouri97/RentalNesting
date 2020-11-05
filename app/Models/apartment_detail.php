@@ -29,4 +29,9 @@ class apartment_detail extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function rent_confirmation()
+    {
+        return $this->hasOne('App\Models\rent_confirmation', 'apartment_id');
+    }
 }

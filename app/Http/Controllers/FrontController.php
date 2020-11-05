@@ -111,7 +111,7 @@ class FrontController extends Controller
 
     public function zoneSearching(Request $Request)
     {
-        $data = apartment_detail::where('active_status',1)->where('zone','Like',$Request->zoneSearching.'%')->get();
+        $data = apartment_detail::where('active_status',1)->where('zone','Like',$Request->zoneSearching.'%')->groupBy('zone')->get();
         foreach ($data as $value) {
             ?>
             <a href="javascript:void(0)" class="list-group-item list-group-item-action border-1 district-item"><?php echo $value->zone.",".$value->district;?></a>

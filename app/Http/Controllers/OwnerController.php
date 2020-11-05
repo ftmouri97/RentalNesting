@@ -14,6 +14,51 @@ use Auth;
 
 class OwnerController extends Controller
 {
+    public function delete_renter_info(Request $Request)
+    {
+        $rent_conf = rent_confirmation::where('id',$Request->id)->first();
+        $rent_conf->update(['status'=>1]);
+        $rent_conf->apartment->update(['active_status'=>1]);
+    }
+
+    public function read_renter_info()
+    {
+        ?>
+        <table id="order-listing" class="table">
+            <thead>
+            <tr>
+                <th>SL No#</th>
+                <th>Apertment</th>
+                <th>Renter name</th>
+                <th>Renter phone</th>
+                <th>Renter email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+        <?php
+        $renters = rent_confirmation::where('status',0)->where('owner_id',auth()->user()->id)->get();
+        foreach ($renters as $renter) {
+            ?>
+            <tr>
+                <td><?php echo $renter->id ?></td>
+                <td><?php echo $renter->apartment->flat_name.", ".$renter->apartment->floor_no.", ".$renter->apartment->zone.", ".$renter->apartment->address.", ".$renter->apartment->district ?></td>
+                <td><?php echo $renter->renter->name ?></td>
+                <td><?php echo $renter->renter->phone ?></td>
+                <td><?php echo $renter->renter->email ?></td>
+                <td>
+                    <button class="btn btn-danger" onclick="deleteRenterInfo(<?php echo $renter->id ?>)">Delete</button>
+                </td>
+            </tr>
+            <?php
+            }
+        ?>
+            </tbody>
+        </table>
+        <script src="../assets/melody/js/data-table.js"></script>
+        <?php
+    }
+
     public function complainShowing()
     {
         ?>
@@ -270,7 +315,7 @@ class OwnerController extends Controller
         $apartments = Auth::user()->apartments()->orderBy('id','desc')->get();
         $data = '';
         ?>
-<table id="order-listing" class="table">
+        <table id="order-listing" class="table">
               <thead>
                 <tr>
                     <th>Feature image</th>
