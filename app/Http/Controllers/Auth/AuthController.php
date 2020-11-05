@@ -41,6 +41,22 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
+    public function process_otp($id)
+    {
+        $user = User::where('id',$id)->first();
+        $otp_request = json_decode($this->send_otp($user->phone));
+        $otp = $otp_request->otp;
+        if(otp::where('user_id',$user->id)->first())
+        {
+            otp::where('user_id',$user->id)->update(['otp'=>$otp]);
+        }
+        else
+        {
+            otp::create(['user_id'=>$user->id,"otp"=>$otp]);
+        }
+        return redirect('/otp/'.$user->id);
+    }
+
     public function process_register(Request $request)
     {
         $request->validate([
@@ -50,19 +66,10 @@ class AuthController extends Controller
             'password' => 'required|confirmed',
         ]);
 
-        $a = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role]);
-        if ($a) {
-           $otp_request = json_decode($this->send_otp($request->phone));
-           $otp = $otp_request->otp;
-           if(otp::where('user_id',$a->id)->first())
-           {
-               otp::where('user_id',$a->id)->update(['otp'=>$otp]);
-           }
-           else
-           {
-               otp::create(['user_id'=>$a->id,"otp"=>$otp]);
-           }
-           return redirect('otp/'.$a->id);
+        $user = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role]);
+        if ($user) {
+           $this->process_otp($user->id);
+           return redirect('/otp/'.$user->id);
         }
 
     }

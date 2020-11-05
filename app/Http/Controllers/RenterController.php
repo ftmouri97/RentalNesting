@@ -10,6 +10,7 @@ use App\Models\rent_details;
 use App\Models\complain;
 use App\Models\rent_request;
 use Auth;
+use App\Models\User;
 
 class RenterController extends Controller
 {
@@ -287,5 +288,15 @@ class RenterController extends Controller
      echo $data;
 
 
+    }
+
+    public function readProfile(Request $request)
+    {
+        return User::where('id',$request->user()->id)->first();
+    }
+
+    public function changeProfile(Request $request)
+    {
+        User::where('id',auth()->user()->id)->update(['name'=>$request->name,'email'=>$request->email]);
     }
 }

@@ -14,8 +14,8 @@ $(function(){
     rent_details();
     service_charge_details();
     gas_bill_details();
-    
-  
+
+
 
 });
 function rent_details()
@@ -26,9 +26,9 @@ function rent_details()
         type:'GET',
         url:"get_rent_details",
         success:function(data){
-            
+
           $("#rent_details").html(data);
-         
+
         }
     })
 
@@ -42,9 +42,9 @@ function service_charge_details()
         type:'GET',
         url:"get_service_charge_details",
         success:function(data){
-            
+
           $("#rent_details").html(data);
-         
+
         }
     })
 
@@ -61,10 +61,10 @@ function complain_box()
         type:'post',
         url:"submit_complain",
         success:function(data){
-            
+
           alert('Complain submit successfully');
           location.reload();
-    
+
         }
     })
 
@@ -77,30 +77,30 @@ function gas_bill_details()
         type:'GET',
         url:"get_gas_bill_details",
         success:function(data){
-            
+
           $("#rent_details").html(data);
-         
+
         }
     })
 
 }
 function readData() {
-    
+
     $.ajax({
         processData:false,
         contentType:false,
         type:'GET',
         url:"get_all_booking",
         success:function(data){
-            
+
           $("#booking_list_table").html(data);
-         
+
         }
     })
 }
 
 function show_apartment_details(id)
-{  
+{
     var formdata = new FormData();
     formdata.append('id',id);
      $.ajax({
@@ -110,7 +110,7 @@ function show_apartment_details(id)
     type:'post',
     url:"show_apartment_details",
     success:function(data){
-        
+
       $("#appartment_details").html(data);
       $("#booking_list_details_model").modal('show');
 
@@ -126,9 +126,9 @@ function view_notification()
         type:'GET',
         url:"get_notification",
         success:function(data){
-            
+
           $("#notification_list").html(data);
-         
+
         }
     })
 }
@@ -147,7 +147,7 @@ function cancel_booking(id)
     type:'post',
     url:"cancel_booking",
     success:function(data){
-        
+
         readData();
 
     }

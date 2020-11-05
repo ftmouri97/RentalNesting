@@ -47,6 +47,7 @@
                         class="single-input">
                 <div class="row mt-10 mx-0">
                     <button type = "submit" class="col-12 btn btn-primary">Submit</button>
+                    <span style="display:none;" id="otp" class="ml-auto">Don't get OTP? <a href="{{ url('resend_otp/'.Request::route('id'))  }}" class="text-danger">Resend</a></span>
                 </div>
             </form>
         </div>
@@ -151,4 +152,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </footer>
     <!--/ footer end  -->
+@endsection
+
+@section('page-js')
+    <script>
+        setTimeout(function(){ $("#otp").show(); }, 5000);
+    </script>
 @endsection

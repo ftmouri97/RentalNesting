@@ -27,6 +27,7 @@ Route::post('apartment-searching','FrontController@apartmentSearching')->name('a
 
 Route::view('otp/{id}','otp')->name('otp');
 Route::post('sending-otp','FrontController@sendingOtp')->name('sending-otp');
+Route::get('resend_otp/{id}','Auth\AuthController@process_otp')->name('resendOtp');
 
 Route::view('/registration','registration')->name('registration');
 Route::view('/login','login');
@@ -127,6 +128,7 @@ Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
     Route::view('service-charge-details','renter.service-charge-details')->name('service-charge-details');
     Route::view('gas-bill-details','renter.gas-bill-details')->name('gas-bill-details');
     Route::view('complain','renter.complain')->name('complain');
+    Route::view('profile','renter.profile')->name('profile');
     Route::get('get_all_booking','RenterController@get_all_booking');
     Route::get('get_notification','RenterController@get_notification');
     Route::get('get_rent_details','RenterController@get_rent_details');
@@ -137,7 +139,8 @@ Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
     Route::post('show_apartment_details','RenterController@show_apartment_details');
     Route::post('cancel_booking','RenterController@cancel_booking');
     Route::post('submit_complain','RenterController@submit_complain');
-
+    Route::post('change-profile','RenterController@changeProfile')->name('changeProfile');
+    Route::get('read-profile','RenterController@readProfile')->name('readProfile');
     Route::get('rent-apartment/{id}','RenterController@rentApartment')->name('rentApartment');
 });
 
