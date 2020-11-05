@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="bradcam_text text-center">
-                    <h3>Login</h3>
+                    <h3>Otp</h3>
                 </div>
             </div>
         </div>
@@ -39,19 +39,14 @@
                 </div>
                 @endif
             </div>
-            <form  method="post" action="{{ route('login') }}">
+            <form  method="post" action="{{ route('sending-otp') }}">
                 @csrf
-                <input type="number" name="phone" placeholder="Phone number"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" required
+                <input type="hidden" name="user" value="{{ Request::route('id') }}">
+                <input type="number" name="otp" placeholder="Enter otp"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter otp'" required
                         class="single-input">
-
-                <div class="mt-10">
-                    <input type="password" name="password" placeholder="Password"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
-                        class="single-input">
-                </div>
                 <div class="row mt-10 mx-0">
-                    <button type = "submit" class="col-12 btn btn-primary">Login</button>
+                    <button type = "submit" class="col-12 btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>

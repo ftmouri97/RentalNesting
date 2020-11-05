@@ -33,7 +33,7 @@ class AuthController extends Controller
 
             $response = curl_exec($curl);
             return $response;
-        
+
     }
     public function logout()
     {
@@ -49,11 +49,10 @@ class AuthController extends Controller
             'email' => 'required|unique:users|email',
             'password' => 'required|confirmed',
         ]);
-        
+
         $a = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'password'=>Hash::make($request->password),'user_role'=>$request->user_role]);
         if ($a) {
            $otp_request = json_decode($this->send_otp($request->phone));
-         
            $otp = $otp_request->otp;
            if(otp::where('user_id',$a->id)->first())
            {
@@ -63,9 +62,7 @@ class AuthController extends Controller
            {
                otp::create(['user_id'=>$a->id,"otp"=>$otp]);
            }
-           
-
-            //return redirect()->route('otp');
+           return redirect('otp/'.$a->id);
         }
 
     }
@@ -78,7 +75,7 @@ class AuthController extends Controller
             );
 
         $user = User::where('phone',$request->phone)->first();
-        if ($user->status==1||$user->user_role !=="owner") {
+        if ($user->status==2||$user->user_role !=="owner") {
             if (auth()->attempt($credentials)) {
                 if($user->user_role =="renter")
                 {

@@ -1,6 +1,17 @@
 @extends('layout.app')
 
 @section('body')
+@php
+    function isUserBookedThisApartment($id) {
+        foreach (Auth::user()->rent_request as $val) {
+            if ($val['id'] === $id) {
+                return true;
+            }
+        }
+        return false;
+    }
+@endphp
+
     <!-- bradcam_area  -->
     <div class="property_details_banner">
         <div class="container">
@@ -86,9 +97,9 @@
                             @endif
                             @if (Auth::check())
                                 @if (Auth::user()->user_role == 'renter')
-                                    @if (Auth::user()->rent_request->apartment_id == $apartment->id)
+                                    @if (isUserBookedThisApartment($apartment->id))
                                     <div class="send_btn">
-                                        <a href="javascript:void(0)" class="send_btn">Request on panding!</a>
+                                        {{Auth::user()->id}} {{$apartment->id}} <a href="javascript:void(0)" class="send_btn">Request on panding!</a>
                                     </div>
                                     @else
                                     <div class="send_btn">
