@@ -251,33 +251,63 @@ class OwnerController extends Controller
     {
         $apartments = Auth::user()->apartments()->orderBy('id','desc')->get();
         $data = '';
+        ?>
+<table id="order-listing" class="table">
+              <thead>
+                <tr>
+                    <th>Feature image</th>
+                    <th>Floor no</th>
+                    <th>Flat name</th>
+                    <th>District</th>
+                    <th>Zone</th>
+                    <th>Address</th>
+                    <th>Bed</th>
+                    <th>Bath</th>
+                    <th>Size</th>
+                    <th>Description</th>
+                    <th>Apartment rent</th>
+                    <th>Commission status</th>
+                    <th>Active status</th>
+                    <th></th>
+                </tr>
+              </thead>
+              <tbody >
+        <?php
         foreach ($apartments as $apartment) {
             $feature_image='';
             if ($apartment->featureImage) {
                 $feature_image = $apartment->featureImage->image;
             }
+
             $active_status = ($apartment->active_status==0?'<label class="badge badge-success">On hold</label>':$apartment->active_status==1)?'<label class="badge badge-primary">Approved</label>':'<label class="badge badge-danger">Denied</label>';
-            $data .= '<tr>
-            <td><img class="img-fluid" src="'.asset('Apartment photoes/'.$feature_image).'"/></td>
-            <td>'.$apartment->floor_no.'</td>
-            <td>'.$apartment->flat_name.'</td>
-            <td>'.$apartment->district.'</td>
-            <td>'.$apartment->zone.'</td>
-            <td>'.$apartment->address.'</td>
-            <td>'.$apartment->total_bed.'</td>
-            <td>'.$apartment->total_bath.'</td>
-            <td>'.$apartment->apartment_size.'</td>
-            <td>'.$apartment->apartment_description.'</td>
-            <td>'.$apartment->apartment_rent.'</td>
-            <td>'.$apartment->commission_status.'</td>
-            <td>'.$active_status.'</td>
+            ?>
+            <tr>
+            <td><img class="img-fluid" src="../Apartment photoes/<?php echo $feature_image ?>"/></td>
+            <td><?php echo $apartment->floor_no; ?></td>
+            <td><?php echo $apartment->flat_name; ?></td>
+            <td><?php echo $apartment->district; ?></td>
+            <td><?php echo $apartment->zone; ?></td>
+            <td><?php echo $apartment->address; ?></td>
+            <td><?php echo $apartment->total_bed; ?></td>
+            <td><?php echo $apartment->total_bath; ?></td>
+            <td><?php echo $apartment->apartment_size; ?></td>
+            <td><?php echo $apartment->apartment_description; ?></td>
+            <td><?php echo $apartment->apartment_rent; ?></td>
+            <td><?php echo $apartment->commission_status; ?></td>
+            <td><?php echo $active_status; ?></td>
             <td>
-            <button class="btn btn-outline-primary" onclick="manageDetailImages('.$apartment->id.')">Manage detail images</button>
-            <button class="btn btn-outline-warning" onclick="editApertment('.$apartment->id.')">Edit</button>
-            <button class="btn btn-outline-danger" onclick="deleteApertment('.$apartment->id.')">Delete</button>
+            <button class="btn btn-outline-primary" onclick="manageDetailImages(<?php echo $apartment->id ?>)">Manage detail images</button>
+            <button class="btn btn-outline-warning" onclick="editApertment(<?php echo $apartment->id ?>)">Edit</button>
+            <button class="btn btn-outline-danger" onclick="deleteApertment(<?php echo $apartment->id ?>)">Delete</button>
             </td>
-        </tr>';
+        </tr>
+            <?php
         }
+        ?>
+        </tbody>
+            </table>
+        <script src="../assets/melody/js/data-table.js"></script>
+        <?php
         return $data;
     }
 

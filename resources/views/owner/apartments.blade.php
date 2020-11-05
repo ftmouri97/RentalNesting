@@ -12,31 +12,8 @@
         <button class="btn btn-primary" data-toggle="modal" data-target="#add-apertment-detail-modal">Add</button>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
-            <table id="order-listing" class="table">
-              <thead>
-                <tr>
-                    <th>Feature image</th>
-                    <th>Floor no</th>
-                    <th>Flat name</th>
-                    <th>District</th>
-                    <th>Zone</th>
-                    <th>Address</th>
-                    <th>Bed</th>
-                    <th>Bath</th>
-                    <th>Size</th>
-                    <th>Description</th>
-                    <th>Apartment rent</th>
-                    <th>Commission status</th>
-                    <th>Active status</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-              </thead>
-              <tbody id="apartment-details">
+        <div class="table-responsive" id="apartment-details">
 
-              </tbody>
-            </table>
         </div>
     </div>
 </div>
@@ -197,6 +174,6 @@
 @endsection
 
 @section('page-js')
-<script src="{{asset('assets/melody')}}/js/data-table.js"></script>
+{{-- <script src="{{asset('assets/melody')}}/js/data-table.js"></script> --}}
 <script src="{{ asset('assets/owner/apartment-details.js') }}"></script>
 @endsection
