@@ -249,7 +249,7 @@ class OwnerController extends Controller
 
     public function readApartmentDetails()
     {
-        $apartments = Auth::user()->apartments()->orderBy('id','desc')->get();
+        $apartments = auth()->user()->apartments()->orderBy('id','desc')->get();
         $data = '';
         ?>
 <table id="order-listing" class="table">
@@ -308,7 +308,7 @@ class OwnerController extends Controller
             </table>
         <script src="../assets/melody/js/data-table.js"></script>
         <?php
-        return $data;
+        
     }
 
 
