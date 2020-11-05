@@ -1,17 +1,6 @@
 @extends('layout.app')
 
 @section('body')
-@php
-    function isUserBookedThisApartment($id) {
-        foreach (Auth::user()->rent_request as $val) {
-            if ($val['id'] === $id) {
-                return true;
-            }
-        }
-        return false;
-    }
-@endphp
-
     <!-- bradcam_area  -->
     <div class="property_details_banner">
         <div class="container">
@@ -81,7 +70,7 @@
         </div>
         @endif
         <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1" style="word-wrap: break-word;margin-top: 115px;">
-            <div class="details_info">
+            <div class="details_info mb-5">
                 <h4>Description</h4>
                {{$apartment->apartment_description}}
 
@@ -97,13 +86,24 @@
                             @endif
                             @if (Auth::check())
                                 @if (Auth::user()->user_role == 'renter')
+                                @php
+                                    function isUserBookedThisApartment($id) {
+                                        foreach (Auth::user()->rent_request as $val) {
+                                            if ($val['apartment_id'] === $id) {
+                                                return true;
+                                            }else {
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                @endphp
                                     @if (isUserBookedThisApartment($apartment->id))
                                     <div class="send_btn">
-                                        {{Auth::user()->id}} {{$apartment->id}} <a href="javascript:void(0)" class="send_btn">Request on panding!</a>
+                                        <a href="javascript:void(0)" class="send_btn">Request on panding!</a>
                                     </div>
                                     @else
                                     <div class="send_btn">
-                                        <a href="{{url('rent-apartment/'.$apartment->id)}}" class="send_btn">Book now!</a>
+                                        <a href="{{url('/renter/rent-apartment/'.$apartment->id)}}" class="send_btn">Book now!</a>
                                     </div>
                                     @endif
                                 @endif
