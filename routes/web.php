@@ -134,7 +134,7 @@ Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
     Route::post('cancel_booking','RenterController@cancel_booking');
     Route::post('submit_complain','RenterController@submit_complain');
 
-    Route::get('rent-apartment/{id}','RenterController@rentApartment')->name('rent-apartment');
+    Route::get('rent-apartment/{id}','RenterController@rentApartment')->name('rentApartment');
 });
 
 

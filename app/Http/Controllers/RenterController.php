@@ -54,7 +54,7 @@ class RenterController extends Controller
         $apartment = apartment_detail::where('id',$Request->id)->first();
         if (rent_request::create(['renter_id'=>auth()->user()->id,'apartment_id'=>$Request->id,'owner_id'=>$apartment->owner->id,'status'=>0])) {
 
-            return redirect()->back()->with('msg',"Your booking reqyuest has been sent successfully..");
+            return redirect()->back()->with('msg',"Your booking request has been sent successfully..");
         }
 
     }
