@@ -98,7 +98,7 @@
                                 @endif
                             @else
                                 <div class="send_btn">
-                                    <a href="{{route('registration')}}" class="send_btn">Join to rent apartment!</a>
+                                    <a href="javascript:;" onclick="send_to_register()" class="send_btn">Join to rent apartment!</a>
                                 </div>
                             @endif
                         </div>
@@ -131,3 +131,14 @@
 </div>
 <!-- /contact_action_area  -->
 @endsection
+<script>
+ function send_to_register()
+ {
+     <?php
+       Session::put('apartment_id_for_login',$apartment_id);
+
+     ?>
+    window.location.href = "{{route('login')}}";
+    
+ }
+</script>

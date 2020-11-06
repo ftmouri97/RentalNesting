@@ -30,7 +30,7 @@ Route::post('sending-otp','FrontController@sendingOtp')->name('sending-otp');
 Route::get('resend_otp/{id}','Auth\AuthController@process_otp')->name('resendOtp');
 
 Route::view('/registration','registration')->name('registration');
-Route::view('/login','login');
+Route::view('/login','login')->name('login');
 
 Route::namespace('Auth')->group(function () {
   Route::post('/register','AuthController@process_register')->name('reg_process');

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\otp;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class AuthController extends Controller
 {
@@ -86,7 +87,20 @@ class AuthController extends Controller
             if (auth()->attempt($credentials)) {
                 if($user->user_role =="renter")
                 {
-                return redirect()->route('renter-dashboard');
+                    // return redirect()->to('apartment-details/1');
+                    
+                    file_put_contents('test2.txt',Session::get('apartment_id_for_login'));
+                    if(Session::has('apartment_id_for_login'))
+                    {
+                        $apartment_id = Session::get('apartment_id_for_login');
+                        Session::forget('apartment_id_for_login');
+                        file_put_contents('test.txt',Session::get('apartment_id_for_login'));
+                        return redirect()->to('apartment-details/'.$apartment_id);
+                    }
+                    else{
+                       return redirect()->route('renter-dashboard');
+                    }
+               
                 }
                 else if($user->user_role =="owner")
                 {

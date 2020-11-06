@@ -7,11 +7,13 @@ use App\Models\apartment_detail;
 use App\Models\otp;
 use App\Models\User;
 use App\Models\rent_request;
+use Session;
 
 class FrontController extends Controller
 {
     public function sendingOtp(Request $Request)
     {
+        
         $user = User::where('id',$Request->user)->first();
         $otp = otp::where('user_id',$Request->user)->where('otp',$Request->otp)->first();
         if ($otp) {
@@ -31,6 +33,7 @@ class FrontController extends Controller
 
     public function apartmentSearching(Request $Request)
     {
+
         $location = explode(',',$Request->zone);
         $distri = '';
          if (count($location)>1) {
@@ -104,7 +107,9 @@ class FrontController extends Controller
     }
 
     public function index()
-    {
+    {      
+         Session::forget('apartment_id_for_login');
+        file_put_contents('test3.txt',Session::get('apartment_id_for_login'));
         $apartment = apartment_detail::where('active_status',1)->get();
         return view('index',['apartments'=>$apartment]);
     }
@@ -128,6 +133,6 @@ class FrontController extends Controller
                 $status_check = 'true';
             }
         }
-        return view('apartment_details',['apartment'=>$data,'status_check'=>$status_check]);
+        return view('apartment_details',['apartment'=>$data,'status_check'=>$status_check,'apartment_id'=>$Request->id]);
     }
 }
