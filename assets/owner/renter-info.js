@@ -15,6 +15,7 @@ function read_renter_info() {
         type: "get",
         success: function (data) {
             $("#data").html(data);
+            console.log(data);
         }
     })
 }

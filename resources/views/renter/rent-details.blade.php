@@ -8,14 +8,14 @@
 </div>
 <div class="card">
     <div class="card-body">
-  
+
         <div class="table-responsive">
             <table id="order-listing" class="table table-bordered">
               <thead>
                 <tr>
                     <th>Sl NO</th>
                     <th>Month</th>
-                    <th>Reent Status</th>
+                    <th>Rent Status</th>
                 </tr>
               </thead>
               <tbody id="rent_details">
@@ -31,8 +31,8 @@
 <!-- <script src="{{asset('assets/melody')}}/js/data-table.js"></script> -->
 <script src="{{asset('assets/melody')}}/js/custom/renter.js?{{time()}}"></script>
 <script>
-  
 
-    
+
+
 </script>
 @endsection

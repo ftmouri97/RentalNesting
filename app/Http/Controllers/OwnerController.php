@@ -353,8 +353,8 @@ class OwnerController extends Controller
             {
                 $active_status = '<label class="badge badge-danger">Denied</label>';
             }
-            
-    
+
+
             ?>
             <tr>
             <td><img class="img-fluid" src="../Apartment photoes/<?php echo $feature_image ?>"/></td>
@@ -383,7 +383,7 @@ class OwnerController extends Controller
             </table>
         <script src="../assets/melody/js/data-table.js"></script>
         <?php
-        
+
     }
 
 

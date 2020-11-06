@@ -25,15 +25,15 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin'
         ]);
 
-        // for ($i=0; $i < 3; $i++) {
-        //     DB::table('users')->insert([
-        //         'name' => Str::random(10),
-        //         'email' => Str::random(10) . '@gmail.com',
-        //         'phone' => '018154311'.$i,
-        //         'password' => Hash::make('asd'),
-        //         'user_role' => 'owner'
-        //     ]);
-        // }
+        for ($i=0; $i < 3; $i++) {
+            DB::table('users')->insert([
+                'name' => Str::random(10),
+                'email' => Str::random(10) . '@gmail.com',
+                'phone' => '018154311'.$i,
+                'password' => Hash::make('asd'),
+                'user_role' => 'owner'
+            ]);
+        }
         // for ($i=0; $i < 3; $i++) {
         //     DB::table('users')->insert([
         //         'name' => Str::random(10),
@@ -45,25 +45,25 @@ class DatabaseSeeder extends Seeder
         // }
 
 
-        // for ($j=0; $j < 3; $j++) {
-        //     for ($i=2; $i < 5; $i++) {
-        //         DB::table('apartment_details')->insert([
-        //             'owner_id' => $i,
-        //             'district' => Str::random(10),
-        //             'zone' => Str::random(18),
-        //             'address' => Str::random(25),
-        //             'total_bed' => $i,
-        //             'total_bath' => $j+1,
-        //             'apartment_size' => $i.$j.$i.$j.'sqft',
-        //             'apartment_description' => Str::random(100),
-        //             'flat_name' => Str::random(4),
-        //             'floor_no' => $i,
-        //             'apartment_rent' => $i.$j.'000',
-        //             'active_status' => 0,
-        //             'commission_status' => 0
-        //         ]);
-        //     }
-        // }
+        for ($j=0; $j < 3; $j++) {
+            for ($i=2; $i < 5; $i++) {
+                DB::table('apartment_details')->insert([
+                    'owner_id' => $i,
+                    'district' => Str::random(10),
+                    'zone' => Str::random(18),
+                    'address' => Str::random(25),
+                    'total_bed' => $i,
+                    'total_bath' => $j+1,
+                    'apartment_size' => $i.$j.$i.$j.'sqft',
+                    'apartment_description' => Str::random(100),
+                    'flat_name' => Str::random(4),
+                    'floor_no' => $i,
+                    'apartment_rent' => $i.$j.'000',
+                    'active_status' => 0,
+                    'commission_status' => 0
+                ]);
+            }
+        }
 
         // $z=1;
         // for ($i=5; $i < 8; $i++) {

@@ -83,39 +83,45 @@ class AuthController extends Controller
             );
 
         $user = User::where('phone',$request->phone)->first();
-        if ($user->status==2||$user->user_role !=="owner") {
-            if (auth()->attempt($credentials)) {
-                if($user->user_role =="renter")
-                {
-                    // return redirect()->to('apartment-details/1');
-                    
-                  
-                    if(Session::has('apartment_id_for_login'))
+        if ($user) {
+            if ($user->status==2||$user->user_role !=="owner") {
+                if (auth()->attempt($credentials)) {
+                    if($user->user_role =="renter")
                     {
-                        $apartment_id = Session::get('apartment_id_for_login');
-                        Session::forget('apartment_id_for_login');
-                        return redirect()->to('apartment-details/'.$apartment_id);
-                    }
-                    else{
-                       return redirect()->route('renter-dashboard');
-                    }
-               
-                }
-                else if($user->user_role =="owner")
-                {
-                    return redirect()->route('owner-dashboard');
-                }
-                else if($user->user_role =="admin")
-                {
-                    return redirect()->route('admin-dashboard');
-                }
+                        // return redirect()->to('apartment-details/1');
 
+
+                        if(Session::has('apartment_id_for_login'))
+                        {
+                            $apartment_id = Session::get('apartment_id_for_login');
+                            Session::forget('apartment_id_for_login');
+                            return redirect()->to('apartment-details/'.$apartment_id);
+                        }
+                        else{
+                           return redirect()->route('renter-dashboard');
+                        }
+
+                    }
+                    else if($user->user_role =="owner")
+                    {
+                        return redirect()->route('owner-dashboard');
+                    }
+                    else if($user->user_role =="admin")
+                    {
+                        return redirect()->route('admin-dashboard');
+                    }
+
+                }else{
+                    session()->flash('message', 'Invalid credentials');
+                    return redirect()->back();
+                }
             }else{
-                session()->flash('message', 'Invalid credentials');
+                session()->flash('message', 'Your acoount has not been activated yet!');
                 return redirect()->back();
             }
-        }else{
-            session()->flash('message', 'Your acoount has not been activated yet!');
+        }
+        else{
+            session()->flash('message', 'Invalid credentials');
             return redirect()->back();
         }
     }

@@ -17,11 +17,11 @@
                           </button>
                         </div>
                         <div class="modal-body" id="appartment_details">
-                         
-                          
+
+
 
                         </div>
-                        
+
                       </div>
                     </div>
                   </div>
@@ -50,8 +50,8 @@
 <!-- <script src="{{asset('assets/melody')}}/js/data-table.js"></script> -->
 <script src="{{asset('assets/melody')}}/js/custom/renter.js"></script>
 <script>
-  
 
-    
+
+
 </script>
 @endsection

@@ -134,7 +134,7 @@ Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
     Route::get('get_rent_details','RenterController@get_rent_details');
     Route::get('get_service_charge_details','RenterController@get_service_charge_details');
     Route::get('get_gas_bill_details','RenterController@get_gas_bill_details');
-    Route::get('rent_details_insertion','RenterController@rent_details_insertion');
+    Route::get('rent_details_insertion','RenterController@rent_details_insertion')->name('rent_details_insertion');
     Route::get('check_notification','RenterController@check_notification')->name('check_notification');
     Route::post('show_apartment_details','RenterController@show_apartment_details');
     Route::post('cancel_booking','RenterController@cancel_booking');

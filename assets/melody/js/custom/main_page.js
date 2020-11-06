@@ -11,9 +11,9 @@ $(function(){
 
    check_notification();
   rent_details_insertion();
-   
-    
-  
+
+
+
 
 });
 function rent_details_insertion()
@@ -22,11 +22,11 @@ function rent_details_insertion()
         processData:false,
         contentType:false,
         type:'GET',
-        url:"chec",
+        url:rent_details_insert,
         success:function(data){
-            
-       
-         
+
+
+
         }
     })
 }
@@ -34,16 +34,16 @@ function rent_details_insertion()
 function check_notification()
 {
     //alert('hello');
-    
+
     $.ajax({
         processData:false,
         contentType:false,
         type:'GET',
-        url:"/check_notification",
+        url:check_notifi,
         success:function(data){
-            
+
           $("#notification_count").html(data);
-         
+
         }
     })
 }

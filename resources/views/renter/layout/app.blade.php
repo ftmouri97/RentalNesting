@@ -293,6 +293,10 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
+  <script>
+      const rent_details_insert = "{{ route('rent_details_insertion') }}";
+      const check_notifi = "{{ route('check_notification') }}";
+  </script>
   <script src="{{ asset('assets/melody') }}/vendors/js/vendor.bundle.base.js"></script>
   <script src="{{ asset('assets/melody') }}/vendors/js/vendor.bundle.addons.js"></script>
   <script src="{{asset('assets/melody')}}/js/custom/main_page.js?{{time()}}"></script>
