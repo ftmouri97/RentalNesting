@@ -67,31 +67,29 @@ class RenterController extends Controller
     $month = date("F");
 
      $renter_id =  Auth::user()->id;;
-     $total_apartment = rent_confirmation::where('renter_id',$renter_id)->get();
-    for($i=0;$i<sizeof($total_apartment);$i++)
-    {
-        $apartment_id = $total_apartment[$i]->apartment_id;
-        if(!rent_details::where('renter_id',$renter_id)->where('created_at','LIKE',"%".$date."%")->first())
-        {
-            rent_details::create([
-                "renter_id"=>$renter_id,
-                "apartment_id"=>$apartment_id,
-                "month"=>$month,
-                "rent_status"=>0,
-                "service_charge_status"=>0,
-                "gas_bill_status"=>0
-            ]);
-        }
-
-
-    }
-
-
+     $total_apartment = rent_confirmation::where('renter_id',$renter_id)->first();
+     if(!rent_details::where('renter_id',$renter_id)->where('created_at','LIKE',"%".$date."%")->first())
+     {
+        $apartment_id = $total_apartment->apartment_id;
+        $owner_id = apartment_detail::where('id',$apartment_id)->first()->owner_id;
+        rent_details::create([
+            "renter_id"=>$renter_id,
+            "apartment_id"=>$apartment_id,
+            "owner_id"=>$owner_id,
+            "month"=>$month,
+            "rent_status"=>0,
+            "service_charge_status"=>0,
+            "gas_bill_status"=>0
+        ]);
+     }
+  
+    
     }
     public function check_notification()
     {
         $user_id =  Auth::user()->id;;
         $date = date('Y-m');
+        $month = date("F");
         $check_avail = notification::where('user_id',$user_id)->where('created_at','LIKE',"%".$date."%")->first();
         if($check_avail)
         {
@@ -99,7 +97,7 @@ class RenterController extends Controller
         }
         else
         {
-            notification::create(['message'=>"You have due Rent",'user_id'=>$user_id]);
+            notification::create(['message'=>"You have due Rent on ".$month,'user_id'=>$user_id]);
         }
 
         //echo $date;
@@ -250,9 +248,9 @@ class RenterController extends Controller
          <h6><b>Bath</b></h6>
          <p>'.$apartment_details->total_bath.'</p>
          <h6><b>Rent</b></h6>
-         <p>'.$apartment_details->appartment_rent.'</p>
+         <p>'.$apartment_details->apartment_rent.'</p>
          <h6><b>Description</b></h6>
-         <p>'.$apartment_details->appartment_description.'</p>';
+         <p>'.$apartment_details->apartment_description.'</p>';
          echo $data;
 
     }
@@ -265,26 +263,30 @@ class RenterController extends Controller
     public function get_all_booking()
     {
        $user_id =  Auth::user()->id;;
-         $apartment = apartment_detail::where('owner_id',$user_id)->get();
-        $data = "";
-        for($i=0;$i<sizeof($apartment);$i++)
-        {
-            $sl_no = $i+1;
-            $data.='<tr>
-            <td>'.$sl_no.'</td>
-            <td>'.$apartment[$i]->address.'</td>
-            <td>'.$apartment[$i]->district.'</td>
-            <td>'.$apartment[$i]->zone.'</td>
+       $apartment_list = rent_request::where('renter_id',$user_id)->get();
+       
+       $data = "";
+       for($j=0;$j<sizeof($apartment_list);$j++)
+       {
+        $apartment = apartment_detail::where('id',$apartment_list[$j]->apartment_id)->first();
+        $sl_no = $j+1;
+        $data.='<tr>
+        <td>'.$sl_no.'</td>
+        <td>'.$apartment->address.'</td>
+        <td>'.$apartment->district.'</td>
+        <td>'.$apartment->zone.'</td>
 
-            <td>
-              <button class="btn btn-outline-primary" onclick = "show_apartment_details('.$apartment[$i]->id.')">View Details</button>
-            </td>
-            <td>
-            <button class="btn btn-outline-primary" onclick = "cancel_booking('.$apartment[$i]->id.')">Cancel Booking</button>
-          </td>
-        </tr>';
-        }
+        <td>
+          <button class="btn btn-outline-primary" onclick = "show_apartment_details('.$apartment->id.')">View Details</button>
+        </td>
+        <td>
+        <button class="btn btn-outline-primary" onclick = "cancel_booking('.$apartment->id.')">Cancel Booking</button>
+      </td>
+    </tr>';
 
+       }
+
+     
      echo $data;
 
 

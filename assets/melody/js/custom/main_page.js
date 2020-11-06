@@ -18,12 +18,11 @@ $(function(){
 });
 function rent_details_insertion()
 {
-    
     $.ajax({
         processData:false,
         contentType:false,
         type:'GET',
-        url:"rent_details_insertion",
+        url:"chec",
         success:function(data){
             
        
@@ -35,11 +34,12 @@ function rent_details_insertion()
 function check_notification()
 {
     //alert('hello');
+    
     $.ajax({
         processData:false,
         contentType:false,
         type:'GET',
-        url:"check_notification",
+        url:"/check_notification",
         success:function(data){
             
           $("#notification_count").html(data);

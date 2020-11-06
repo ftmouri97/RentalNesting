@@ -89,12 +89,11 @@ class AuthController extends Controller
                 {
                     // return redirect()->to('apartment-details/1');
                     
-                    file_put_contents('test2.txt',Session::get('apartment_id_for_login'));
+                  
                     if(Session::has('apartment_id_for_login'))
                     {
                         $apartment_id = Session::get('apartment_id_for_login');
                         Session::forget('apartment_id_for_login');
-                        file_put_contents('test.txt',Session::get('apartment_id_for_login'));
                         return redirect()->to('apartment-details/'.$apartment_id);
                     }
                     else{

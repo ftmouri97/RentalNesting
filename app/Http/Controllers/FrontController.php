@@ -109,7 +109,7 @@ class FrontController extends Controller
     public function index()
     {      
          Session::forget('apartment_id_for_login');
-        file_put_contents('test3.txt',Session::get('apartment_id_for_login'));
+      
         $apartment = apartment_detail::where('active_status',1)->get();
         return view('index',['apartments'=>$apartment]);
     }

@@ -257,25 +257,25 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('renters')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Renters</span>
+              <span class="menu-title">Monthly Rent Collection</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('rents')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Rents</span>
+              <span class="menu-title">Rent Information</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('serviceCharges')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Service charges</span>
+              <span class="menu-title">Service Charge Information</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('gasBill')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Gas bill</span>
+              <span class="menu-title">Gas Bill Information</span>
             </a>
           </li>
           <li class="nav-item">
