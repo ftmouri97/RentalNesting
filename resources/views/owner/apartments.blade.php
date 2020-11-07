@@ -73,6 +73,14 @@
                 <input type="text" class="form-control" id="apartment_rent" placeholder="apartment rent" value="123">
             </div>
             <div class="form-group">
+                <label for="apartment_category">Apartment category</label>
+                <select class="form-control" id="apartment_category" placeholder="Apartment category">
+                    <option value="apartment">apartment</option>
+                    <option value="sublet">sublet</option>
+                    <option value="office space">office space</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="apartment_description">Apartment description</label>
                 <textarea  type="text" class="form-control" id="apartment_description" placeholder="apartment description">asd</textarea>
             </div>
@@ -103,6 +111,14 @@
             <div class="form-group">
                 <label for="edit_flat_name">Flat name</label>
                 <input type="text" class="form-control" id="edit_flat_name" placeholder="Flat name" value="asd">
+            </div>
+            <div class="form-group">
+                <label for="apartment_edit_category">Apartment category</label>
+                <select name="apartment_category" class="form-control" id="apartment_edit_category" placeholder="Apartment category">
+                    <option value="apartment">apartment</option>
+                    <option value="sublet">sublet</option>
+                    <option value="office space">office space</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="edit_district">District</label>

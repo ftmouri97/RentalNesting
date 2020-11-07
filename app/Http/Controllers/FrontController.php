@@ -13,7 +13,7 @@ class FrontController extends Controller
 {
     public function sendingOtp(Request $Request)
     {
-        
+
         $user = User::where('id',$Request->user)->first();
         $otp = otp::where('user_id',$Request->user)->where('otp',$Request->otp)->first();
         if ($otp) {
@@ -40,10 +40,9 @@ class FrontController extends Controller
             $distri = $location[1];
          }
          $district = $distri;
+         $category = $Request->category;
          $zone = $location[0];
-         $data = apartment_detail::where('active_status',1)->where('apartment_rent','<',$Request->price_max)->get();
-        //  $data = apartment_detail::where('active_status',1)->where('apartment_rent','<',$Request->price_max)->where('apartment_rent','>',$Request->price_min)->where('zone',$zone)->where('district',$district)->get();
-        //  file_put_contents('asd.text',$data);
+         $data = apartment_detail::where('active_status',1)->where('apartment_rent','<',$Request->price_max)->where('apartment_rent','>',$Request->price_min)->where('apartment_category',$category)->where('zone',$zone)->get();
         if (count($data)>0) {
             for ($i=0; $i < count($data); $i++) {
                 $feature_image='';
@@ -107,9 +106,9 @@ class FrontController extends Controller
     }
 
     public function index()
-    {      
+    {
          Session::forget('apartment_id_for_login');
-      
+
         $apartment = apartment_detail::where('active_status',1)->get();
         return view('index',['apartments'=>$apartment]);
     }

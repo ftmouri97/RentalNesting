@@ -68,6 +68,7 @@ function editApertment(id) {
         url: "edit-apartment-details/" + id,
         type: "get",
         success: function (data) {
+            $("#apartment_edit_category").val(data.apartment_category);
             $("#edit_apartment_id").val(data.id)
             $("#edit_floor_no").val(data.floor_no)
             $("#edit_flat_name").val(data.flat_name)
@@ -91,6 +92,7 @@ function editApertment(id) {
 function updateApertmentDetails() {
     var formdata = new FormData();
     formdata.append('id',$("#edit_apartment_id").val())
+    formdata.append('apartment_category',$("#apartment_edit_category").val())
     formdata.append('floor_no',$("#edit_floor_no").val())
     formdata.append('flat_name',$("#edit_flat_name").val())
     formdata.append('district',$("#edit_district").val())
@@ -133,11 +135,13 @@ function addApertmentDetails() {
         $("#apartment_description").val().length !== 0 &&
         $("#apartment_rent").val().length !== 0 &&
         $("#feature_image").val().length !== 0 &&
-        $("#detail_image").val().length !== 0
+        $("#detail_image").val().length !== 0 &&
+        $("#apartment_category").val().length !== 0
     ) {
         formData = new FormData()
         formData.append('floor_no', $("#floor_no").val())
         formData.append('flat_name', $("#flat_name").val())
+        formData.append('apartment_category', $("#apartment_category").val())
         formData.append('district', $("#district").val())
         formData.append('zone', $("#zone").val())
         formData.append('address', $("#address").val())

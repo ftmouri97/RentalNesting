@@ -29,6 +29,15 @@
                                             <input class="form-control" type="text" id="zone-search" value="">
                                             <ul class="bg-light text-dark" id="showing-zone"></ul>
                                         </div>
+                                        <div class="single-field min_width">
+                                            <label for="#">Categroy</label>
+                                            <select class="wide" type="text" id="category-search">
+                                                <option value="apartment">apartment</option>
+                                                <option value="sublet">sublet</option>
+                                                <option value="office space">office space</option>
+                                            </select>
+                                            <ul class="bg-light text-dark" id="showing-zone"></ul>
+                                        </div>
                                         <div class="single_field range_slider">
                                             <label for="#">Price ($)</label>
                                             <div id="slider"></div>

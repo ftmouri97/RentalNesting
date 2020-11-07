@@ -40,7 +40,8 @@ $("#search").click(function() {
         data.append('zone',$("#zone-search").val())
         data.append('price_min',min_value)
         data.append('price_max',max_value)
-        data.append('zone',$("#zone-search").val())
+        data.append('category',$("#category-search").val())
+        // data.append('zone',$("#zone-search").val())
         data.append('bed',$("#bed-search").val())
         data.append('bath',$("#bath-search").val())
         $.ajax({

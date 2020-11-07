@@ -321,6 +321,7 @@ class OwnerController extends Controller
                     <th>Feature image</th>
                     <th>Floor no</th>
                     <th>Flat name</th>
+                    <th>Category</th>
                     <th>District</th>
                     <th>Zone</th>
                     <th>Address</th>
@@ -360,6 +361,7 @@ class OwnerController extends Controller
             <td><img class="img-fluid" src="../Apartment photoes/<?php echo $feature_image ?>"/></td>
             <td><?php echo $apartment->floor_no; ?></td>
             <td><?php echo $apartment->flat_name; ?></td>
+            <td><?php echo $apartment->apartment_category; ?></td>
             <td><?php echo $apartment->district; ?></td>
             <td><?php echo $apartment->zone; ?></td>
             <td><?php echo $apartment->address; ?></td>
@@ -389,7 +391,7 @@ class OwnerController extends Controller
 
     public function createApartmentDetails(Request $Request)
     {
-        $apartment = apartment_detail::create(['owner_id'=>auth()->user()->id,'district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent, 'active_status'=>0, 'commission_status'=>0]);
+        $apartment = apartment_detail::create(['owner_id'=>auth()->user()->id,'district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no,'apartment_category'=>$Request->apartment_category, 'apartment_rent'=>$Request->apartment_rent, 'active_status'=>0, 'commission_status'=>0]);
         if ($apartment) {
             $fileName = time().'.'.$Request->feature_image->extension();
             $Request->feature_image->move(public_path('../Apartment photoes'), $fileName);
@@ -415,7 +417,7 @@ class OwnerController extends Controller
 
     public function updateApartmentDetails(Request $Request)
     {
-        apartment_detail::where('id',$Request->id)->update(['district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent]);
+        apartment_detail::where('id',$Request->id)->update(['district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_category'=>$Request->apartment_category,'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent]);
         if ($Request->file('feature_image')) {
             if ($Request->feature_image_value) {
                 feature_image::where('apartment_id',$Request->id)->delete();

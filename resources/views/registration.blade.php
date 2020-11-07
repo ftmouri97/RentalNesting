@@ -61,6 +61,11 @@
                         class="single-input">
                 </div>
                 <div class="mt-10">
+                    <input type="number" name="nid" placeholder="NID"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'NID'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
                     <input type="password" name="password" placeholder="Password"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
                         class="single-input">

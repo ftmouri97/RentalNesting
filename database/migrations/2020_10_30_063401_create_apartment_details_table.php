@@ -23,6 +23,7 @@ class CreateApartmentDetailsTable extends Migration
             $table->integer('total_bath');
             $table->string('apartment_size',100);
             $table->text('apartment_description');
+            $table->text('apartment_category');
             $table->string('flat_name',100);
             $table->string('floor_no',100);
             $table->string('apartment_rent',100);
