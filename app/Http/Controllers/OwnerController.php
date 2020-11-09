@@ -32,6 +32,7 @@ class OwnerController extends Controller
                 <th>Renter name</th>
                 <th>Renter phone</th>
                 <th>Renter email</th>
+                <th>Agreement</th>
                 <th></th>
             </tr>
             </thead>
@@ -46,6 +47,9 @@ class OwnerController extends Controller
                 <td><?php echo $renter->renter->name ?></td>
                 <td><?php echo $renter->renter->phone ?></td>
                 <td><?php echo $renter->renter->email ?></td>
+                <td>
+                    <a href="<?php echo url('agreement/'.$renter->id) ?>">watch</a>
+                </td>
                 <td>
                     <button class="btn btn-danger" onclick="deleteRenterInfo(<?php echo $renter->id ?>)">Delete</button>
                 </td>

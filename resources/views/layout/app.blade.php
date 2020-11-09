@@ -33,9 +33,10 @@
 
 <body>
     <!-- header-start -->
+    @if (Request::path() != url('agreement'))
     <header>
         <div class="header-area ">
-            <div class="header-top_area d-none d-lg-block">
+            {{-- <div class="header-top_area d-none d-lg-block">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-md-5 ">
@@ -66,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div id="sticky-header" class="main-header-area">
                 <div class="container">
                     <div class="header_bottom_border">
@@ -106,6 +107,7 @@
             </div>
         </div>
     </header>
+    @endif
     <!-- header-end -->
     @yield('body')
 

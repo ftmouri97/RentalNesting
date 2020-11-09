@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 /**
  *  Frontend routes
  */
-
+Route::get('agreement/{rent_confirmation_id}','PdfController@view');
+// Route::get('agreement-show/{renter}/{owner}/{apartment}','PdfController@load');
 
 Route::get('/','FrontController@index')->name('home');
 Route::get('apartment-details/{id}','FrontController@aparmentDetail')->name('aparmentDetail');
