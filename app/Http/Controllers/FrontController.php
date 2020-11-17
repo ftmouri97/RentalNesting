@@ -33,16 +33,10 @@ class FrontController extends Controller
 
     public function apartmentSearching(Request $Request)
     {
-
         $location = explode(',',$Request->zone);
-        $distri = '';
-         if (count($location)>1) {
-            $distri = $location[1];
-         }
-         $district = $distri;
-         $category = $Request->category;
-         $zone = $location[0];
-         $data = apartment_detail::where('active_status',1)->where('apartment_rent','<',$Request->price_max)->where('apartment_rent','>',$Request->price_min)->where('apartment_category',$category)->where('zone',$zone)->get();
+        $category = $Request->category;
+        $zone = $location[0];
+        $data = apartment_detail::where('active_status',1)->whereBetween('apartment_rent',[(int)$Request->price_min,(int)$Request->price_max])->where('apartment_category',$category)->where('zone',$zone)->get();
         if (count($data)>0) {
             for ($i=0; $i < count($data); $i++) {
                 $feature_image='';
