@@ -28,6 +28,7 @@ class CreateApartmentDetailsTable extends Migration
             $table->string('floor_no',100);
             $table->string('apartment_rent',100);
             $table->integer('active_status');
+            $table->integer('total_view')->default('0');
             $table->integer('commission_status');
             $table->timestamps();
 

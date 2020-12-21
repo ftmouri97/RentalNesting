@@ -103,7 +103,7 @@ class FrontController extends Controller
     {
          Session::forget('apartment_id_for_login');
 
-        $apartment = apartment_detail::where('active_status',1)->get();
+        $apartment = apartment_detail::where('active_status',1)->orderBy('total_view','DESC')->get();
         return view('index',['apartments'=>$apartment]);
     }
 
@@ -120,6 +120,9 @@ class FrontController extends Controller
     public function aparmentDetail(Request $Request)
     {
         $data = apartment_detail::where('id',$Request->id)->first();
+        $previous_view = $data->total_view;
+        $new_view = $previous_view+1;
+        apartment_detail::where('id',$Request->id)->update(['total_view'=>$new_view]);
         $status_check = 'false';
         if (auth()->check()) {
             if (rent_request::where('apartment_id',$Request->id)->where('renter_id',auth()->user()->id)->first()) {
