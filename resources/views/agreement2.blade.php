@@ -34,9 +34,7 @@
   <div class="container container-smaller">
     <div class="row">
       <div class="col-lg-10 col-lg-offset-1" style="margin-top:20px; text-align: right">
-        <div class="btn-group mb-4">
-          <a href="../../agreement/{{$confirmed->id}}" class="btn btn-success">Downlaod as PDF</a>
-        </div>
+       
       </div>
     </div>
     <div class="row">
