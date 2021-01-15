@@ -16,8 +16,8 @@
             <div class="row align-items-center">
                 <div class="col-xl-10 offset-xl-1">
                     <div class="slider_text text-center justify-content-center">
-                        <h3>Find your best Property</h3>
-                        <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                        <h3>Find Your New Home</h3>
+                        <p>Let's find a space that's perfect for you</p>
                     </div>
                     <div class="property_form">
                         <form>
@@ -258,7 +258,7 @@
         <div class="row">
             <div class="col-xl-7">
                 <div class="action_heading">
-                    <h3>Add your property for sale</h3>
+                    <h3>Add your property for Rent</h3>
                 </div>
             </div>
             <div class="col-xl-5">
@@ -285,9 +285,9 @@
                             </a>
                         </div>
                         <p>
-                            <a href="#">conbusi@support.com</a> <br>
-                            +10 873 672 6782 <br>
-                            600/D, Green road, NewYork
+                            <a href="#">newdoor@gmail.com</a> <br>
+                            01765-324556 <br>
+                            Yunesco,GEC more,Chittagong
                         </p>
                         <div class="socail_links">
                             <ul>
