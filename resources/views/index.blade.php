@@ -84,7 +84,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="section_title mb-40 text-center">
-                    <h3>Searched Apertments</h3>
+                    <h3>Searched Apartments</h3>
                 </div>
             </div>
         </div>
