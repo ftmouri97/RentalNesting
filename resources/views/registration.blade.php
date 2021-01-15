@@ -4,15 +4,40 @@
 @section('body')
 
 <style>
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    }
+  
+  .tab_li
+{
+   display:block;
+   float:left;
+   width:200px; /* adjust */
+   height:50px; /* adjust */
+   padding: 5px; /*adjust*/
+}
 
-    .bradcam_area {
-        padding: 180px 0 30px 0;
-    }
+  .tab-group {
+    justify-content: center;
+  display: flex;
+  list-style:none;
+  padding:0;
+  margin:0 0 40px 0;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .active a {
+    background:$main;
+    color:$white;
+  }
+}
+
+.tab-content > div:last-child {
+  display:none;
+}
+
+
+
 </style>
 
 <!-- bradcam_area  -->
@@ -43,7 +68,15 @@
                 </ul>
             </div>
         @endif
-            <form action="{{ route('reg_process') }}" method="POST">
+        
+        <ul class="tab-group">
+        <li class="tab active tab_li"><a href="#owner">Owner</a></li>
+        <li class="tab tab_li"><a href="#renter">Renter</a></li>
+       </ul>
+        
+        <div class="tab-content">
+        <div id="owner">
+            <form action="{{ route('reg_process') }}" method="POST" enctype="multipart/form-data">
             @csrf
                 <div class="mt-10">
                     <input type="text" name="name" placeholder="Full name"
@@ -65,6 +98,12 @@
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'NID'" required
                         class="single-input">
                 </div>
+
+                <div class="mt-10">
+                <input type="file" name="user_image"  class="single-input"   accept="image/*" multiple required   >
+                <label for="img">User Image</label>
+                </div>
+               
                 <div class="mt-10">
                     <input type="password" name="password" placeholder="Password"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
@@ -76,22 +115,67 @@
                         class="single-input">
                 </div>
                 <div class="row justify-content-between align-items-center mt-10">
-                    <div class="col row justify-content-around">
-                        <div class="col">
-                            <label for="renter-radio">As Renter</label>
-                            <input type="radio" id="renter-radio" name="user_role" value="renter" checked>
-                        </div>
-                        <div class="col">
-                            <label for="owner-radio">As Landlord</label>
-                            <input type="radio" id="owner-radio" name="user_role" value="owner">
-                        </div>
-                    </div>
+                   <input type="hidden" value="owner" name="user_role"> 
                     <div class="col">
                         <button  class="d-block ml-auto btn btn-primary" type="submit">Registration</button>
                     </div>
                 </div>
             </form>
+            </div>
+
+            <div id="renter">
+            <form action="{{ route('reg_process') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+                <div class="mt-10">
+                    <input type="text" name="name" placeholder="Full name"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full name'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
+                    <input type="email" name="email" placeholder="Email address"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
+                    <input type="number" name="phone" placeholder="Phone number"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
+                    <input type="number" name="nid" placeholder="NID"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'NID'" required
+                        class="single-input">
+                </div>
+
+                <div class="mt-10">
+                <input type="file" name="user_image"  class="single-input"   accept="image/*" multiple required   >
+                <label for="img">User Image</label>
+                </div>
+               
+                <div class="mt-10">
+                    <input type="password" name="password" placeholder="Password"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
+                        class="single-input">
+                </div>
+                <div class="mt-10">
+                    <input type="password" name="password_confirmation" placeholder="Retype Password"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
+                        class="single-input">
+                </div>
+                <div class="row justify-content-between align-items-center mt-10">
+                <input type="hidden" value="renter" name="user_role"> 
+                    <div class="col">
+                        <button  class="d-block ml-auto btn btn-primary" type="submit">Registration</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+            </div> 
         </div>
+            </div> 
+        </div>
+
+        
     </div>
 </div>
 
@@ -191,5 +275,25 @@
         </div>
     </footer>
     <!--/ footer end  -->
+@endsection
+
+@section('page-js')
+<script>
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+</script>
+
 @endsection
 

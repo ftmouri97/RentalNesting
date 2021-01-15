@@ -10,10 +10,14 @@ class PdfController extends Controller
 {
     public function view(Request $Request)
     {
+        $date = date('d-m-Y');
         $data = rent_confirmation::where('id',$Request->rent_confirmation_id)->first();
         // return view('agreement',['confirmed'=>$data]);
-        $pdf = PDF::loadView('agreement', ['confirmed'=>$data]);
+        $data['contract_end'] = date('Y-m-d H:i:s', strtotime('+1 years', strtotime($data->created_at)));
+        $data['total'] = $data->advance_payment+$data->apartment->apartment_rent;
+        $data['date'] = $date;
+        $pdf = PDF::loadView('agreement2',['confirmed'=>$data]);
         return $pdf->stream();
-        return $pdf->download('agreement'.$data->flat_no.','.$data->flat_name.','.$data->address.','.$data->zone.','.$data->district.'.pdf');
+        return $pdf->download('agreement.pdf');
     }
 }

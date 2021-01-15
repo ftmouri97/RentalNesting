@@ -20,6 +20,15 @@ class OwnerController extends Controller
         $rent_conf->update(['status'=>1]);
         $rent_conf->apartment->update(['active_status'=>1]);
     }
+    public function agreement_show(Request $Request)
+    {
+        $date = date('d-m-Y');
+        $data = rent_confirmation::where('id',$Request->id)->first();
+        $data['contract_end'] = date('Y-m-d H:i:s', strtotime('+1 years', strtotime($data->created_at)));
+        $data['total'] = $data->advance_payment+$data->apartment->apartment_rent;
+        $data['date'] = $date;
+        return view('agreement',['confirmed'=>$data]);
+    }
 
     public function read_renter_info()
     {
@@ -32,7 +41,7 @@ class OwnerController extends Controller
                 <th>Renter name</th>
                 <th>Renter phone</th>
                 <th>Renter email</th>
-                <th>Agreement</th>
+                <th>Agreement Paper</th>
                 <th></th>
             </tr>
             </thead>
@@ -48,7 +57,7 @@ class OwnerController extends Controller
                 <td><?php echo $renter->renter->phone ?></td>
                 <td><?php echo $renter->renter->email ?></td>
                 <td>
-                    <a href="<?php echo url('agreement/'.$renter->id) ?>">watch</a>
+                    <a href='agreement_show/<?php echo $renter->id ?>'>Show</a>
                 </td>
                 <td>
                     <button class="btn btn-danger" onclick="deleteRenterInfo(<?php echo $renter->id ?>)">Delete</button>

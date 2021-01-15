@@ -89,8 +89,10 @@ Route::group(['prefix' => 'owner','middleware' => 'owner'], function()
     Route::get('complain-showing','OwnerController@complainShowing')->name('complainShowing');
 
     Route::view('renter-info','owner.renter-info')->name('renterInfo');
+    Route::get('agreement_show/{id}','OwnerController@agreement_show');
     Route::get('read-renter-info','OwnerController@read_renter_info');
     Route::get('delete-renter-info/{id}','OwnerController@delete_renter_info');
+
 });
 
 

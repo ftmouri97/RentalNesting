@@ -1,0 +1,1 @@
+{"id":1,"renter_id":4,"owner_id":3,"apartment_id":11,"advance_payment":"15000","status":0,"created_at":"2020-12-21T07:31:52.000000Z","updated_at":"2020-12-21T07:31:52.000000Z"}
