@@ -32,8 +32,9 @@
                                         <div class="single-field min_width">
                                             <label for="#">Category</label>
                                             <select class="wide" type="text" id="category-search">
+                                                <option value="apartment">All</option>
                                                 <option value="apartment">Apartment</option>
-                                                <option value="sublet">Duplex</option> 
+                                                <option value="duplex">Duplex</option> 
                                                 <option value="sublet">Sublet</option>
                                                 <option value="office space">Office space</option>
                                             </select>
