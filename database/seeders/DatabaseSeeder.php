@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
                    // 'active_status' => 0,
                    // 'commission_status' => 0
                // ]);
-            }
+          //  }
         }
 
         // $z=1;
@@ -87,5 +87,5 @@ class DatabaseSeeder extends Seeder
         //     'apartment_id' => 1,
         //     'status' => 0
         // ]);
-    }
+   // }
 }
