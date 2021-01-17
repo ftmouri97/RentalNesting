@@ -25,15 +25,15 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin'
         ]);
 
-        for ($i=0; $i < 3; $i++) {
-            DB::table('users')->insert([
-                'name' => Str::random(10),
-                'email' => Str::random(10) . '@gmail.com',
-                'phone' => '018154311'.$i,
-                'password' => Hash::make('asd'),
-                'user_role' => 'owner'
-            ]);
-        }
+       // for ($i=0; $i < 3; $i++) {
+        //    DB::table('users')->insert([
+         //       'name' => Str::random(10),
+          //      'email' => Str::random(10) . '@gmail.com',
+           //     'phone' => '018154311'.$i,
+            //    'password' => Hash::make('asd'),
+            //    'user_role' => 'owner'
+           // ]);
+       // }
         // for ($i=0; $i < 3; $i++) {
         //     DB::table('users')->insert([
         //         'name' => Str::random(10),
