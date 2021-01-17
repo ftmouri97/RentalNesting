@@ -88,7 +88,7 @@
                                 @if (Auth::user()->user_role == 'renter')
                                     @if ($status_check === 'true')
                                     <div class="send_btn">
-                                        <a href="javascript:void(0)" class="send_btn">Request on panding!</a>
+                                        <a href="javascript:void(0)" class="send_btn">Request on pending!</a>
                                     </div>
                                     @else
                                     <div class="send_btn">
@@ -117,7 +117,7 @@
     <div class="row">
         <div class="col-xl-7">
             <div class="action_heading">
-                <h3>Add your property for sale</h3>
+                <h3>Add your property for Rent</h3>
             </div>
         </div>
         <div class="col-xl-5">
