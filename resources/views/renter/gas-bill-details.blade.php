@@ -15,7 +15,7 @@
                 <tr>
                     <th>Sl NO</th>
                     <th>Month</th>
-                    <th>Reent Status</th>
+                    <th>Rent Status</th>
                 </tr>
               </thead>
               <tbody id="rent_details">
