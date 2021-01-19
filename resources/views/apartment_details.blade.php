@@ -88,7 +88,7 @@
                                 @if (Auth::user()->user_role == 'renter')
                                     @if ($status_check === 'true')
                                     <div class="send_btn">
-                                        <a href="javascript:void(0)" class="send_btn">Request on pending!</a>
+                                        <a href="javascript:void(0)" class="send_btn">Request On Pending!</a>
                                     </div>
                                     @else
                                     <div class="send_btn">
@@ -122,7 +122,7 @@
         </div>
         <div class="col-xl-5">
             <div class="call_add_action">
-                <span>+10 637 367 4567</span>
+                <span>01724667787</span>
                 <a href="#" class="boxed-btn3-line">Add Property</a>
             </div>
         </div>

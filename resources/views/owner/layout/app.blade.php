@@ -239,7 +239,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('apartments')}}">
               <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Appartment Informations</span>
+              <span class="menu-title">Apartment Informations</span>
             </a>
           </li>
           <li class="nav-item">
@@ -251,7 +251,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('renterInfo')}}">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Renter informations</span>
+              <span class="menu-title">Renter Informations</span>
             </a>
           </li>
           <li class="nav-item">

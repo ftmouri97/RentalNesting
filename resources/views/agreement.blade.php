@@ -70,7 +70,7 @@
                 <table class="w-full">
                   <tbody>
                   <tr>
-                      <th>Apartment Address</th>
+                      <th>Property Address</th>
                       <td> {{$confirmed->apartment->address}}, {{$confirmed->apartment->zone}}, {{$confirmed->apartment->district}}</td>
                     </tr>
                     <tr>

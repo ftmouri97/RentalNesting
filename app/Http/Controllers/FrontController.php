@@ -93,7 +93,7 @@ class FrontController extends Controller
         }
         else{
             ?>
-            <h3 class="mx-auto">Apartment not vailable</h3>
+            <h3 class="mx-auto">Apartment Not Available</h3>
             <?php
         }
 

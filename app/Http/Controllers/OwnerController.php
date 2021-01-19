@@ -37,7 +37,7 @@ class OwnerController extends Controller
             <thead>
             <tr>
                 <th>SL No#</th>
-                <th>Apertment</th>
+                <th>Apartment</th>
                 <th>Renter name</th>
                 <th>Renter phone</th>
                 <th>Renter email</th>
@@ -80,7 +80,7 @@ class OwnerController extends Controller
             <tr>
                 <th>SL No#</th>
                 <th>Renter name</th>
-                <th>Apertment</th>
+                <th>Apartment</th>
                 <th>Message</th>
             </tr>
             </thead>
@@ -117,7 +117,7 @@ class OwnerController extends Controller
                     <th>Sl No #</th>
                     <th>Month</th>
                     <th>Renter</th>
-                    <th>Apertment</th>
+                    <th>Apartment</th>
                     <th>Gas bill staus</th>
                 </tr>
             </thead>
@@ -151,7 +151,7 @@ class OwnerController extends Controller
                     <th>Sl No #</th>
                     <th>Month</th>
                     <th>Renter</th>
-                    <th>Apertment</th>
+                    <th>Apartment</th>
                     <th>Service charge staus</th>
                 </tr>
             </thead>
@@ -185,7 +185,7 @@ class OwnerController extends Controller
                     <th>Sl No #</th>
                     <th>Month</th>
                     <th>Renter</th>
-                    <th>Apertment</th>
+                    <th>Apartment</th>
                     <th>Rent staus</th>
                 </tr>
             </thead>
@@ -236,7 +236,7 @@ class OwnerController extends Controller
                     <th>Month</th>
                     <th>Name</th>
                     <th>Phone</th>
-                    <th>Apertment</th>
+                    <th>Apartment</th>
                     <th>Rent status</th>
                     <th>Service charge status</th>
                     <th>Gas bill status</th>
@@ -293,7 +293,7 @@ class OwnerController extends Controller
                     <th>SL No#</th>
                     <th>Renter Name</th>
                     <th>Renter Phone</th>
-                    <th>Apertment</th>
+                    <th>Apartment</th>
                     <th>Accept</th>
                     <th>Delete</th>
                 </tr>
