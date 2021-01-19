@@ -342,7 +342,7 @@ class OwnerController extends Controller
                     <th>Bath</th>
                     <th>Size</th>
                     <th>Description</th>
-                    <th>Apartment rent</th>
+                    <th>Apartment Rent</th>
                     <th>Commission status</th>
                     <th>Active status</th>
                     <th></th>
