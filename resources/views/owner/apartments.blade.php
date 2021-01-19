@@ -113,10 +113,12 @@
                 <input type="text" class="form-control" id="edit_flat_name" placeholder="Flat name" value="asd">
             </div>
             <div class="form-group">
-                <label for="apartment_edit_category">Apartment category</label>
+                <label for="apartment_edit_category">Property Type</label>
                 <select name="apartment_category" class="form-control" id="apartment_edit_category" placeholder="Apartment category">
-                    <option value="apartment">apartment</option>
-                    <option value="sublet">sublet</option>
+                    <option value="apartment">All</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="apartment">Duplex</option>
+                    <option value="sublet">Sublet</option>
                     <option value="office space">office space</option>
                 </select>
             </div>
