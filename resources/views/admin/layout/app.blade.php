@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Melody Admin</title>
+  <title>Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/vendors/css/vendor.bundle.base.css">
@@ -154,13 +154,13 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('ownerLogin')}}">
               <i class="fa fa-puzzle-piece menu-icon"></i>
-              <span class="menu-title">owner login approvel</span>
+              <span class="menu-title">Owner Login Approval</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('ownerPosts')}}">
               <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Owner post approval</span>
+              <span class="menu-title">Owner Post Approval</span>
             </a>
           </li>
           <li class="nav-item">
