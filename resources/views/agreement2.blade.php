@@ -22,7 +22,7 @@
         }
         .invoice {
             background: white;
-            border: 1px solid #CCC;
+            border: 1px solid #CCC;  
             font-size: 14px;
             padding: 48px;
             margin: 20px 0;

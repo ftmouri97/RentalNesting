@@ -14,6 +14,15 @@ use Auth;
 
 class OwnerController extends Controller
 {
+    public function owner_dashboard()
+    {
+        $owner_id = Auth::user()->id;
+        $total_flat = apartment_detail::where('owner_id',$owner_id)->get()->count();
+
+        $total_renter = rent_confirmation::where('owner_id',$owner_id)->get()->count();
+
+        return view('owner.dashboard',['total_flat'=>$total_flat,'total_renter'=>$total_renter]);
+    }
     public function delete_renter_info(Request $Request)
     {
         $rent_conf = rent_confirmation::where('id',$Request->id)->first();
@@ -410,7 +419,7 @@ class OwnerController extends Controller
             $Request->feature_image->move(public_path('../Apartment photoes'), $fileName);
             feature_image::create(['apartment_id'=>$apartment->id,'image'=>$fileName]);
             if ($Request->file('detail_image')) {
-                $increment = 1;
+                $increment = 0;
                 foreach ($Request->file('detail_image') as $detail_image) {
                     $filesName = time().$increment.'.'.$detail_image->extension();
                     $detail_image->move(public_path('../Apartment photoes'), $filesName);
