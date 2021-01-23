@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-xl-6 col-md-4 col-lg-6">
                         <div class="prise_quantity">
-                            <h4>{{$apartment->apartment_rent}}</h4>
+                            <h4>BDT {{$apartment->apartment_rent}}</h4>
                             <a href="#">{{$apartment->owner->phone}}</a>
                         </div>
                     </div>

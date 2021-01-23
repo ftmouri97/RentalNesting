@@ -192,8 +192,8 @@
                                                 <img src="@if($apartment->featureImage)
                                                 {{asset('Apartment photoes/'.$apartment->featureImage->image)}}
                                                 @endif"
-                                                    alt="">
-                                                <span>Popular Apartment</span>
+                                                    alt=" "><span> Popular Apartment </span>
+                                               
                                             </div>
                                         </div>
                                         <div class="info_content">
