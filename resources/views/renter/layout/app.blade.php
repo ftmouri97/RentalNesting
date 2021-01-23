@@ -249,6 +249,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{route('ownerInfo')}}">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">Owner informations</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{route('booking-list')}}">
               <i class="fa fa-puzzle-piece menu-icon"></i>
               <span class="menu-title">Booking List</span>

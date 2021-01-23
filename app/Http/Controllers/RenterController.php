@@ -15,6 +15,69 @@ use App\Models\User;
 class RenterController extends Controller
 {
 
+    public function read_owner_info()
+    {
+        ?>
+        <table id="order-listing" class="table">
+            <thead>
+            <tr>
+                <th>SL No#</th>
+                <th>Apertment</th>
+                <th>Owner name</th>
+                <th>Owner phone</th>
+                <th>Owner email</th>
+                <th>Agreement Paper</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+        <?php
+        $renters = rent_confirmation::where('renter_id',auth()->user()->id)->get();
+        foreach ($renters as $renter) {
+            ?>
+            <tr>
+                <td><?php echo $renter->id ?></td>
+                <td><?php echo $renter->apartment->flat_name.", ".$renter->apartment->floor_no.", ".$renter->apartment->zone.", ".$renter->apartment->address.", ".$renter->apartment->district ?></td>
+                <td><?php echo $renter->owner->name ?></td>
+                <td><?php echo $renter->owner->phone ?></td>
+                <td><?php echo $renter->owner->email ?></td>
+                <td>
+                    <a href='agreement_show/<?php echo $renter->id ?>'>Show</a>
+                </td>
+
+            </tr>
+            <?php
+            }
+        ?>
+            </tbody>
+        </table>
+        <script src="../assets/melody/js/data-table.js"></script>
+        <?php
+    }
+    public function renter_dashboard()
+    {
+        $renter_id = Auth::user()->id;
+        $renter_info = rent_confirmation::where('renter_id',$renter_id)->first();
+
+        if($renter_info)
+
+        {
+            $owner_id = $renter_info->owner_id;
+            $owner_name = user::where('id',$owner_id)->first()->name;
+            $owner_contact_no = user::where('id',$owner_id)->first()->phone;
+            $owner_address = apartment_detail::where('owner_id',$owner_id)->first();
+            $address = $owner_address->address.",".$owner_address->zone.",".$owner_address->district;
+
+        }
+        else
+        {
+            $address = "Not Available";
+            $owner_contact_no = "Not Available";
+            $owner_name = "Not Available";
+        }
+        return view('renter.dashboard',compact('address','owner_contact_no','owner_name'));
+    }
+
     public function send_otp()
     {
         $mobile_number = "01845318609";
@@ -82,8 +145,8 @@ class RenterController extends Controller
             "gas_bill_status"=>0
         ]);
      }
-  
-    
+
+
     }
     public function check_notification()
     {
@@ -264,7 +327,7 @@ class RenterController extends Controller
     {
        $user_id =  Auth::user()->id;;
        $apartment_list = rent_request::where('renter_id',$user_id)->get();
-       
+
        $data = "";
        for($j=0;$j<sizeof($apartment_list);$j++)
        {
@@ -286,7 +349,7 @@ class RenterController extends Controller
 
        }
 
-     
+
      echo $data;
 
 

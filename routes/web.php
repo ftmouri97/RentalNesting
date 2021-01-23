@@ -44,7 +44,7 @@ Route::namespace('Auth')->group(function () {
  */
 Route::group(['prefix' => 'owner','middleware' => 'owner'], function()
 {
-    Route::view('/','owner.dashboard')->name('owner-dashboard');
+    Route::get('/','OwnerController@owner_dashboard')->name('owner-dashboard');
     Route::view('apartments','owner.apartments')->name('apartments');
     Route::view('/booking-requests','owner.booking-requests')->name('bookingRequests');
     Route::view('/renters','owner.renters')->name('renters');
@@ -124,7 +124,9 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function(){
 
 Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
 {
-    Route::view('/','renter.dashboard')->name('renter-dashboard');
+    Route::get('read-owner-info','RenterController@read_owner_info')->name('read-owner-info');
+    Route::view('owner-info','renter.owner-info')->name('ownerInfo');
+    Route::get('/','RenterController@renter_dashboard')->name('renter-dashboard');
     Route::view('notification','renter.notification')->name('notification');
     Route::view('booking-list','renter.booking-list')->name('booking-list');
     Route::view('rent-details','renter.rent-details')->name('rent-details');

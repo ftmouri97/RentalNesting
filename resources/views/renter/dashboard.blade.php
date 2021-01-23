@@ -10,21 +10,16 @@
     <div class="col-md-6 grid-margin">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-0">Statistics</h4>
+                <h4 class="card-title mb-0">Owner Name</h4>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-inline-block pt-3">
                         <div class="d-md-flex">
-                            <h2 class="mb-0">$10,200</h2>
-                            <div class="d-flex align-items-center ml-md-2 mt-2 mt-md-0">
-                                <i class="far fa-clock text-muted"></i>
-                                <small class=" ml-1 mb-0">Updated: 9:10am</small>
-                            </div>
+                            <h2 class="mb-0">{{ $owner_name }}</h2>
+
                         </div>
-                        <small class="text-gray">Raised from 89 orders.</small>
+
                     </div>
-                    <div class="d-inline-block">
-                        <i class="fas fa-chart-pie text-info icon-lg"></i>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -32,21 +27,16 @@
     <div class="col-md-6 grid-margin">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-0">Daily Order</h4>
+                <h4 class="card-title mb-0">Home Address</h4>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-inline-block pt-3">
                         <div class="d-md-flex">
-                            <h2 class="mb-0">$2256</h2>
-                            <div class="d-flex align-items-center ml-md-2 mt-2 mt-md-0">
-                                <i class="far fa-clock text-muted"></i>
-                                <small class="ml-1 mb-0">Updated: 05:42pm</small>
-                            </div>
+                            <h2 class="mb-0">{{ $address }}</h2>
+
                         </div>
-                        <small class="text-gray">hey, let’s have lunch together</small>
+
                     </div>
-                    <div class="d-inline-block">
-                        <i class="fas fa-shopping-cart text-danger icon-lg"></i>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -56,21 +46,16 @@
     <div class="col-md-6 grid-margin">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-0">Statistics</h4>
+                <h4 class="card-title mb-0">Owner Contact No</h4>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-inline-block pt-3">
                         <div class="d-md-flex">
-                            <h2 class="mb-0">$10,200</h2>
-                            <div class="d-flex align-items-center ml-md-2 mt-2 mt-md-0">
-                                <i class="far fa-clock text-muted"></i>
-                                <small class=" ml-1 mb-0">Updated: 9:10am</small>
-                            </div>
+                            <h2 class="mb-0">{{ $owner_contact_no }}</h2>
+
                         </div>
-                        <small class="text-gray">Raised from 89 orders.</small>
+
                     </div>
-                    <div class="d-inline-block">
-                        <i class="fas fa-chart-pie text-info icon-lg"></i>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -78,21 +63,16 @@
     <div class="col-md-6 grid-margin">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-0">Daily Order</h4>
+                <h4 class="card-title mb-0">Due Payment</h4>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-inline-block pt-3">
                         <div class="d-md-flex">
-                            <h2 class="mb-0">$2256</h2>
-                            <div class="d-flex align-items-center ml-md-2 mt-2 mt-md-0">
-                                <i class="far fa-clock text-muted"></i>
-                                <small class="ml-1 mb-0">Updated: 05:42pm</small>
-                            </div>
+                            <h2 class="mb-0">0</h2>
+
                         </div>
-                        <small class="text-gray">hey, let’s have lunch together</small>
+
                     </div>
-                    <div class="d-inline-block">
-                        <i class="fas fa-shopping-cart text-danger icon-lg"></i>
-                    </div>
+
                 </div>
             </div>
         </div>

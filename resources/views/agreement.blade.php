@@ -47,7 +47,7 @@
                 <h4>From:</h4>
                 <address>
                 <strong>{{$confirmed->owner->name}}</strong>
-                
+
 
                 </address>
               </div>
@@ -86,7 +86,7 @@
 
                 <div style="margin-bottom: 0px">&nbsp;</div>
 
-               
+
 
 
               </div>
