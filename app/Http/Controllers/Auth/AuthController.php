@@ -66,10 +66,11 @@ class AuthController extends Controller
             'phone' => 'required|unique:users',
             'email' => 'required|unique:users|email',
             'password' => 'required|confirmed',
-            
+
         ]);
+        file_put_contents('test.txt',$request->nid);
         $image = time().'.'.request()->user_image->getClientOriginalExtension();
-       
+
         $request->user_image->move(public_path('../user_photos'), $image);
         $user = User::create(['name'=>$request->name,'email'=>$request->email,'phone'=>$request->phone,'nid'=>$request->nid,'password'=>Hash::make($request->password),'user_role'=>$request->user_role,'image'=>$image]);
         if ($user) {

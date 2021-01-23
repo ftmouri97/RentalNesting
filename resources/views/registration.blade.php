@@ -4,7 +4,7 @@
 @section('body')
 
 <style>
-  
+
   .tab_li
 {
    display:block;
@@ -25,7 +25,7 @@
     display: table;
     clear: both;
   }
-  
+
   .active a {
     background:$main;
     color:$white;
@@ -70,12 +70,12 @@
                 </ul>
             </div>
         @endif
-        
+
         <ul class="tab-group">
         <li class="tab active tab_li"><a href="#owner">Owner</a></li>
         <li class="tab tab_li"><a href="#renter">Renter</a></li>
        </ul>
-        
+
         <div class="tab-content">
         <div id="owner">
             <form action="{{ route('reg_process') }}" method="POST" enctype="multipart/form-data">
@@ -105,7 +105,7 @@
                 <input type="file" name="user_image"  class="single-input"   accept="image/*" multiple required   >
                 <label for="img">User Image</label>
                 </div>
-               
+
                 <div class="mt-10">
                     <input type="password" name="password" placeholder="Password"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
@@ -117,7 +117,7 @@
                         class="single-input">
                 </div>
                 <div class="row justify-content-between align-items-center mt-10">
-                   <input type="hidden" value="owner" name="user_role"> 
+                   <input type="hidden" value="owner" name="user_role">
                     <div class="col">
                         <button  class="d-block ml-auto btn btn-primary" type="submit">Registration</button>
                     </div>
@@ -153,7 +153,7 @@
                 <input type="file" name="user_image"  class="single-input"   accept="image/*" multiple required   >
                 <label for="img">User Image</label>
                 </div>
-               
+
                 <div class="mt-10">
                     <input type="password" name="password" placeholder="Password"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required
@@ -165,19 +165,19 @@
                         class="single-input">
                 </div>
                 <div class="row justify-content-between align-items-center mt-10">
-                <input type="hidden" value="renter" name="user_role"> 
+                <input type="hidden" value="renter" name="user_role">
                     <div class="col">
                         <button  class="d-block ml-auto btn btn-primary" type="submit">Registration</button>
                     </div>
                 </div>
             </form>
             </div>
-            </div> 
+            </div>
         </div>
-            </div> 
+            </div>
         </div>
 
-        
+
     </div>
 </div>
 
@@ -282,18 +282,18 @@
 @section('page-js')
 <script>
 $('.tab a').on('click', function (e) {
-  
+
   e.preventDefault();
-  
+
   $(this).parent().addClass('active');
   $(this).parent().siblings().removeClass('active');
-  
+
   target = $(this).attr('href');
 
   $('.tab-content > div').not(target).hide();
-  
+
   $(target).fadeIn(600);
-  
+
 });
 </script>
 
