@@ -232,7 +232,7 @@
         <div class="row">
             <div class="col-xl-4 col-md-4">
                 <div class="single_counter">
-                    <h3> <span class="counter">200</span> <span>+</span> </h3>
+                    <h3> <span class="counter"></span> <span>+</span> </h3>
                     <p>Properties for Rent</p>
                 </div>
             </div>
@@ -264,7 +264,7 @@
             </div>
             <div class="col-xl-5">
                 <div class="call_add_action">
-                    <span>+10 637 367 4567</span>
+                    <span>01835-764332</span>
                     <a href="#" class="boxed-btn3-line">Add Property</a>
                 </div>
             </div>
@@ -312,34 +312,8 @@
 
                     </div>
                 </div>
-                <div class="col-xl-2 col-md-6 col-lg-3">
-                    <div class="footer_widget">
-                        <h3 class="footer_title">
-                            Services
-                        </h3>
-                        <ul>
-                            <li><a href="#">Marketing & SEO</a></li>
-                            <li><a href="#"> Startup</a></li>
-                            <li><a href="#">Finance solution</a></li>
-                            <li><a href="#">Food</a></li>
-                            <li><a href="#">Travel</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="col-xl-2 col-md-6 col-lg-2">
-                    <div class="footer_widget">
-                        <h3 class="footer_title">
-                            Useful Links
-                        </h3>
-                        <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#"> Contact</a></li>
-                            <li><a href="#">Appointment</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
+                
                 <div class="col-xl-4 col-md-6 col-lg-4">
                     <div class="footer_widget">
                         <h3 class="footer_title">
