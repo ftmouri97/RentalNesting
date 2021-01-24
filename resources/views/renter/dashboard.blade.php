@@ -6,11 +6,6 @@
         Dashboard
     </h3>
 </div>
-<<<<<<< HEAD
-
-    
-   
-=======
 <div class="row">
     <div class="col-md-6 grid-margin">
         <div class="card">
@@ -47,7 +42,6 @@
         </div>
     </div>
 </div>
->>>>>>> d92861e73c3ead506c967f11ea5804a50da363e9
 <div class="row">
     <div class="col-md-6 grid-margin">
         <div class="card">
