@@ -147,6 +147,7 @@ Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
     Route::post('change-profile','RenterController@changeProfile')->name('changeProfile');
     Route::get('read-profile','RenterController@readProfile')->name('readProfile');
     Route::get('rent-apartment/{id}','RenterController@rentApartment')->name('rentApartment');
+    Route::get('agreement_show/{id}','OwnerController@agreement_show');
 });
 
 

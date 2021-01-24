@@ -6,7 +6,7 @@
     <div class="card-header">
         Your informations
     </div>
-    <div class="card-body">
+    <div class="card-body" >
         <div class="form-group">
             <label for="name">Name</label>
             <input class="form-control" type="text" id="name">
@@ -15,6 +15,7 @@
             <label for="name">Email</label>
             <input class="form-control" type="email" id="email">
         </div>
+
     </div>
     <div class="card-footer d-flex justify-content-end">
         <button class="btn btn-primary" onclick="updateProfile()">Change</button>

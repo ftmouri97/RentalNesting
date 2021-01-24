@@ -24,6 +24,7 @@ class RenterController extends Controller
                 <th>SL No#</th>
                 <th>Apertment</th>
                 <th>Owner name</th>
+                <th>Owner Image</th>
                 <th>Owner phone</th>
                 <th>Owner email</th>
                 <th>Agreement Paper</th>
@@ -39,6 +40,7 @@ class RenterController extends Controller
                 <td><?php echo $renter->id ?></td>
                 <td><?php echo $renter->apartment->flat_name.", ".$renter->apartment->floor_no.", ".$renter->apartment->zone.", ".$renter->apartment->address.", ".$renter->apartment->district ?></td>
                 <td><?php echo $renter->owner->name ?></td>
+                <td><img src="../user_photos/<?php echo $renter->owner->image ?>" style="border-radius:0%;height:80px;width:80px"></td>
                 <td><?php echo $renter->owner->phone ?></td>
                 <td><?php echo $renter->owner->email ?></td>
                 <td>
@@ -153,6 +155,9 @@ class RenterController extends Controller
         $user_id =  Auth::user()->id;;
         $date = date('Y-m');
         $month = date("F");
+        $rent_confimation = rent_confirmation::where('renter_id',$user_id)->first();
+        if($rent_confimation)
+        {
         $check_avail = notification::where('user_id',$user_id)->where('created_at','LIKE',"%".$date."%")->first();
         if($check_avail)
         {
@@ -164,7 +169,7 @@ class RenterController extends Controller
         }
 
         //echo $date;
-
+    }
 
         $notification = notification::where('user_id',$user_id)->where('status','Unread')->get();
         $total_notification = sizeof($notification);
