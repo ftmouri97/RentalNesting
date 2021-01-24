@@ -48,6 +48,7 @@ class OwnerController extends Controller
                 <th>SL No#</th>
                 <th>Apartment</th>
                 <th>Renter name</th>
+                <th>Renter image</th>
                 <th>Renter phone</th>
                 <th>Renter email</th>
                 <th>Agreement Paper</th>
@@ -63,6 +64,7 @@ class OwnerController extends Controller
                 <td><?php echo $renter->id ?></td>
                 <td><?php echo $renter->apartment->flat_name.", ".$renter->apartment->floor_no.", ".$renter->apartment->zone.", ".$renter->apartment->address.", ".$renter->apartment->district ?></td>
                 <td><?php echo $renter->renter->name ?></td>
+                <td><img src="../user_photos/<?php echo $renter->renter->image ?>" style="border-radius:0%;height:80px;width:80px"></td>
                 <td><?php echo $renter->renter->phone ?></td>
                 <td><?php echo $renter->renter->email ?></td>
                 <td>
