@@ -264,7 +264,7 @@
             </div>
             <div class="col-xl-5">
                 <div class="call_add_action">
-                    <span>01835-764332</span>
+                    <span>+10 637 367 4567</span>
                     <a href="#" class="boxed-btn3-line">Add Property</a>
                 </div>
             </div>
