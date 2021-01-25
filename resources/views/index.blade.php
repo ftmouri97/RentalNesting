@@ -4,7 +4,7 @@
 
 <style>
     ul.list {
-        height: 130px;
+        height: 130 px;
         overflow-y: auto !important;
     }
 </style>
@@ -264,7 +264,7 @@
             </div>
             <div class="col-xl-5">
                 <div class="call_add_action">
-                    <span>+10 637 367 4567</span>
+                    <span>01835-657256</span>
                     <a href="#" class="boxed-btn3-line">Add Property</a>
                 </div>
             </div>
@@ -314,33 +314,11 @@
                 </div>
                 
                 
-                <div class="col-xl-4 col-md-6 col-lg-4">
-                    <div class="footer_widget">
-                        <h3 class="footer_title">
-                            Subscribe
-                        </h3>
-                        <form action="#" class="newsletter_form">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit">Subscribe</button>
-                        </form>
-                        <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
-                            luckily.</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
-    <div class="copy-right_text">
-        <div class="container">
-            <div class="footer_border"></div>
-            <div class="row">
-                <div class="col-xl-12">
-                    <p class="copy_right text-center">
-                 </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </footer>
 <!--/ footer end  -->
 @endsection
