@@ -192,7 +192,7 @@
                         <div class="footer_widget">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="{{asset('assets/realstate')}}/img/footer_logo.png" alt="">
+                                    <img src="{{asset('assets/realstate')}}/img/logo5.png" alt="">
                                 </a>
                             </div>
                             <p>
