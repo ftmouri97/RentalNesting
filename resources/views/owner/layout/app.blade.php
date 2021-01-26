@@ -7,11 +7,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-<<<<<<< HEAD
+
   <title>Landlord</title>
-=======
-  <title>Accomodation</title>
->>>>>>> 650738af1ccdc04ad4a38c7fa27088f36142f13f
+
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/vendors/css/vendor.bundle.base.css">
@@ -29,7 +27,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index-2.html"><img src="{{asset('assets/melody')}}/images/logo.svg" alt="logo"/></a>
+        <!--  <a class="navbar-brand brand-logo" href="index-2.html"><img src="{{asset('assets/melody')}}/images/logo.svg" alt="logo"/></a>-->
           <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="{{asset('assets/melody')}}/images/logo-mini.svg" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-end">

@@ -53,7 +53,7 @@
               </div>
 
               <div class="col-sm-6 text-right">
-                <img src="{{ asset('assets') }}/frontend/logo.jpeg" height="100px" width="100px" alt="logo">
+                <img src="{{ asset('assets') }}/frontend/logo1.png" height="100px" width="100px" alt="logo">
               </div>
             </div>
 
