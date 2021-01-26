@@ -43,7 +43,7 @@
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img class="img-fluid" style="height:50px;" src="{{asset('assets/logo.png')}}" alt="">
+                                        <img class="img-fluid" style="height:100px;" src="{{asset('assets/logo.png')}}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                             <li><a href="{{route(auth()->user()->user_role.'-dashboard')}}">Dashboard</a></li>
                                             <li><a href="{{route('logout')}}">Logout</a></li>
                                             @endif
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{{route('contact')}}">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>

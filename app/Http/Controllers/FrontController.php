@@ -131,4 +131,8 @@ class FrontController extends Controller
         }
         return view('apartment_details',['apartment'=>$data,'status_check'=>$status_check,'apartment_id'=>$Request->id]);
     }
+    public function contact()
+    {
+         return view('contact');
+    }
 }
