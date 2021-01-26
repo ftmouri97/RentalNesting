@@ -22,7 +22,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Apertment details</h5>
+          <h5 class="modal-title">Property Details</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -33,7 +33,7 @@
                 <input type="text" class="form-control" id="floor_no" placeholder="Floor no" value="asd">
             </div>
             <div class="form-group">
-                <label for="flat_name">Flat name</label>
+                <label for="flat_name">Flat Name</label>
                 <input type="text" class="form-control" id="flat_name" placeholder="Flat name" value="asd">
             </div>
             <div class="form-group">
@@ -49,39 +49,41 @@
                 <input type="text" class="form-control" id="address" placeholder="Address" value="asd">
             </div>
             <div class="form-group">
-                <label for="total_bed">Total bed</label>
+                <label for="total_bed">Bed Room</label>
                 <input type="number" class="form-control" id="total_bed" placeholder="Total bed" value="123">
             </div>
             <div class="form-group">
-                <label for="total_bath">Total bath</label>
+                <label for="total_bath">Bath Room</label>
                 <input type="number" class="form-control" id="total_bath" placeholder="Total bath" value="123">
             </div>
             <div class="form-group">
-                <label for="apartment_size">Apartment size</label>
+                <label for="apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" value="asd">
             </div>
             <div class="form-group">
-                <label for="feature_image">Apartment feature image</label>
+                <label for="feature_image">Property Feature Image</label>
                 <input type="file" id="feature_image">
             </div>
             <div class="form-group">
-                <label for="detail_image">Apartment detail images</label>
+                <label for="detail_image">Property Details Images</label>
                 <input type="file" id="detail_image" multiple>
             </div>
             <div class="form-group">
-                <label for="apartment_rent">Apartment rent</label>
+                <label for="apartment_rent">Rent</label>
                 <input type="text" class="form-control" id="apartment_rent" placeholder="apartment rent" value="123">
             </div>
             <div class="form-group">
-                <label for="apartment_category">Apartment category</label>
+                <label for="apartment_category">Property Type</label>
                 <select class="form-control" id="apartment_category" placeholder="Apartment category">
-                    <option value="apartment">apartment</option>
-                    <option value="sublet">sublet</option>
-                    <option value="office space">office space</option>
+                    <option value="apartment">All</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="apartment">Duplex</option>
+                    <option value="sublet">Sublet</option>
+                    <option value="office space">Office Space</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="apartment_description">Apartment description</label>
+                <label for="apartment_description">Property Description</label>
                 <textarea  type="text" class="form-control" id="apartment_description" placeholder="apartment description">asd</textarea>
             </div>
         </div>
@@ -97,7 +99,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Apertment details</h5>
+          <h5 class="modal-title">Property Details</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -113,49 +115,51 @@
                 <input type="text" class="form-control" id="edit_flat_name" placeholder="Flat name" value="asd">
             </div>
             <div class="form-group">
-                <label for="apartment_edit_category">Apartment category</label>
+                <label for="apartment_edit_category">Property Type</label>
                 <select name="apartment_category" class="form-control" id="apartment_edit_category" placeholder="Apartment category">
-                    <option value="apartment">apartment</option>
-                    <option value="sublet">sublet</option>
-                    <option value="office space">office space</option>
+                    <option value="apartment">All</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="apartment">Duplex</option>
+                    <option value="sublet">Sublet</option>
+                    <option value="office space">Office Space</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="edit_district">District</label>
-                <input type="text" class="form-control" id="edit_district" placeholder="District" value="asd">
+                <input type="text" class="form-control" id="edit_district" placeholder="District" value=" ">
             </div>
             <div class="form-group">
                 <label for="edit_zone">Zone</label>
-                <input type="text" class="form-control" id="edit_zone" placeholder="Zone" value="asd">
+                <input type="text" class="form-control" id="edit_zone" placeholder="Zone" value=" ">
             </div>
             <div class="form-group">
                 <label for="edit_address">Address</label>
-                <input type="text" class="form-control" id="edit_address" placeholder="Address" value="asd">
+                <input type="text" class="form-control" id="edit_address" placeholder="Address" value=" ">
             </div>
             <div class="form-group">
-                <label for="edit_total_bed">Total bed</label>
-                <input type="number" class="form-control" id="edit_total_bed" placeholder="Total bed" value="123">
+                <label for="edit_total_bed">Bed Room</label>
+                <input type="number" class="form-control" id="edit_total_bed" placeholder="Total bed" value=" ">
             </div>
             <div class="form-group">
-                <label for="edit_total_bath">Total bath</label>
-                <input type="number" class="form-control" id="edit_total_bath" placeholder="Total bath" value="123">
+                <label for="edit_total_bath">Bath Room</label>
+                <input type="number" class="form-control" id="edit_total_bath" placeholder="Total bath" value=" ">
             </div>
             <div class="form-group">
-                <label for="edit_apartment_size">Apartment size</label>
-                <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" value="asd">
+                <label for="edit_apartment_size">Property Size</label>
+                <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" value=" ">
             </div>
             <div class="form-group">
-                <label for="edit_feature_image">Apartment feature image</label>
+                <label for="edit_feature_image">Property Feature Image</label>
                 <input type="file" id="edit_feature_image">
                 <input type="hidden" id="edit_feature_image_value">
             </div>
             <div class="form-group">
-                <label for="edit_apartment_rent">Apartment rent</label>
-                <input type="text" class="form-control" id="edit_apartment_rent" placeholder="apartment rent" value="123">
+                <label for="edit_apartment_rent">Rent</label>
+                <input type="text" class="form-control" id="edit_apartment_rent" placeholder="apartment rent" value=" ">
             </div>
             <div class="form-group">
-                <label for="edit_apartment_description">Apartment description</label>
-                <textarea  type="text" class="form-control" id="edit_apartment_description" placeholder="apartment description">asd</textarea>
+                <label for="edit_apartment_description">Property Description</label>
+                <textarea  type="text" class="form-control" id="edit_apartment_description" placeholder="apartment description"> </textarea>
             </div>
         </div>
         <div class="modal-footer">
@@ -171,7 +175,7 @@
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="UpdateExampleModalScrollableTitle">Managing images</h5>
+                <h5 class="modal-title" id="UpdateExampleModalScrollableTitle">Managing Images</h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <i class="anticon anticon-close"></i>
                 </button>
