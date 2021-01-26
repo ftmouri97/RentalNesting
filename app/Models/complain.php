@@ -12,4 +12,8 @@ class complain extends Model
    {
        return $this->belongsTo('App\Models\User', 'renter_id');
    }
+   public function apartment()
+   {
+       return $this->belongsTo('App\Models\apartment_detail', 'apartment_id','id');
+   }
 }
