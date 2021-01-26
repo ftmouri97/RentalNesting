@@ -7,7 +7,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+<<<<<<< HEAD
   <title>Landlord</title>
+=======
+  <title>Accomodation</title>
+>>>>>>> 650738af1ccdc04ad4a38c7fa27088f36142f13f
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('assets/melody') }}/vendors/css/vendor.bundle.base.css">

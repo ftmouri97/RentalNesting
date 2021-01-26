@@ -53,7 +53,7 @@
               </div>
 
               <div class="col-sm-6 text-right">
-                <img src="https://res.cloudinary.com/dqzxpn5db/image/upload/v1537151698/website/logo.png" alt="logo">
+                <img src="{{ asset('assets') }}/frontend/logo.jpeg" height="100px" width="100px" alt="logo">
               </div>
             </div>
 
@@ -140,7 +140,7 @@
                     <br>
                     <h4>Payment Terms and Methods</h4>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cumque neque velit tenetur pariatur perspiciatis dignissimos corporis laborum doloribus, inventore.
+                    <img src="{{ asset('assets')}}/frontend/online_payment.png" width="800px" height="100px">
                     </p>
                   </div>
                 </div>
