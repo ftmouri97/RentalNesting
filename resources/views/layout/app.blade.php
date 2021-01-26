@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Real state</title>
+        <title>Accommodation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -43,7 +43,7 @@
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img class="img-fluid" style="height:50px;" src="{{asset('assets/frent.png')}}" alt="">
+                                        <img class="img-fluid" style="height:50px;" src="{{asset('assets/logo.png')}}" alt="">
                                     </a>
                                 </div>
                             </div>
