@@ -30,35 +30,35 @@
         <div class="modal-body">
             <div class="form-group">
                 <label for="floor_no">Floor no</label>
-                <input type="text" class="form-control" id="floor_no" placeholder="Floor no" value="asd">
+                <input type="text" class="form-control" id="floor_no" placeholder="Floor no" value=" ">
             </div>
             <div class="form-group">
                 <label for="flat_name">Flat Name</label>
-                <input type="text" class="form-control" id="flat_name" placeholder="Flat name" value="asd">
+                <input type="text" class="form-control" id="flat_name" placeholder="Flat name" value=" ">
             </div>
             <div class="form-group">
                 <label for="district">District</label>
-                <input type="text" class="form-control" id="district" placeholder="District" value="asd">
+                <input type="text" class="form-control" id="district" placeholder="District" value=" ">
             </div>
             <div class="form-group">
                 <label for="zone">Zone</label>
-                <input type="text" class="form-control" id="zone" placeholder="Zone" value="asd">
+                <input type="text" class="form-control" id="zone" placeholder="Zone" value=" ">
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Address" value="asd">
+                <input type="text" class="form-control" id="address" placeholder="Address" value=" ">
             </div>
             <div class="form-group">
                 <label for="total_bed">Bed Room</label>
-                <input type="number" class="form-control" id="total_bed" placeholder="Total bed" value="123">
+                <input type="number" class="form-control" id="total_bed" placeholder="Total bed" value=" ">
             </div>
             <div class="form-group">
                 <label for="total_bath">Bath Room</label>
-                <input type="number" class="form-control" id="total_bath" placeholder="Total bath" value="123">
+                <input type="number" class="form-control" id="total_bath" placeholder="Total bath" value=" ">
             </div>
             <div class="form-group">
                 <label for="apartment_size">Property Size</label>
-                <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" value="asd">
+                <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" value=" ">
             </div>
             <div class="form-group">
                 <label for="feature_image">Property Feature Image</label>
@@ -70,7 +70,7 @@
             </div>
             <div class="form-group">
                 <label for="apartment_rent">Rent</label>
-                <input type="text" class="form-control" id="apartment_rent" placeholder="apartment rent" value="123">
+                <input type="text" class="form-control" id="apartment_rent" placeholder="apartment rent" value=" ">
             </div>
             <div class="form-group">
                 <label for="apartment_category">Property Type</label>
@@ -84,7 +84,7 @@
             </div>
             <div class="form-group">
                 <label for="apartment_description">Property Description</label>
-                <textarea  type="text" class="form-control" id="apartment_description" placeholder="apartment description">asd</textarea>
+                <textarea  type="text" class="form-control" id="apartment_description" placeholder="apartment description"> </textarea>
             </div>
         </div>
         <div class="modal-footer">
