@@ -2,12 +2,7 @@
 
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-
-    <!-- header-start -->
+   
     <header>
            
         <!-- header-end -->
@@ -113,10 +108,10 @@
                                         Useful Links
                                 </h3>
                                 <ul>
-                                    <li><a href="{{ route('contact') }}">About Us</a></li>
                                     <li><a href="{{ route('home') }}">Home</a></li>
                                     <li><a href="{{ route('registration') }}">Registration</a></li>
                                     <li><a href="{{ route('contact') }}"> Contact</a></li>
+                                    <li><a href="{{ route('contact') }}">About Us</a></li>
                                     
                                 </ul>
                             </div>
@@ -174,4 +169,3 @@
         </script>
     </body>
     
-    </html>
