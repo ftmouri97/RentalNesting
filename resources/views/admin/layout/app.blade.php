@@ -87,7 +87,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index-2.html"><img src="{{asset('assets/melody')}}/images/logo.svg" alt="logo"/></a>
+
         <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="{{asset('assets/melody')}}/images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -163,12 +163,12 @@
               <span class="menu-title">Owner Post Approval</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="{{route('commission')}}">
               <i class="fab fa-trello menu-icon"></i>
               <span class="menu-title">commisiion</span>
             </a>
-          </li>
+          </li>-->
         </ul>
       </nav>
       <!-- partial -->

@@ -16,7 +16,7 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-">
         <h3></h3>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#add-apertment-detail-modal">Add</button>
+      <!--  <button class="btn btn-primary" data-toggle="modal" data-target="#add-apertment-detail-modal">Add</button>-->
     </div>
     <div class="card-body">
         <div class="table-responsive" id="owner-posts">

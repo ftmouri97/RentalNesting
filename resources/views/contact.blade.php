@@ -31,7 +31,7 @@
     </div>
     <br>
                 <div class="bradcam_text text-center">
-                    <h3>Address</h3>
+                    <h3>Information</h3>
                     <br>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="media contact-info">
