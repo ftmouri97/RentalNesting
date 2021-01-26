@@ -34,7 +34,7 @@ class OwnerController extends Controller
         $date = date('d-m-Y');
         $data = rent_confirmation::where('id',$Request->id)->first();
         $data['contract_end'] = date('Y-m-d H:i:s', strtotime('+1 years', strtotime($data->created_at)));
-        $data['total'] = $data->advance_payment+$data->apartment->apartment_rent;
+        $data['total'] = (int)$data->advance_payment+(int)$data->apartment->apartment_rent;
         $data['date'] = $date;
         return view('agreement',['confirmed'=>$data]);
     }
@@ -58,10 +58,12 @@ class OwnerController extends Controller
             <tbody>
         <?php
         $renters = rent_confirmation::where('status',0)->where('owner_id',auth()->user()->id)->get();
+        $i=1;
         foreach ($renters as $renter) {
+
             ?>
             <tr>
-                <td><?php echo $renter->id ?></td>
+                <td><?php echo $i++ ?></td>
                 <td><?php echo $renter->apartment->flat_name.", ".$renter->apartment->floor_no.", ".$renter->apartment->zone.", ".$renter->apartment->address.", ".$renter->apartment->district ?></td>
                 <td><?php echo $renter->renter->name ?></td>
                 <td><img src="../user_photos/<?php echo $renter->renter->image ?>" style="border-radius:0%;height:80px;width:80px"></td>
@@ -100,10 +102,11 @@ class OwnerController extends Controller
         $apartments = Auth::user()->apartments()->orderBy('id','desc')->get();
         foreach ($apartments as $apartment) {
             $complains = $apartment->complains;
+            $i=1;
             foreach ($complains as $complain) {
                 ?>
                 <tr>
-                    <td><?php echo $complain->id ?></td>
+                    <td><?php echo $i++ ?></td>
                     <td><?php echo $complain->renter->name ?></td>
                     <td><?php echo $complain->apartment->flat_name ?> ,<?php echo $complain->apartment->address ?> ,<?php echo $complain->apartment->district ?></td>
                     <td><?php echo $complain->message ?></td>
@@ -134,10 +137,11 @@ class OwnerController extends Controller
             </thead>
             <tbody>
             <?php
+            $i=1;
             foreach ($rentDetail as $value) {
                 ?>
                 <tr>
-                    <td><?php echo $value->id ?></td>
+                    <td><?php echo $i++ ?></td>
                     <td><?php echo $value->month ?></td>
                     <td><?php echo $value->renter->name ?></td>
                     <td><?php echo $value->apartment->flat_name ?></td>
@@ -168,10 +172,11 @@ class OwnerController extends Controller
             </thead>
             <tbody>
             <?php
+            $i=1;
             foreach ($rentDetail as $value) {
                 ?>
                 <tr>
-                    <td><?php echo $value->id ?></td>
+                    <td><?php echo $i++ ?>></td>
                     <td><?php echo $value->month ?></td>
                     <td><?php echo $value->renter->name ?></td>
                     <td><?php echo $value->apartment->flat_name ?></td>
@@ -202,10 +207,11 @@ class OwnerController extends Controller
             </thead>
             <tbody>
             <?php
+            $i=1;
             foreach ($rentDetail as $value) {
                 ?>
                 <tr>
-                    <td><?php echo $value->id ?></td>
+                    <td><?php echo $i++ ?></td>
                     <td><?php echo $value->month ?></td>
                     <td><?php echo $value->renter->name ?></td>
                     <td><?php echo $value->apartment->flat_name ?></td>
@@ -264,7 +270,7 @@ class OwnerController extends Controller
             $gas_bill_status = $rent_detail[$i]->gas_bill_status==0?'<button class="btn btn-outline-warning" onclick="gasbill_accepting('.$rent_detail[$i]->id.')">Due</button>':'<label class="badge badge-success">Paid</label>';
             ?>
             <tr>
-                <td><?php echo $rent_detail[$i]->id ?></td>
+                <td><?php echo $i++ ?></td>
                 <td><?php echo $rent_detail[$i]->month ?></td>
                 <td><?php echo $renter->name ?></td>
                 <td><?php echo $renter->phone ?></td>
