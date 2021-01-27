@@ -41,7 +41,7 @@
                                             <ul class="bg-light text-dark" id="showing-zone"></ul>
                                         </div>
                                         <div class="single_field range_slider">
-                                            <label for="#">Price ($)</label>
+                                            <label for="#">Price (BDT)</label>
                                             <div id="slider"></div>
                                         </div>
                                         <div class="single-field min_width">
@@ -265,7 +265,7 @@
             <div class="col-xl-5">
                 <div class="call_add_action">
                     <span>01835-657256</span>
-                    <a href="#" class="boxed-btn3-line">Add Property</a>
+                    <a href="{{route('registration')}}" class="boxed-btn3-line">Add Property</a>
                 </div>
             </div>
         </div>
