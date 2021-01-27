@@ -11,6 +11,7 @@ use App\Models\rent_confirmation;
 use App\Models\rent_details;
 use App\Models\User;
 use Auth;
+use DB;
 
 class OwnerController extends Controller
 {
@@ -416,6 +417,21 @@ class OwnerController extends Controller
         <script src="../assets/melody/js/data-table.js"></script>
         <?php
 
+    }
+
+
+    public function check_holding_address(Request $request)
+    {
+        $holding_address = $request->holding_address;
+        $check_holding_address = DB::table('holding_address')->where('holding_id',$holding_address)->first();
+
+        if($check_holding_address)
+        {
+            echo "ok";
+        }
+        else{
+            echo "not_ok";
+        }
     }
 
 

@@ -56,6 +56,7 @@ Route::group(['prefix' => 'owner','middleware' => 'owner'], function()
     /*
     *  apartment-details operations
     */
+    Route::post('check_holding_address','OwnerController@check_holding_address')->name('check_holding_address');
     Route::get('/read-apartment-details','OwnerController@readApartmentDetails')->name('readApartmentDetails');
     Route::post('/create-apartment-details','OwnerController@createApartmentDetails')->name('createApartmentDetails');
     Route::get('/edit-apartment-details/{id}','OwnerController@editApartmentDetails')->name('editApartmentDetails');
