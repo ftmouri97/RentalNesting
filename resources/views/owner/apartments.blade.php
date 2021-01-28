@@ -28,8 +28,15 @@
           </button>
         </div>
         <div class="modal-body">
+
+            <div class="form-group">
+                <label for="floor_no">Holdind Address</label>
+                <input type="text" class="form-control" id="holding_address" placeholder="holding_address">
+                <p id="holding_error" style="color:red">ERROR</p>
+            </div>
             <div class="form-group">
                 <label for="floor_no">Floor no</label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" id="floor_no" placeholder="Floor no" value=" ">
             </div>
             <div class="form-group">
@@ -47,6 +54,25 @@
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address" placeholder="Address" value=" ">
+=======
+                <input type="text" class="form-control" id="floor_no" placeholder="Floor no" >
+            </div>
+            <div class="form-group">
+                <label for="flat_name">Flat name</label>
+                <input type="text" class="form-control" id="flat_name" placeholder="Flat name" >
+            </div>
+            <div class="form-group">
+                <label for="district">District</label>
+                <input type="text" class="form-control" id="district" placeholder="District" >
+            </div>
+            <div class="form-group">
+                <label for="zone">Zone</label>
+                <input type="text" class="form-control" id="zone" placeholder="Zone" >
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="Address" >
+>>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
             </div>
             <div class="form-group">
                 <label for="total_bed">Bed Room</label>
@@ -57,8 +83,13 @@
                 <input type="number" class="form-control" id="total_bath" placeholder="Total bath" value=" ">
             </div>
             <div class="form-group">
+<<<<<<< HEAD
                 <label for="apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" value=" ">
+=======
+                <label for="apartment_size">Apartment size</label>
+                <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" >
+>>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
             </div>
             <div class="form-group">
                 <label for="feature_image">Property Feature Image</label>
@@ -108,11 +139,11 @@
             <input type="hidden" id="edit_apartment_id">
             <div class="form-group">
                 <label for="edit_floor_no">Floor no</label>
-                <input type="text" class="form-control" id="edit_floor_no" placeholder="Floor no" value="asd">
+                <input type="text" class="form-control" id="edit_floor_no" placeholder="Floor no" >
             </div>
             <div class="form-group">
                 <label for="edit_flat_name">Flat name</label>
-                <input type="text" class="form-control" id="edit_flat_name" placeholder="Flat name" value="asd">
+                <input type="text" class="form-control" id="edit_flat_name" placeholder="Flat name" >
             </div>
             <div class="form-group">
                 <label for="apartment_edit_category">Property Type</label>
@@ -126,6 +157,7 @@
             </div>
             <div class="form-group">
                 <label for="edit_district">District</label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" id="edit_district" placeholder="District" value=" ">
             </div>
             <div class="form-group">
@@ -135,6 +167,17 @@
             <div class="form-group">
                 <label for="edit_address">Address</label>
                 <input type="text" class="form-control" id="edit_address" placeholder="Address" value=" ">
+=======
+                <input type="text" class="form-control" id="edit_district" placeholder="District" >
+            </div>
+            <div class="form-group">
+                <label for="edit_zone">Zone</label>
+                <input type="text" class="form-control" id="edit_zone" placeholder="Zone" >
+            </div>
+            <div class="form-group">
+                <label for="edit_address">Address</label>
+                <input type="text" class="form-control" id="edit_address" placeholder="Address" >
+>>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
             </div>
             <div class="form-group">
                 <label for="edit_total_bed">Bed Room</label>
@@ -145,8 +188,13 @@
                 <input type="number" class="form-control" id="edit_total_bath" placeholder="Total bath" value=" ">
             </div>
             <div class="form-group">
+<<<<<<< HEAD
                 <label for="edit_apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" value=" ">
+=======
+                <label for="edit_apartment_size">Apartment size</label>
+                <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" >
+>>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
             </div>
             <div class="form-group">
                 <label for="edit_feature_image">Property Feature Image</label>
@@ -195,5 +243,5 @@
 
 @section('page-js')
 {{-- <script src="{{asset('assets/melody')}}/js/data-table.js"></script> --}}
-<script src="{{ asset('assets/owner/apartment-details.js') }}"></script>
+<script src="{{ asset('assets')}}/owner/apartment-details.js? {{ time() }}" ></script>
 @endsection

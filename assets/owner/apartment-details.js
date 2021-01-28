@@ -4,8 +4,55 @@ $(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
     readData();
 })
+$("#holding_error").hide();
+var holding_address_found;
+$("#holding_address").focusout(function(){
+
+
+
+                var formData= new FormData();
+
+
+          formData.append("holding_address",$("#holding_address").val());
+
+
+
+
+
+                      $.ajax({
+             processData: false,
+             contentType: false,
+             url:"check_holding_address",
+             type:"POST",
+             data:formData,
+             success:function(data){
+                var msg = $.trim(data);
+                if(msg =="ok")
+                {
+                    holding_address_found =1;
+                   $("#holding_error").hide();
+                }
+                else
+                {
+                    holding_address_found =0;
+                   $("#holding_error").show();
+                   $("#holding_error").html('Holding Address not found');
+                }
+
+
+             },
+
+          });
+
+
+
+    })
+
+
+
 
 function manageDetailImages(id) {
     $("#apartment-hidden-id").val(id);
@@ -123,6 +170,7 @@ function updateApertmentDetails() {
 }
 
 function addApertmentDetails() {
+
     if (
         $("#floor_no").val().length !== 0 &&
         $("#flat_name").val().length !== 0 &&
@@ -136,7 +184,8 @@ function addApertmentDetails() {
         $("#apartment_rent").val().length !== 0 &&
         $("#feature_image").val().length !== 0 &&
         $("#detail_image").val().length !== 0 &&
-        $("#apartment_category").val().length !== 0
+        $("#apartment_category").val().length !== 0 &&
+        holding_address_found == 1
     ) {
         formData = new FormData()
         formData.append('floor_no', $("#floor_no").val())
