@@ -120,7 +120,7 @@
        Session::put('apartment_id_for_login',$apartment_id);
 
      ?>
-    window.location.href = "{{route('login')}}";
+    window.location.href = "{{route('registration')}}";
     
  }
 </script>
