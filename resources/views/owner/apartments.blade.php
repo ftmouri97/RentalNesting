@@ -157,7 +157,6 @@
             </div>
             <div class="form-group">
                 <label for="edit_district">District</label>
-<<<<<<< HEAD
                 <input type="text" class="form-control" id="edit_district" placeholder="District" value=" ">
             </div>
             <div class="form-group">
@@ -167,7 +166,7 @@
             <div class="form-group">
                 <label for="edit_address">Address</label>
                 <input type="text" class="form-control" id="edit_address" placeholder="Address" value=" ">
-=======
+
                 <input type="text" class="form-control" id="edit_district" placeholder="District" >
             </div>
             <div class="form-group">
@@ -177,7 +176,7 @@
             <div class="form-group">
                 <label for="edit_address">Address</label>
                 <input type="text" class="form-control" id="edit_address" placeholder="Address" >
->>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
+
             </div>
             <div class="form-group">
                 <label for="edit_total_bed">Bed Room</label>
@@ -188,13 +187,13 @@
                 <input type="number" class="form-control" id="edit_total_bath" placeholder="Total bath" value=" ">
             </div>
             <div class="form-group">
-<<<<<<< HEAD
+
                 <label for="edit_apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" value=" ">
-=======
+
                 <label for="edit_apartment_size">Apartment size</label>
                 <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" >
->>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
+
             </div>
             <div class="form-group">
                 <label for="edit_feature_image">Property Feature Image</label>
