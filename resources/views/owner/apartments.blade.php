@@ -53,25 +53,10 @@
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address" placeholder="Address" value=" ">
-                <input type="text" class="form-control" id="floor_no" placeholder="Floor no" >
+                
             </div>
-            <div class="form-group">
-                <label for="flat_name">Flat name</label>
-                <input type="text" class="form-control" id="flat_name" placeholder="Flat name" >
-            </div>
-            <div class="form-group">
-                <label for="district">District</label>
-                <input type="text" class="form-control" id="district" placeholder="District" >
-            </div>
-            <div class="form-group">
-                <label for="zone">Zone</label>
-                <input type="text" class="form-control" id="zone" placeholder="Zone" >
-            </div>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Address" >
-
-            </div>
+            
+       
             <div class="form-group">
                 <label for="total_bed">Bed Room</label>
                 <input type="number" class="form-control" id="total_bed" placeholder="Total bed" value=" ">
@@ -85,8 +70,7 @@
                 <label for="apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" value=" ">
 
-                <label for="apartment_size">Apartment size</label>
-                <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" >
+                 
             </div>
             <div class="form-group">
                 <label for="feature_image">Property Feature Image</label>

@@ -28,7 +28,7 @@
                     <div class="col-xl-6 col-md-4 col-lg-6">
                         <div class="prise_quantity">
                             <h4>BDT {{$apartment->apartment_rent}}</h4>
-                            <img src="{{asset('assets/realstate')}}/img/svg_icon/phone.png" alt="">
+                            <img src="{{asset('assets/realstate')}}/img/svg_icon/icon.svg" alt="">
                             <a href="#">{{$apartment->owner->phone}}</a>
                         </div>
                     </div>

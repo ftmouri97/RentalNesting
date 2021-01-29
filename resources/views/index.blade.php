@@ -185,14 +185,18 @@
                                     <div class="modern_home_info_inner">
                                         <span class="for_sale">
                                             For Rent
+                                     
                                         </span>
                                         <div class="info_header">
                                             <h3>{{$apartment->flat_name}}</h3>
+                                            <span><h3> Popular Apartment</h3> </span>
                                             <div class="popular_pro d-flex">
-                                                <img src="@if($apartment->featureImage)
-                                                {{asset('Apartment photoes/'.$apartment->featureImage->image)}}
-                                                @endif"
-                                                    alt=" "><span> Popular Apartment </span>
+                                            @if ($apartment->featureImage)
+                        <img style="height:300px;width:700px;" src="{{asset('Apartment photoes/'.$apartment->featureImage->image)}}" alt="">
+                        @else
+                        <img src="" alt="">
+                        @endif
+                                                 
                                                
                                             </div>
                                         </div>
