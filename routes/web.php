@@ -107,7 +107,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function(){
   Route::view('/','admin.dashboard')->name('admin-dashboard');
   Route::view('/owner-posts','admin.ownerPosts')->name('ownerPosts');
   Route::view('/owner-login','admin.ownerLogin')->name('ownerLogin');
-  Route::view('/commission','admin.commission')->name('commission');
+ // Route::view('/holding-address','admin.holding_address')->name('holding-address');
+  Route::get('/holding-address','AdminController@show_holding_address')->name('show_holding_address');
 
 
   /**

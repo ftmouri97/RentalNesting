@@ -293,7 +293,7 @@
                         <div class="socail_links">
                             <ul>
                                 <li>
-                                    <a href="www.facebook.com">
+                                    <a href="m.facebook.com">
                                         <i class="ti-facebook"></i>
                                     </a>
                                 </li>

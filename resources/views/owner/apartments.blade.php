@@ -30,13 +30,12 @@
         <div class="modal-body">
 
             <div class="form-group">
-                <label for="floor_no">Holdind Address</label>
+                <label for="floor_no">Holding Address</label>
                 <input type="text" class="form-control" id="holding_address" placeholder="holding_address">
                 <p id="holding_error" style="color:red">ERROR</p>
             </div>
             <div class="form-group">
                 <label for="floor_no">Floor no</label>
-<<<<<<< HEAD
                 <input type="text" class="form-control" id="floor_no" placeholder="Floor no" value=" ">
             </div>
             <div class="form-group">
@@ -54,7 +53,6 @@
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address" placeholder="Address" value=" ">
-=======
                 <input type="text" class="form-control" id="floor_no" placeholder="Floor no" >
             </div>
             <div class="form-group">
@@ -72,7 +70,7 @@
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" class="form-control" id="address" placeholder="Address" >
->>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
+
             </div>
             <div class="form-group">
                 <label for="total_bed">Bed Room</label>
@@ -83,13 +81,12 @@
                 <input type="number" class="form-control" id="total_bath" placeholder="Total bath" value=" ">
             </div>
             <div class="form-group">
-<<<<<<< HEAD
+
                 <label for="apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" value=" ">
-=======
+
                 <label for="apartment_size">Apartment size</label>
                 <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" >
->>>>>>> 98b5b56444a078c791f4fe235885c3b691da82b4
             </div>
             <div class="form-group">
                 <label for="feature_image">Property Feature Image</label>

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\apartment_detail;
-
+use App\Models\Holding;
 class AdminController extends Controller
 {
     public function deleteOwnerPandingPosts(Request $Request)
@@ -167,4 +167,11 @@ class AdminController extends Controller
         $user->save();
         return "Owner status updated";
     }
+    public function show_holding_address(Request $request)
+    {
+        
+        $holding_address= DB::table('holding_address')->get();
+        return view('admin.holding_address',['holding_address'=> $holding_address]);
+    }
+
 }

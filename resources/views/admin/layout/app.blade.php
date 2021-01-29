@@ -152,6 +152,12 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{route('show_holding_address')}}">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">List Of Holding No</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{route('ownerLogin')}}">
               <i class="fa fa-puzzle-piece menu-icon"></i>
               <span class="menu-title">Owner Login Approval</span>
@@ -163,12 +169,7 @@
               <span class="menu-title">Owner Post Approval</span>
             </a>
           </li>
-          <!--<li class="nav-item">
-            <a class="nav-link" href="{{route('commission')}}">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">commisiion</span>
-            </a>
-          </li>-->
+         
         </ul>
       </nav>
       <!-- partial -->
