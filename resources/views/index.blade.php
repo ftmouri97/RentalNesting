@@ -293,7 +293,7 @@
                         <div class="socail_links">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="www.facebook.com">
                                         <i class="ti-facebook"></i>
                                     </a>
                                 </li>
@@ -312,7 +312,21 @@
 
                     </div>
                 </div>
-                
+                <div class="col-xl-2 col-md-6 col-lg-2">
+                            <div class="footer_widget">
+                                <h3 class="footer_title">
+                                        Useful Links
+                                </h3>
+                                <ul>
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('registration') }}">Registration</a></li>
+                                    <li><a href="{{ route('contact') }}"> Contact</a></li>
+                                    <li><a href="{{ route('contact') }}">About Us</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        
                 
                 
             </div>
