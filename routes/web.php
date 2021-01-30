@@ -109,7 +109,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function(){
   Route::view('/owner-login','admin.ownerLogin')->name('ownerLogin');
  // Route::view('/holding-address','admin.holding_address')->name('holding-address');
   Route::get('/holding-address','AdminController@show_holding_address')->name('show_holding_address');
-
+  Route::get('/add-holding','AdminController@addholding')->name('addholding');
+  Route::post('/add-holding','AdminController@storeholding');
 
   /**
    * Owner Registration Page

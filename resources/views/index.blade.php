@@ -30,7 +30,7 @@
                                             <ul class="bg-light text-dark" id="showing-zone"></ul>
                                         </div>
                                         <div class="single-field min_width">
-                                            <label for="#">Category</label>
+                                            <label for="#">Property Type</label>
                                             <select class="wide" type="text" id="category-search">
                                                 <option value="apartment">All</option>
                                                 <option value="apartment">Apartment</option>

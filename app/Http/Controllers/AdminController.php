@@ -173,5 +173,18 @@ class AdminController extends Controller
         $holding_address= DB::table('holding_address')->get();
         return view('admin.holding_address',['holding_address'=> $holding_address]);
     }
-
+    public function addholding()
+    {
+       return view('admin.add-holding');
+    }
+     public function storeholding(Request $request){
+ 
+        $holding_address=DB::table('holding_address')->insert([
+            'holding_id' =>$request->holsing_id,
+            
+        ]);
+         $holding_address->save();
+ 
+       return view('admin.add-holding');
+            }
 }
