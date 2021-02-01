@@ -26,7 +26,7 @@
         <div class="bradcam_text text-center">
                 <h3>About Us</h3>
 
-                <p> NEW DOOR. is a leading letting-property portal web-site established in 2012 with a comprehensive search facility for property-finders to find a property. We also offer a range of services for both our Renters and Property Owners. So why not take a look around our site and if there is anything we can help you with, please feel free to get in touch with us.</p>
+                <p> NEW DOOR. is a leading letting-property portal web-site established in 2021 with a comprehensive search facility for property-finders to find a property. We also offer a range of services for both our Renters and Property Owners. So why not take a look around our site and if there is anything we can help you with, please feel free to get in touch with us.</p>
         </div >       
     </div>
     <br>
@@ -120,6 +120,20 @@
                     </div>
                 </div>
             </div>
+            <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href=" " target="_blank">New Door</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
             
         </footer>
         <!--/ footer end  -->

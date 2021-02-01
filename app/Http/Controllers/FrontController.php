@@ -36,7 +36,7 @@ class FrontController extends Controller
         $location = explode(',',$Request->zone);
         $category = $Request->category;
         $zone = $location[0];
-        $data = apartment_detail::where('active_status',1)->whereBetween('apartment_rent',[(int)$Request->price_min,(int)$Request->price_max])->where('apartment_category',$category)->where('zone',$zone)->get();
+        $data = apartment_detail::where('active_status',1)->where('apartment_category',$category)->where('zone',$zone)->get();
         if (count($data)>0) {
             for ($i=0; $i < count($data); $i++) {
                 $feature_image='';
@@ -48,7 +48,7 @@ class FrontController extends Controller
                         <div class="single_property">
                             <div class="property_thumb">
                                 <div class="property_tag">
-                                    For Sale
+                                    For Rent
                                 </div>
 
                                 <img src="Apartment photoes/<?php echo $feature_image ?>" alt="">
