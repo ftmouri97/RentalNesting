@@ -21,8 +21,8 @@
                     <th>Bath</th>
                     <th>Size</th>
                     <th>Description</th>
-                    <th>Appartment rent</th>
-                    <th>Commision status</th>
+                    <th>Rent</th>
+                    
                     <th>Active tatus</th>
                     <th>Active tatus2</th>
                     <th></th>
@@ -40,8 +40,8 @@
                     <td>Batd</td>
                     <td>Size</td>
                     <td>Description</td>
-                    <td>Appartment rent</td>
-                    <td>Commision status</td>
+                    <td>Rent</td>
+                   
                     <td>Active tatus</td>
                     <td>
                       <label class="badge badge-info">On hold</label>

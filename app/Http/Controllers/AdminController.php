@@ -188,4 +188,77 @@ class AdminController extends Controller
  
        return view('admin.add-holding');
             }
+            public function show_apartment(Request $request)
+    {
+        
+        $holding_address= DB::table('apartment_details')->get();
+        return view('admin.holding_address',['holding_address'=> $holding_address]);
+    }
+    public function showApartmentDetails()
+    {
+        $apartments = auth()->user()->apartments()->orderBy('id','desc')->get();
+        $data = '';
+        ?>
+        <table id="order-listing" class="table">
+              <thead>
+                <tr>
+                    <th>Feature image</th>
+                    <th>Floor no</th>
+                    <th>Flat name</th>
+                    <th>Category</th>
+                    <th>District</th>
+                    <th>Zone</th>
+                    <th>Address</th>
+                    <th>Bed</th>
+                    <th>Bath</th>
+                    <th>Size</th>
+                    <th>Description</th>
+                    <th>Apartment Rent</th>
+                   
+                    <th>Active status</th>
+                    <th></th>
+                </tr>
+              </thead>
+              <tbody >
+        <?php
+        foreach ($apartments as $apartment) {
+            $feature_image='';
+            if ($apartment->featureImage) {
+                $feature_image = $apartment->featureImage->image;
+            }
+
+           
+
+
+            ?>
+            <tr>
+            <td><img class="img-fluid" src="../Apartment photoes/<?php echo $feature_image ?>"/></td>
+            <td><?php echo $apartment->floor_no; ?></td>
+            <td><?php echo $apartment->flat_name; ?></td>
+            <td><?php echo $apartment->apartment_category; ?></td>
+            <td><?php echo $apartment->district; ?></td>
+            <td><?php echo $apartment->zone; ?></td>
+            <td><?php echo $apartment->address; ?></td>
+            <td><?php echo $apartment->total_bed; ?></td>
+            <td><?php echo $apartment->total_bath; ?></td>
+            <td><?php echo $apartment->apartment_size; ?></td>
+            <td><?php echo $apartment->apartment_description; ?></td>
+            <td><?php echo $apartment->apartment_rent; ?></td>
+            <td><?php echo $apartment->commission_status; ?></td>
+            <td><?php echo $active_status; ?></td>
+            <td>
+            <button class="btn btn-outline-primary" onclick="manageDetailImages(<?php echo $apartment->id ?>)">Manage detail images</button>
+            <button class="btn btn-outline-warning" onclick="editApertment(<?php echo $apartment->id ?>)">Edit</button>
+            <button class="btn btn-outline-danger" onclick="deleteApertment(<?php echo $apartment->id ?>)">Delete</button>
+            </td>
+        </tr>
+            <?php
+        }
+        ?>
+        </tbody>
+            </table>
+        <script src="../assets/melody/js/data-table.js"></script>
+        <?php
+
+    }
 }

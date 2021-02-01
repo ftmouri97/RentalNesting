@@ -111,6 +111,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'],function(){
   Route::get('/holding-address','AdminController@show_holding_address')->name('show_holding_address');
   Route::get('/add-holding','AdminController@addholding')->name('addholding');
   Route::post('/add-holding','AdminController@storeholding');
+  Route::get('/apartment-details','AdminController@showApartmentDetails')->name('showApartmentDetails');
 
   /**
    * Owner Registration Page

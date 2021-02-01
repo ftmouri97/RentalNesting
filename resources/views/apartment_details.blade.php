@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-8 col-lg-6">
                         <div class="comfortable_apartment">
-                            <h4>Comfortable Apartment in {{$apartment->district}}</h4>
+                            <h4>Comfortable Property in {{$apartment->district}}</h4>
                             <p> <img src="{{asset('assets/realstate')}}/img/svg_icon/location.svg" alt="">{{$apartment->address}}</p>
                             <div class="quality_quantity d-flex">
                                 <div class="single_quantity">
@@ -27,10 +27,12 @@
                     </div>
                     <div class="col-xl-6 col-md-4 col-lg-6">
                         <div class="prise_quantity">
-                            <h4>BDT {{$apartment->apartment_rent}}</h4>
+                          <h4> BDT {{$apartment->apartment_rent}}</h4>
                             <img src="{{asset('assets/realstate')}}/img/svg_icon/icon.svg" alt="">
                             <a href="#">{{$apartment->owner->phone}}</a>
+                            
                         </div>
+                       
                     </div>
                 </div>
             </div>

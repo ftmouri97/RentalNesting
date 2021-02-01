@@ -9,7 +9,7 @@ class apartment_detail extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
+    protected $fillable=['owner_id','district','zone','address','total_bed','total_bath','apartment_size','apartment_description','apartment_category','flat_name','floor_no','apartment_rent','active_status','total_view','commission_status'];
     public function complains()
     {
         return $this->hasMany('App\Models\complain','apartment_id','id');
