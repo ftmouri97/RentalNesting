@@ -110,14 +110,14 @@
                 $i = 1;
             @endphp
             @foreach ($apartments as $apartment)
-            <div class="col-xl-4 col-md-6 col-lg-4">
+            <div class="col-xl-4 col-md-6 col-lg-4">  
                 <div class="single_property">
                     <div class="property_thumb">
                         <div class="property_tag">
                             For Rent
                         </div>
                         @if ($apartment->featureImage)
-                        <img src="{{asset('Apartment photoes/'.$apartment->featureImage->image)}}" alt="">
+                        <img style="height:300px;width:500px;"src="{{asset('Apartment photoes/'.$apartment->featureImage->image)}}" alt="">
                         @else
                         <img src="" alt="">
                         @endif
@@ -192,7 +192,7 @@
                                             <span><h3> Popular Apartment</h3> </span>
                                             <div class="popular_pro d-flex">
                                             @if ($apartment->featureImage)
-                        <img style="height:300px;width:700px;" src="{{asset('Apartment photoes/'.$apartment->featureImage->image)}}" alt="">
+                        <img style="height:300px;width:500px;" src="{{asset('Apartment photoes/'.$apartment->featureImage->image)}}" alt="">
                         @else
                         <img src="" alt="">
                         @endif
