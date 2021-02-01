@@ -41,7 +41,7 @@ class AdminController extends Controller
                     <td><?php echo $apartment->owner->name ?></td>
                     <td><?php echo $apartment->owner->phone ?></td>
                     <td>
-                        <Button class="btn btn-primary" data-toggle="modal" data-target="#apertment-details-modal-<?php echo $apartment->id ?>">Apertment Detail</Button>
+                        <Button class="btn btn-primary" data-toggle="modal" data-target="#apertment-details-modal-<?php echo $apartment->id ?>">Apartment Details</Button>
                     </td>
                     <td>
                         <Button class="btn btn-success" onclick="accept_apartment(<?php echo $apartment->id ?>)">Accept</Button>
@@ -76,6 +76,7 @@ class AdminController extends Controller
                             <li class="list-group-item">Total bath :<?php echo $apartment->total_bath; ?></li>
                             <li class="list-group-item">Rent : <?php echo $apartment->apartment_rent; ?></li>
                             <li class="list-group-item">Size : <?php echo $apartment->apartment_size; ?></li>
+                            <li class="list-group-item">Property Type : <?php echo $apartment->apartment_category; ?></li>
                         </ul>
                         <?php
                         // if (count($apartment->detailsImages)>0) {
