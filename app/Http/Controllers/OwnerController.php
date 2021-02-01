@@ -271,7 +271,7 @@ class OwnerController extends Controller
             $gas_bill_status = $rent_detail[$i]->gas_bill_status==0?'<button class="btn btn-outline-warning" onclick="gasbill_accepting('.$rent_detail[$i]->id.')">Due</button>':'<label class="badge badge-success">Paid</label>';
             ?>
             <tr>
-                <td><?php echo $i++ ?></td>
+                 <td><?php echo $rent_detail[$i]->id ?></td>
                 <td><?php echo $rent_detail[$i]->month ?></td>
                 <td><?php echo $renter->name ?></td>
                 <td><?php echo $renter->phone ?></td>
