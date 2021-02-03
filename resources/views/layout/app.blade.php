@@ -42,7 +42,7 @@
                         <div class="row align-items-center">
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="">
                                         <img class="img-fluid" style="height:100px;" src="{{asset('assets/logo.png')}}" alt="">
                                     </a>
                                 </div>

@@ -16,7 +16,7 @@ class PdfController extends Controller
         $data['contract_end'] = date('Y-m-d H:i:s', strtotime('+1 years', strtotime($data->created_at)));
         $data['total'] = $data->advance_payment+$data->apartment->apartment_rent;
         $data['date'] = $date;
-        $pdf = PDF::loadView('agreement2',['confirmed'=>$data]);
+        $pdf = PDF::loadView('agreement',['confirmed'=>$data]);
         return $pdf->stream();
         return $pdf->download('agreement.pdf');
     }

@@ -55,7 +55,7 @@ class FrontController extends Controller
                             </div>
                             <div class="property_content">
                                 <div class="main_pro">
-                                    <h3><a href="apartment-details/<?php echo $data[$i]->id ?>">Comfortable Apartment in
+                                    <h3><a href="apartment-details/<?php echo $data[$i]->id ?>">Comfortable Property in
                                     <?php echo $data[$i]->zone ?></a></h3>
                                     <div class="mark_pro">
                                         <img src="assets/realstate/img/svg_icon/location.svg" alt="">
