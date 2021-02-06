@@ -29,12 +29,19 @@ class RenterController extends Controller
                 <th>Owner email</th>
                 <th>Agreement Paper</th>
                 <th></th>
+
             </tr>
             </thead>
             <tbody>
         <?php
         $renters = rent_confirmation::where('renter_id',auth()->user()->id)->get();
         foreach ($renters as $renter) {
+            $date = date("Y-m-d");
+
+            $contract_end =date('Y-m-d', strtotime('+'.$renter->contract_year.' years', strtotime($renter->created_at)));
+            //$remain_day =date_diff($contract_end,$date);
+            $diff = abs(strtotime($contract_end) - strtotime($date));
+            $remain_day = floor($diff / 86400);
             ?>
             <tr>
                 <td><?php echo $renter->id ?></td>
@@ -45,6 +52,9 @@ class RenterController extends Controller
                 <td><?php echo $renter->owner->email ?></td>
                 <td>
                     <a href='agreement_show/<?php echo $renter->id ?>'>Show</a>
+                </td>
+                <td>
+                    <?php echo $remain_day ?> Days
                 </td>
 
             </tr>
