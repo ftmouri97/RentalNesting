@@ -77,10 +77,17 @@
                       <th>Flat Name:</th>
                       <td>{{$confirmed->apartment->flat_name}}</td>
                     </tr>
-                    <tr>
-                      <th> Date: </th>
-                      <td>{{$confirmed->date}}</td>
-                    </tr>
+
+
+                       <tr>
+                        <th> Contract Start: </th>
+                        <td>{{$confirmed->date}}</td>
+                      </tr>
+
+                      <tr>
+                        <th> Contract End: </th>
+                        <td>{{$confirmed->contract_end}}</td>
+                      </tr>
                   </tbody>
                 </table>
 

@@ -23,6 +23,10 @@
                 <label for="advance">Advance rent</label>
                 <input type="number" class="form-control" id="advance_rent" placeholder="Advance rent">
             </div>
+            <div class="form-group">
+                <label for="advance">Contract Year</label>
+                <input type="number" class="form-control" id="contract_year" placeholder="Advance rent">
+            </div>
         </div>
         <div class="modal-footer">
            <button type="button" class="btn btn-primary" onclick="SubmitAdvanceRent()">Save changes</button>
@@ -36,5 +40,5 @@
 
 @section('page-js')
 <script src="{{asset('assets/melody')}}/js/data-table.js"></script>
-<script src="{{asset('assets/owner/booking-requests.js')}}"></script>
+<script src="{{asset('assets')}}/owner/booking-requests.js?{{ time() }}"></script>
 @endsection
