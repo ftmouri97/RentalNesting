@@ -32,10 +32,13 @@ class OwnerController extends Controller
     }
     public function agreement_show(Request $Request)
     {
-        $date = date('d-m-Y');
+        $date = date('Y-m-d');
         $data = rent_confirmation::where('id',$Request->id)->first();
-        $data['contract_end'] = date('Y-m-d H:i:s', strtotime('+1 years', strtotime($data->created_at)));
+        $contract_year = $data->contract_year;
+        $data['contract_end'] = date('Y-m-d', strtotime('+'.$contract_year.' years', strtotime($data->created_at)));
         $data['total'] = (int)$data->advance_payment+(int)$data->apartment->apartment_rent;
+        $data['contract_start'] = $date;
+
         $data['date'] = $date;
         return view('agreement',['confirmed'=>$data]);
     }
@@ -53,6 +56,7 @@ class OwnerController extends Controller
                 <th>Renter phone</th>
                 <th>Renter email</th>
                 <th>Agreement Paper</th>
+                <th>Agreement Reamining Day</th>
                 <th></th>
             </tr>
             </thead>
@@ -61,6 +65,15 @@ class OwnerController extends Controller
         $renters = rent_confirmation::where('status',0)->where('owner_id',auth()->user()->id)->get();
         $i=1;
         foreach ($renters as $renter) {
+                $date = date("Y-m-d");
+
+                $contract_end =date('Y-m-d', strtotime('+'.$renter->contract_year.' years', strtotime($renter->created_at)));
+                //$remain_day =date_diff($contract_end,$date);
+                $diff = abs(strtotime($contract_end) - strtotime($date));
+                $remain_day = floor($diff / 86400);
+                // $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+                // $remain_day = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            // file_put_contents('test.txt',$years);
 
             ?>
             <tr>
@@ -72,6 +85,9 @@ class OwnerController extends Controller
                 <td><?php echo $renter->renter->email ?></td>
                 <td>
                     <a href='agreement_show/<?php echo $renter->id ?>'>Show</a>
+                </td>
+                <td>
+                    <?php echo $remain_day ?> Days
                 </td>
                 <td>
                     <button class="btn btn-danger" onclick="deleteRenterInfo(<?php echo $renter->id ?>)">Delete</button>
@@ -294,7 +310,9 @@ class OwnerController extends Controller
         $rent_request = rent_request::where('id',$Request->rent_request_id)->first();
         $rent_request->apartment->update(['active_status'=>2]);
         $rent_request->update(['status'=>1]);
-        rent_confirmation::create(['renter_id'=>$rent_request->renter_id,'owner_id'=>$rent_request->owner_id,'apartment_id'=>$rent_request->apartment_id,'advance_payment'=>$Request->advance_rent,'status'=>0]);
+        $contract_year  =$Request->contract_year;
+
+        rent_confirmation::create(['renter_id'=>$rent_request->renter_id,'owner_id'=>$rent_request->owner_id,'apartment_id'=>$rent_request->apartment_id,'advance_payment'=>$Request->advance_rent,'contract_year'=>$contract_year,'status'=>0]);
     }
 
     public function deleteBookingRequest(Request $Request)

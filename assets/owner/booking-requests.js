@@ -8,10 +8,13 @@ $(function() {
 })
 
 function SubmitAdvanceRent() {
+    alert($("#contract_year").val());
     if ($("#advance_rent").val().length > 0) {
+
         formdata = new FormData();
         formdata.append('rent_request_id',$("#rent_request_id").val());
         formdata.append('advance_rent',$("#advance_rent").val());
+        formdata.append('contract_year',$("#contract_year").val());
         $.ajax({
             processData: false,
             contentType: false,
