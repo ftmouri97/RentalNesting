@@ -230,7 +230,7 @@
 @endif
 <!-- /home_details  -->
 
-<!-- counter_area  -->
+<!--  
 <div class="counter_area">
     <div class="container">
         <div class="row">
@@ -242,7 +242,7 @@
             </div>
             <div class="col-xl-4 col-md-4">
                 <div class="single_counter">
-                    <h3> <span class="counter">300</span></h3>
+                    <h3> <span class="counter" >300</span></h3>
                     <p>Properties for Rent</p>
                 </div>
             </div>
@@ -255,7 +255,7 @@
         </div>
     </div>
 </div>
-<!-- /counter_area  -->
+ -->
 
 <!-- contact_action_area  -->
 <div class="contact_action_area">

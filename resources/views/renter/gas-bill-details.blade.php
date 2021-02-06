@@ -3,7 +3,7 @@
 @section('main-panel')
 <div class="page-header">
     <h3 class="page-title">
-        Apartments
+        Gas Bill Details
     </h3>
 </div>
 <div class="card">

@@ -22,7 +22,7 @@ class RenterController extends Controller
             <thead>
             <tr>
                 <th>SL No#</th>
-                <th>Apertment</th>
+                <th>Apartment</th>
                 <th>Owner name</th>
                 <th>Owner Image</th>
                 <th>Owner phone</th>
@@ -369,4 +369,36 @@ class RenterController extends Controller
     {
         User::where('id',auth()->user()->id)->update(['name'=>$request->name,'email'=>$request->email]);
     }
+    public function payment(){
+    	return view('renter.payment');
+    }
+
+    public function store(){
+    	$this->validate(request(),[
+          'name'=>'required',
+          'email'=>'required',
+          'owner_name'=>'required',
+          'address'=>'required',
+          'holding_no'=>'required',
+          'amount'=>'required',
+
+
+
+    	]);
+    
+
+    Payment::create([
+
+       'name'=>request()->input('name'),
+       'email'=>request()->input('email'),
+       'owner_name'=>request()->input('owner_name'),
+       'address'=>request()->input('address'),
+       'holding_no'=>request()->input('holding_no'),
+       'amount'=>request()->input('amount'),
+
+
+
+    ]);
+    return back()->with('success','Payment completed successfully');
+  }
 }

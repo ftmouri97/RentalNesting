@@ -284,6 +284,12 @@
               <span class="menu-title">Complain</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('payment')}}">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">Payment</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->

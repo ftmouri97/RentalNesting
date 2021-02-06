@@ -152,6 +152,9 @@ Route::group(['prefix' => 'renter',  'middleware' => 'renter'], function()
     Route::get('read-profile','RenterController@readProfile')->name('readProfile');
     Route::get('rent-apartment/{id}','RenterController@rentApartment')->name('rentApartment');
     Route::get('agreement_show/{id}','OwnerController@agreement_show');
+    Route::get('payment','RenterController@payment')->name('payment');
+    Route::post('payment','RenterController@store')->name('payment');
+
 });
 
 

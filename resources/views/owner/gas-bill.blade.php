@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="page-header">
             <h3 class="page-title">
-                Service charges
+                Gas Bill Details
             </h3>
         </div>
         <div class="table-responsive" id="data">

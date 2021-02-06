@@ -3,7 +3,7 @@
 @section('main-panel')
 <div class="page-header">
     <h3 class="page-title">
-        Apartments
+        Booking List
     </h3>
 </div>
 <div class="card">

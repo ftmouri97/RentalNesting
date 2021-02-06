@@ -132,21 +132,6 @@
               </table>
 
               <hr>
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="invbody-terms">
-                    Thank you for your business. <br>
-                    <br>
-                    <h4>Payment Terms and Methods</h4>
-                    <p>
-                    <img src="{{ asset('assets')}}/frontend/pic1.png" width="100px" height="50px">
-                    <img src="{{ asset('assets')}}/frontend/logo3.png" width="100px" height="50px">
-
-                    </p>
-                    <button type="button" class="btn btn-secondary btn-lg">Pay Now</button>
-                  </div>
-                </div>
-              </div>
             </div>
         </div>
       </div>
