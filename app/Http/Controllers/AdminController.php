@@ -189,7 +189,7 @@ class AdminController extends Controller
  
        return view('admin.add-holding');
             }
-            public function show_apartment(Request $request)
+     public function show_apartment(Request $request)
     {
         
         $holding_address= DB::table('apartment_details')->get();
