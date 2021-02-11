@@ -56,7 +56,7 @@ class OwnerController extends Controller
                 <th>Renter phone</th>
                 <th>Renter email</th>
                 <th>Agreement Paper</th>
-                <th>Agreement Reamining Day</th>
+                <th>Agreement Remaining Day</th>
                 <th></th>
             </tr>
             </thead>
