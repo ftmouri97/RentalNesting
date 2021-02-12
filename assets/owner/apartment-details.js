@@ -188,6 +188,7 @@ function addApertmentDetails() {
         holding_address_found == 1
     ) {
         formData = new FormData()
+        formData.append('holding_address',$("#holding_address").val())
         formData.append('floor_no', $("#floor_no").val())
         formData.append('flat_name', $("#flat_name").val())
         formData.append('apartment_category', $("#apartment_category").val())

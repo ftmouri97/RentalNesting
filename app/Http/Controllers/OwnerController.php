@@ -36,7 +36,7 @@ class OwnerController extends Controller
         $data = rent_confirmation::where('id',$Request->id)->first();
         $contract_year = $data->contract_year;
         $data['contract_end'] = date('Y-m-d', strtotime('+'.$contract_year.' years', strtotime($data->created_at)));
-        $data['total'] = (int)$data->advance_payment+(int)$data->apartment->apartment_rent;
+        $data['total'] =( (int)$data->advance_payment)+((int)$data->apartment->apartment_rent);
         $data['contract_start'] = $date;
 
         $data['date'] = $date;
@@ -379,6 +379,7 @@ class OwnerController extends Controller
                     <th>Size</th>
                     <th>Description</th>
                     <th>Apartment Rent</th>
+                    <th> Holding Address</th>
                     <th>Commission status</th>
                     <th>Active status</th>
                     <th></th>
@@ -455,7 +456,7 @@ class OwnerController extends Controller
 
     public function createApartmentDetails(Request $Request)
     {
-        $apartment = apartment_detail::create(['owner_id'=>auth()->user()->id,'district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no,'apartment_category'=>$Request->apartment_category, 'apartment_rent'=>$Request->apartment_rent, 'active_status'=>0, 'commission_status'=>0]);
+        $apartment = apartment_detail::create(['holding_id'=>$Request->holding_address,'owner_id'=>auth()->user()->id,'district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no,'apartment_category'=>$Request->apartment_category, 'apartment_rent'=>$Request->apartment_rent, 'active_status'=>0, 'commission_status'=>0]);
         if ($apartment) {
             $fileName = time().'.'.$Request->feature_image->extension();
             $Request->feature_image->move(public_path('../Apartment photoes'), $fileName);
