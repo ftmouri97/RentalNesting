@@ -157,12 +157,7 @@
               <span class="menu-title">List Of Holding No</span>
             </a>
           </li>
-     <!--     <li class="nav-item">
-            <a class="nav-link" href="{{route('showApartmentDetails')}}">
-              <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">List Of Apartments</span>
-            </a>
-          </li>-->
+     
           <li class="nav-item">
             <a class="nav-link" href="{{route('ownerLogin')}}">
               <i class="fa fa-puzzle-piece menu-icon"></i>

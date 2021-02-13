@@ -10,7 +10,7 @@
 
 <div class="page-header">
     <h3 class="page-title">
-        Apartment Requests
+        Apartment Post Requests
     </h3>
 </div>
 <div class="card">

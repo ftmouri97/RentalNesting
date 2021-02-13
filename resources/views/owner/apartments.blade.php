@@ -66,11 +66,8 @@
                 <input type="number" class="form-control" id="total_bath" placeholder="Total bath" value=" ">
             </div>
             <div class="form-group">
-
                 <label for="apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="apartment_size" placeholder="apartment size" value=" ">
-
-                 
             </div>
             <div class="form-group">
                 <label for="feature_image">Property Feature Image</label>
@@ -118,6 +115,7 @@
         </div>
         <div class="modal-body">
             <input type="hidden" id="edit_apartment_id">
+            
             <div class="form-group">
                 <label for="edit_floor_no">Floor no</label>
                 <input type="text" class="form-control" id="edit_floor_no" placeholder="Floor no" >

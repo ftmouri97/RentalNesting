@@ -77,6 +77,7 @@ class AdminController extends Controller
                             <li class="list-group-item">Rent : <?php echo $apartment->apartment_rent; ?></li>
                             <li class="list-group-item">Size : <?php echo $apartment->apartment_size; ?></li>
                             <li class="list-group-item">Property Type : <?php echo $apartment->apartment_category; ?></li>
+                            <li class="list-group-item">Holding Address : <?php echo $apartment->holding_id; ?></li>
                         </ul>
                         <?php
                         // if (count($apartment->detailsImages)>0) {
@@ -85,7 +86,7 @@ class AdminController extends Controller
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Detail images</h4>
+                                        <h4 class="card-title">Details images</h4>
                                         <div class="owl-carousel owl-theme loop">
                                             <?php
                                                 foreach ($apartment->detailsImages as $image) {
@@ -215,6 +216,7 @@ class AdminController extends Controller
                     <th>Size</th>
                     <th>Description</th>
                     <th>Apartment Rent</th>
+                    <th>Holding Address</th>
                    
                     <th>Active status</th>
                     <th></th>
@@ -245,7 +247,7 @@ class AdminController extends Controller
             <td><?php echo $apartment->apartment_size; ?></td>
             <td><?php echo $apartment->apartment_description; ?></td>
             <td><?php echo $apartment->apartment_rent; ?></td>
-            <td><?php echo $apartment->commission_status; ?></td>
+            <td><?php echo $apartment->holding_id; ?></td>
             <td><?php echo $active_status; ?></td>
             <td>
             <button class="btn btn-outline-primary" onclick="manageDetailImages(<?php echo $apartment->id ?>)">Manage detail images</button>
