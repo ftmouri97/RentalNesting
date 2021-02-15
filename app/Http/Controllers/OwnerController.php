@@ -483,7 +483,7 @@ class OwnerController extends Controller
 
     public function updateApartmentDetails(Request $Request)
     {
-        apartment_detail::where('id',$Request->id)->update(['holding_id'=>$Request->holding_address,'district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_category'=>$Request->apartment_category,'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent]);
+        apartment_detail::where('id',$Request->id)->update(['district'=>$Request->district, 'zone'=>$Request->zone, 'address'=>$Request->address, 'total_bed'=>$Request->total_bed, 'total_bath'=>$Request->total_bath, 'apartment_category'=>$Request->apartment_category,'apartment_size'=>$Request->apartment_size, 'apartment_description'=>$Request->apartment_description, 'flat_name'=>$Request->flat_name, 'floor_no'=>$Request->floor_no, 'apartment_rent'=>$Request->apartment_rent]);
         if ($Request->file('feature_image')) {
             if ($Request->feature_image_value) {
                 feature_image::where('apartment_id',$Request->id)->delete();

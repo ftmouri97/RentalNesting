@@ -56,7 +56,6 @@
                 
             </div>
             
-       
             <div class="form-group">
                 <label for="total_bed">Bed Room</label>
                 <input type="number" class="form-control" id="total_bed" placeholder="Total bed" value=" ">
@@ -138,16 +137,7 @@
                 <label for="edit_district">District</label>
                 <input type="text" class="form-control" id="edit_district" placeholder="District" value=" ">
             </div>
-            <div class="form-group">
-                <label for="edit_zone">Zone</label>
-                <input type="text" class="form-control" id="edit_zone" placeholder="Zone" value=" ">
-            </div>
-            <div class="form-group">
-                <label for="edit_address">Address</label>
-                <input type="text" class="form-control" id="edit_address" placeholder="Address" value=" ">
-
-                <input type="text" class="form-control" id="edit_district" placeholder="District" >
-            </div>
+            
             <div class="form-group">
                 <label for="edit_zone">Zone</label>
                 <input type="text" class="form-control" id="edit_zone" placeholder="Zone" >
@@ -155,7 +145,6 @@
             <div class="form-group">
                 <label for="edit_address">Address</label>
                 <input type="text" class="form-control" id="edit_address" placeholder="Address" >
-
             </div>
             <div class="form-group">
                 <label for="edit_total_bed">Bed Room</label>
@@ -169,10 +158,6 @@
 
                 <label for="edit_apartment_size">Property Size</label>
                 <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" value=" ">
-
-                <label for="edit_apartment_size">Apartment size</label>
-                <input type="text" class="form-control" id="edit_apartment_size" placeholder="apartment size" >
-
             </div>
             <div class="form-group">
                 <label for="edit_feature_image">Property Feature Image</label>

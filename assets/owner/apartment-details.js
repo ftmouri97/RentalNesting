@@ -138,7 +138,7 @@ function editApertment(id) {
 
 function updateApertmentDetails() {
     var formdata = new FormData();
-    formData.append('holding_address',$("#holding_address").val())
+  
     formdata.append('id',$("#edit_apartment_id").val())
     formdata.append('apartment_category',$("#apartment_edit_category").val())
     formdata.append('floor_no',$("#edit_floor_no").val())
