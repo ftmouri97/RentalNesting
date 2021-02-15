@@ -28,7 +28,7 @@ class RenterController extends Controller
                 <th>Owner phone</th>
                 <th>Owner email</th>
                 <th>Agreement Paper</th>
-                <th></th>
+                <th> Agreement Remaining Day</th>
 
             </tr>
             </thead>
