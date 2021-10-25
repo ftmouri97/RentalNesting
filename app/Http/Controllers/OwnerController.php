@@ -140,7 +140,8 @@ class OwnerController extends Controller
 
     public function gasBillShowing()
     {
-        $rentDetail = rent_details::where('gas_bill_status',1)->get();
+        $owner_id = Auth::user()->id;
+        $rentDetail = rent_details::where('gas_bill_status',1)->where('owner_id',$owner_id)->get();
         ?>
         <table class="table" id="order-listing">
             <thead>
@@ -175,7 +176,8 @@ class OwnerController extends Controller
 
     public function serviceChargeShowing()
     {
-        $rentDetail = rent_details::where('service_charge_status',1)->get();
+        $owner_id = Auth::user()->id;
+        $rentDetail = rent_details::where('service_charge_status',1)->where('owner_id',$owner_id)->get();
         ?>
         <table class="table" id="order-listing">
             <thead>
@@ -210,7 +212,8 @@ class OwnerController extends Controller
 
     public function rentShowing()
     {
-        $rentDetail = rent_details::where('rent_status',1)->get();
+        $owner_id = Auth::user()->id;
+        $rentDetail = rent_details::where('rent_status',1)->where('owner_id',$owner_id)->get();
         ?>
         <table class="table" id="order-listing">
             <thead>

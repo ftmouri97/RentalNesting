@@ -63,9 +63,10 @@ class AuthController extends Controller
         $request->validate([
             'nid' => 'required',
             'name' => 'required',
-            'phone' => 'required|unique:users',
+            'phone' => 'required|unique:users|digits:11|starts_with:01',
             'email' => 'required|unique:users|email',
-            'password' => 'required|confirmed',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+ 
 
         ]);
         file_put_contents('test.txt',$request->nid);
@@ -121,7 +122,7 @@ class AuthController extends Controller
                     return redirect()->back();
                 }
             }else{
-                session()->flash('message', 'Your acoount has not been activated yet!');
+                session()->flash('message', 'Your account has not been activated yet!');
                 return redirect()->back();
             }
         }

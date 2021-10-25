@@ -66,12 +66,12 @@
                 <div class="col-xl-3 col-md-6 col-lg-3">
                     <div class="footer_widget">
                         <div class="footer_logo">
-                            <a href="#">
+                            <!--<a href="#">
                                 <img src="{{asset('assets/realstate')}}/img/logo5.png" alt="">
-                            </a>
+                            </a>-->
                         </div>
                         <p>
-                            <a href="#">newdoor@gmail.com</a> <br>
+                            <a href="#">rentalnesting@gmail.com</a> <br>
                             01765-324556 <br>
                             Yunesco,GEC more,Chittagong
                         </p>
@@ -126,7 +126,7 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
                             
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href=" " target="_blank">New Door</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href=" " target="_blank">Rental Nesting</a>
 
                         </p>
                     </div>

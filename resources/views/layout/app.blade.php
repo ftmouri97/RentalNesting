@@ -43,7 +43,7 @@
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img class="img-fluid" style="height:100px;" src="{{asset('assets/logo.png')}}" alt="">
+                                        <img class="img-fluid" style="height:100px;" src="{{asset('assets/pic.png')}}" alt="">
                                     </a>
                                 </div>
                             </div>

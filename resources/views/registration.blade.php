@@ -249,7 +249,7 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
                            
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href=" " target="_blank">New Door</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href=" " target="_blank">Rental Nesting</a>
                         </p>
                     </div>
                 </div>

@@ -20,9 +20,9 @@ class FrontController extends Controller
             $user->status = 1;
             $user->save();
             if ($user->user_role == 'owner') {
-                return redirect()->route('login')->with('message','Registration successfull. wait for approve your account.');
+                return redirect()->route('login')->with('message','Registration successful. wait for approve your account.');
             }else{
-                return redirect()->route('login')->with('message','Registration successfull');
+                return redirect()->route('login')->with('message','Registration successful');
             }
         }
         else {
@@ -35,8 +35,10 @@ class FrontController extends Controller
     {
         $location = explode(',',$Request->zone);
         $category = $Request->category;
+        $bed = $Request->bed;
+        $bath = $Request->bath;
         $zone = $location[0];
-        $data = apartment_detail::where('active_status',1)->where('apartment_category',$category)->where('zone',$zone)->get();
+        $data = apartment_detail::where('active_status',1)->whereBetween('apartment_rent',[(int)$Request->price_min,(int)$Request->price_max])->where('total_bed',$bed)->where('total_bath',$bath)->where('apartment_category',$category)->where('zone',$zone)->get();
         if (count($data)>0) {
             for ($i=0; $i < count($data); $i++) {
                 $feature_image='';
